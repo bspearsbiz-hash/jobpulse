@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Member login | Job Pulse</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f1a'/%3E%3Cpath d='M8 34h12l5-14 8 28 7-20 4 6h12' fill='none' stroke='%2322e58a' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<style>
+.wrap.wide{max-width:760px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;text-align:left}
+.stat b{display:block;font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.stat span{font-size:13px;color:var(--muted)}
+.stat.hot{border-color:rgba(255,181,71,.45);background:rgba(255,181,71,.06)}
+.stat.hot b{color:#ffb547}
+.need{display:flex;gap:12px;background:var(--card);border:1px solid rgba(255,181,71,.35);border-radius:16px;padding:14px 16px;margin-bottom:10px}
+.need .n{width:28px;height:28px;flex:none;border-radius:9px;display:grid;place-items:center;font-weight:800;font-size:13px;color:#ffb547;background:rgba(255,181,71,.1);border:1px solid rgba(255,181,71,.3)}
+.need b{display:block;font-size:15.5px}
+.need p{font-size:14px;color:var(--muted);margin-top:3px}
+.need a{color:var(--pulse);font-weight:700;font-size:14px}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.tools input{flex:1 1 220px;font:inherit;font-size:16px;color:var(--text);background:#0b1020;border:1px solid var(--line);border-radius:12px;padding:11px 14px;min-height:46px}
+.tools input:focus{border-color:var(--pulse);outline:none}
+.app{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 16px;margin-bottom:8px}
+.app .co{font-weight:800;font-size:15.5px}
+.app .ro{font-size:14px;color:#cfd6e8}
+.app .meta{font-size:12.5px;color:var(--muted);grid-column:1/-1;display:flex;gap:6px 14px;flex-wrap:wrap}
+.app .meta a{color:var(--pulse);text-decoration:none;font-weight:700}
+.pill{font-size:11.5px;font-weight:800;color:var(--pulse);background:rgba(34,229,138,.1);border:1px solid rgba(34,229,138,.3);padding:4px 9px;border-radius:999px;white-space:nowrap}
+.focus{font-size:14px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.empty{color:var(--muted);text-align:center;padding:18px}
+#app{display:none}
+.signout{background:none;border:1px solid var(--line);color:var(--muted);font:inherit;font-size:13px;font-weight:700;border-radius:999px;padding:7px 12px;cursor:pointer}
+@media(max-width:480px){.stats{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.stat:first-child{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<main class="wrap" id="wrap">
+
+  <div class="top">
+    <a class="logo" href="./"><i><svg viewBox="0 0 64 64" fill="none"><path d="M8 34h12l5-14 8 28 7-20 4 6h12" stroke="#22e58a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Job&nbsp;<span>Pulse</span></a>
+    <button class="signout" id="out" type="button" hidden>Sign out</button>
+  </div>
+
+  <section id="login">
+    <div class="hero">
+      <div class="live"><span class="dot"></span> Members only</div>
+      <h1>Your <em>Job Pulse</em> dashboard</h1>
+      <p class="lede">See every job we've applied to for you, and anything we need from you.</p>
+    </div>
+    <form class="card" id="f" style="margin-top:24px" autocomplete="on">
+      <div class="field"><label for="em">Email</label><input id="em" type="email" required autocomplete="username" placeholder="The email you signed up with"></div>
+      <div class="field"><label for="cd">Access code <small>(from your welcome email)</small></label><input id="cd" required autocomplete="current-password" placeholder="JP-XXXX-XXXX-XXXX" autocapitalize="characters" spellcheck="false"></div>
+      <div class="err" id="err" style="margin:-6px 0 12px"></div>
+      <button class="btn" id="go" type="submit">Log in &rarr;</button>
+      <p class="hint">Lost your code? <a href="mailto:bspearsbiz@gmail.com?subject=Job%20Pulse%20access%20code">Email us</a> and we'll resend it.</p>
+    </form>
+  </section>
+
+  <section id="app" aria-live="polite">
+    <div class="hero" style="text-align:left">
+      <div class="live"><span class="dot"></span> <span id="plan"></span></div>
+      <h1 id="hi" style="font-size:32px"></h1>
+      <p class="lede" style="margin:0" id="upd"></p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="sTotal">0</b><span>applications sent for you</span></div>
+      <div class="stat"><b id="sWeek">0</b><span id="sWeekL">sent latest day</span></div>
+      <div class="stat hot"><b id="sNeed">0</b><span>things waiting on you</span></div>
+    </div>
+
+    <section class="sec" id="needSec">
+      <h2>Needs you</h2>
+      <p style="font-size:14px;color:var(--muted);margin:-4px 0 12px">Each one unlocks strong-fit applications. Reply to our email with the number and your answer. Rough is fine.</p>
+      <div id="needs"></div>
+      <a class="btn" id="reply" href="#">Reply to Job Pulse &rarr;</a>
+      <p class="note">Opens your email to bspearsbiz@gmail.com</p>
+    </section>
+
+    <section class="sec">
+      <h2>Every application</h2>
+      <div class="tools"><input id="q" type="search" placeholder="Search company or role" aria-label="Search applications"></div>
+      <div id="list"></div>
+    </section>
+
+    <section class="sec">
+      <h2>What we're targeting</h2>
+      <p class="focus" id="focus"></p>
+    </section>
+
+    <section class="sec">
+      <h2>Interview prep</h2>
+      <a class="btn alt" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2pFGSP-5of0Du24giiJ_meMKnOlrso40IY1d3zgVSNoNmCiHAbAStRMAKl80Qatq4Y6xgPoTI9">Book a group session with the Job Pulse team &rarr;</a>
+      <p class="note">Got an interview invite, recruiter email or assessment? Forward it to us right away so we can prep you.</p>
+    </section>
+  </section>
+
+  <footer>
+    You have 24/7 access to Bobby or a member of the Job Pulse team. <a href="mailto:bspearsbiz@gmail.com?subject=Job%20Pulse%20support">Email us</a><br><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a>
+  </footer>
+</main>
+<script>
+{
+  const $ = id => document.getElementById(id);
+  const enc = new TextEncoder();
+  const hex = b => Array.from(new Uint8Array(b), x => x.toString(16).padStart(2, '0')).join('');
+  const unhex = h => new Uint8Array(h.match(/../g).map(x => parseInt(x, 16)));
+  const esc = t => String(t ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const safeUrl = u => /^https:\/\//.test(u || '') ? u : '';
+  let data = null;
+
+  async function unlock(email, code) {
+    const id = hex(await crypto.subtle.digest('SHA-256', enc.encode('jobpulse:' + email.trim().toLowerCase())));
+    const r = await fetch('c/' + id + '.json', {cache: 'no-store'});
+    if (!r.ok) throw new Error('nf');
+    const box = await r.json();
+    const base = await crypto.subtle.importKey('raw', enc.encode(code.trim().toUpperCase()), 'PBKDF2', false, ['deriveKey']);
+    const key = await crypto.subtle.deriveKey({name: 'PBKDF2', salt: unhex(box.s), iterations: 250000, hash: 'SHA-256'}, base, {name: 'AES-GCM', length: 256}, false, ['decrypt']);
+    const raw = Uint8Array.from(atob(box.d), c => c.charCodeAt(0));
+    const pt = await crypto.subtle.decrypt({name: 'AES-GCM', iv: unhex(box.i)}, key, raw);
+    return JSON.parse(new TextDecoder().decode(pt));
+  }
+
+  function renderList() {
+    const q = $('q').value.trim().toLowerCase();
+    const rows = data.apps.map((a, i) => ({...a, n: i + 1})).reverse()
+      .filter(a => !q || (a.c + ' ' + a.r).toLowerCase().includes(q));
+    $('list').innerHTML = rows.length ? rows.map(a =>
+      '<div class="app"><div><div class="co">' + esc(a.c) + '</div><div class="ro">' + esc(a.r) + '</div></div><span class="pill">Submitted</span>' +
+      '<div class="meta"><span>#' + a.n + '</span><span>' + esc(a.d) + '</span>' + (a.t ? '<span>' + esc(a.t) + '</span>' : '') + (a.p ? '<span>' + esc(a.p) + '</span>' : '') +
+      (safeUrl(a.u) ? '<a href="' + esc(a.u) + '" target="_blank" rel="noopener">View posting</a>' : '') + '</div></div>'
+    ).join('') : '<p class="empty">No applications match that search.</p>';
+  }
+
+  function render() {
+    $('login').style.display = 'none';
+    $('app').style.display = 'block';
+    $('out').hidden = false;
+    $('wrap').classList.add('wide');
+    $('plan').textContent = data.plan;
+    $('hi').textContent = 'Hey ' + data.first + ', here’s your job search.';
+    $('upd').textContent = 'Member since ' + data.since + ' · Updated ' + data.updated;
+    $('sTotal').textContent = data.apps.length;
+    const last = data.apps.length ? data.apps[data.apps.length - 1].d : '';
+    $('sWeek').textContent = data.apps.filter(a => a.d === last).length;
+    $('sWeekL').textContent = 'sent on ' + last;
+    $('sNeed').textContent = data.needs.length;
+    $('needSec').style.display = data.needs.length ? '' : 'none';
+    $('needs').innerHTML = data.needs.map((x, i) =>
+      '<div class="need"><span class="n">' + (i + 1) + '</span><div><b>' + esc(x.k) + '</b><p>' + esc(x.w) + '</p>' +
+      (safeUrl(x.u) ? '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">Open it &rarr;</a>' : '') + '</div></div>').join('');
+    $('reply').href = 'mailto:bspearsbiz@gmail.com?subject=' + encodeURIComponent('Re: Job Pulse - my answers') + '&body=' + encodeURIComponent(data.needs.map((x, i) => (i + 1) + '. ' + x.k + ': ').join('\n'));
+    $('focus').textContent = data.focus;
+    renderList();
+    window.scrollTo(0, 0);
+  }
+
+  $('f').addEventListener('submit', async e => {
+    e.preventDefault();
+    const b = $('go'), err = $('err');
+    err.style.display = 'none';
+    b.disabled = true; b.textContent = 'Unlocking…';
+    try {
+      data = await unlock($('em').value, $('cd').value);
+      try { sessionStorage.setItem('jp_e', $('em').value.trim().toLowerCase()); } catch (_) {}
+      render();
+    } catch (x) {
+      err.textContent = 'That email and access code don’t match. Check your welcome email, or email us for a new code.';
+      err.style.display = 'block';
+    }
+    b.disabled = false; b.textContent = 'Log in →';
+  });
+  $('q').addEventListener('input', renderList);
+  $('out').addEventListener('click', () => { data = null; try { sessionStorage.clear(); } catch (_) {} location.reload(); });
+  try { const e = sessionStorage.getItem('jp_e'); if (e) $('em').value = e; } catch (_) {}
+}
+</script>
+</body>
+</html>
