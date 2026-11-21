@@ -3,175 +3,86 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Job Pulse | Remote Jobs</title>
-<meta name="description" content="We find the job. We send the applications. You take the interview. Remote roles, daily.">
-<meta property="og:title" content="Job Pulse | Remote Jobs">
+<title>Job Pulse | We apply to remote jobs for you</title>
+<meta name="description" content="We find the job. We send the applications. You take the interview. 10–20 real applications every weekday, plus mentorship and interview prep.">
+<meta property="og:title" content="Job Pulse | We apply to remote jobs for you">
 <meta property="og:description" content="We find the job. We send the applications. You take the interview.">
+<meta property="og:image" content="what-to-expect.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f1a'/%3E%3Cpath d='M8 34h12l5-14 8 28 7-20 4 6h12' fill='none' stroke='%2322e58a' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-<style>
-  :root{
-    --bg:#070a12; --bg2:#0b1020; --card:#101627; --card2:#141c31; --line:#1e2a46;
-    --text:#f2f5fb; --muted:#8c98b8; --pulse:#22e58a; --pulse2:#16c979; --accent:#4f8cff;
-    --shadow:0 20px 50px rgba(0,0,0,.45);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{background:var(--bg)}
-  body{
-    min-height:100vh;
-    font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    background:var(--bg) radial-gradient(1200px 600px at 50% -10%, #122042 0%, var(--bg) 55%) no-repeat;
-    color:var(--text); -webkit-font-smoothing:antialiased; line-height:1.45;
-  }
-  .wrap{max-width:460px;margin:0 auto;padding:28px 16px 48px}
-
-  /* header */
-  .brand{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;margin-top:8px}
-  .mark{width:86px;height:86px;border-radius:24px;background:linear-gradient(160deg,#121a30,#0b1020);border:1px solid var(--line);display:grid;place-items:center;box-shadow:var(--shadow);position:relative;overflow:hidden}
-  .mark:after{content:"";position:absolute;inset:-40%;background:radial-gradient(circle at 50% 50%,rgba(34,229,138,.25),transparent 55%);animation:glow 3s ease-in-out infinite}
-  .mark svg{width:58px;height:58px;position:relative;z-index:1}
-  .mark path{stroke-dasharray:140;stroke-dashoffset:140;animation:draw 2.4s ease-in-out infinite}
-  @keyframes draw{0%{stroke-dashoffset:140;opacity:.2}35%{stroke-dashoffset:0;opacity:1}75%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:-140;opacity:.2}}
-  @keyframes glow{0%,100%{opacity:.5}50%{opacity:1}}
-  h1{font-size:26px;font-weight:800;letter-spacing:-.02em}
-  h1 span{color:var(--pulse)}
-  .handle{color:var(--muted);font-size:14px;margin-top:-6px}
-  .tag{font-size:17px;font-weight:600;max-width:340px}
-  .tag em{font-style:normal;color:var(--pulse)}
-  .live{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pulse);background:rgba(34,229,138,.08);border:1px solid rgba(34,229,138,.25);padding:6px 12px;border-radius:999px}
-  .dot{width:8px;height:8px;border-radius:50%;background:var(--pulse);box-shadow:0 0 0 0 rgba(34,229,138,.6);animation:beat 1.6s infinite}
-  @keyframes beat{0%{box-shadow:0 0 0 0 rgba(34,229,138,.6)}70%{box-shadow:0 0 0 10px rgba(34,229,138,0)}100%{box-shadow:0 0 0 0 rgba(34,229,138,0)}}
-
-  /* pricing */
-  .plans{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
-  .plan{position:relative;display:flex;flex-direction:column;gap:10px;padding:18px 16px 16px;border-radius:18px;background:var(--card);border:1px solid var(--line);color:var(--text);text-decoration:none;transition:transform .15s ease,border-color .15s ease;box-shadow:0 10px 30px rgba(0,0,0,.3)}
-  .plan:hover{transform:translateY(-3px);border-color:#2c3c66}
-  .plan.hot{background:linear-gradient(160deg,#0f2a1f,#101627 70%);border-color:rgba(34,229,138,.55);box-shadow:0 14px 40px rgba(34,229,138,.22)}
-  .plan .tagline{position:absolute;top:-10px;left:14px;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--pulse);color:#04120a;padding:4px 8px;border-radius:999px}
-  .plan .nm{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-  .plan .pr{font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1}
-  .plan .pr small{font-size:13px;font-weight:600;color:var(--muted);letter-spacing:0}
-  .plan .big{font-size:15px;font-weight:800;color:var(--pulse)}
-  .plan ul{list-style:none;display:grid;gap:5px;font-size:12.5px;color:var(--muted)}
-  .plan li:before{content:"\2713  ";color:var(--pulse);font-weight:800}
-  .plan .cta{margin-top:auto;text-align:center;font-weight:800;font-size:14px;padding:11px;border-radius:12px;background:var(--card2);border:1px solid var(--line)}
-  .plan.hot .cta{background:linear-gradient(135deg,var(--pulse),var(--pulse2));color:#04120a;border-color:transparent}
-  .guar{text-align:center;font-size:12px;color:var(--muted);margin-top:10px}
-  @media(max-width:360px){.plans{grid-template-columns:1fr}}
-
-  /* links */
-  .links{display:flex;flex-direction:column;gap:12px;margin-top:18px}
-  .btn{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;background:var(--card);border:1px solid var(--line);color:var(--text);text-decoration:none;font-weight:700;font-size:16px;transition:transform .15s ease,border-color .15s ease,background .15s ease;box-shadow:0 8px 24px rgba(0,0,0,.25)}
-  .btn:hover,.btn:focus-visible{transform:translateY(-2px);border-color:#2c3c66;background:var(--card2);outline:none}
-  .btn .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#0c1222;border:1px solid var(--line);flex:none}
-  .btn .ic svg{width:20px;height:20px}
-  .btn small{display:block;font-weight:500;font-size:13px;color:var(--muted);margin-top:2px}
-  .btn.primary{background:linear-gradient(135deg,var(--pulse),var(--pulse2));color:#04120a;border-color:transparent;box-shadow:0 12px 30px rgba(34,229,138,.28)}
-  .btn.primary .ic{background:rgba(0,0,0,.14);border-color:rgba(0,0,0,.1)}
-  .btn.primary small{color:rgba(4,18,10,.7)}
-  .btn .arrow{margin-left:auto;opacity:.6}
-
-  /* sections */
-  .sec{margin-top:30px}
-  .sec h2{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:10px}
-  .sec h2:after{content:"";flex:1;height:1px;background:var(--line)}
-  .steps{display:grid;gap:10px}
-  .step{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
-  .step .n{width:30px;height:30px;border-radius:10px;flex:none;display:grid;place-items:center;font-weight:800;font-size:13px;background:rgba(34,229,138,.12);color:var(--pulse);border:1px solid rgba(34,229,138,.25)}
-  .step b{display:block;font-size:15px}
-  .step p{font-size:13.5px;color:var(--muted);margin-top:2px}
-
-  /* ticker */
-  .ticker{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-  .ticker .hd{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
-  .ticker .hd b{color:var(--text)}
-  .row{display:flex;color:var(--text);text-decoration:none;transition:background .15s;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);font-size:14px}
-  .row:last-child{border-bottom:0}
-  .row:hover{background:var(--card2)}
-  html{scroll-behavior:smooth}
-  .row .co{font-weight:700}
-  .row .ro{color:var(--muted);font-size:13px}
-  .row .pay{margin-left:auto;font-weight:700;color:var(--pulse);font-size:13px;white-space:nowrap}
-  .row .loc{font-size:11px;color:var(--muted);text-align:right;white-space:nowrap}
-  .row .r{margin-left:auto;text-align:right}
-
-  .quote{margin-top:30px;text-align:center;padding:22px 18px;border-radius:18px;border:1px dashed rgba(34,229,138,.35);background:rgba(34,229,138,.04)}
-  .quote p{font-size:18px;font-weight:800;letter-spacing:-.01em}
-  .quote span{display:block;font-size:13px;color:var(--muted);font-weight:500;margin-top:6px}
-
-  footer{margin-top:34px;text-align:center;color:var(--muted);font-size:12.5px;line-height:1.8}
-  footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
-  @media (prefers-reduced-motion:reduce){.mark path,.mark:after,.dot{animation:none}.mark path{stroke-dashoffset:0}}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main class="wrap">
 
-  <header class="brand">
-    <div class="mark" aria-hidden="true">
-      <svg viewBox="0 0 64 64" fill="none"><path d="M8 34h12l5-14 8 28 7-20 4 6h12" stroke="#22e58a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </div>
-    <div>
-      <h1>Job <span>Pulse</span></h1>
-      <div class="handle">@jobpulseio &middot; jobpulse.io</div>
-    </div>
-    <p class="tag">We find the job. We send the applications. <em>You take the interview.</em></p>
+  <div class="top">
+    <a class="logo" href="./"><i><svg viewBox="0 0 64 64" fill="none"><path d="M8 34h12l5-14 8 28 7-20 4 6h12" stroke="#22e58a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Job&nbsp;<span>Pulse</span></a>
+    <a class="mini" href="#plans">See plans</a>
+  </div>
+
+  <section class="hero">
     <div class="live"><span class="dot"></span> Remote roles, daily</div>
-  </header>
+    <h1>We find the job. We send the applications. <em>You take the interview.</em></h1>
+    <p class="lede">10–20 real applications sent for you every weekday, plus mentorship and interview prep with our team.</p>
 
-  <!-- ===== PLANS ===== -->
-  <section class="plans" aria-label="Plans">
-    <a class="plan" href="https://buy.stripe.com/9B64gz7wkcRU1ZvaJDebu01" target="_blank" rel="noopener">
-      <div class="nm">Starter</div>
-      <div class="pr">$50<small>/mo</small></div>
-      <div class="big">10 applications a day</div>
-      <ul><li>~200 real applications a month</li><li>Remote &amp; entry-level roles</li><li>Daily log of every job + link</li><li>Cancel anytime</li></ul>
-      <div class="cta">Start Starter &rarr;</div>
-    </a>
-    <a class="plan hot" href="https://buy.stripe.com/5kQfZh6sg8BEcE9bNHebu00" target="_blank" rel="noopener">
-      <span class="tagline">Most hired</span>
-      <div class="nm">Pro</div>
-      <div class="pr">$100<small>/mo</small></div>
-      <div class="big">20 applications a day</div>
-      <ul><li>~400 real applications a month</li><li>Double the interviews, same effort: zero</li><li>Priority on fresh postings</li><li>Cancel anytime</li></ul>
-      <div class="cta">Go Pro &rarr;</div>
-    </a>
+    <div class="video">
+      <video src="what-to-expect.mp4" poster="what-to-expect.jpg" controls playsinline muted preload="metadata"></video>
+    </div>
+    <p class="vcap">30 seconds: what to expect when you join</p>
+    <div class="cta-row"><a class="btn" href="#plans">Pick your plan &rarr;</a></div>
   </section>
-  <p class="guar">Secure checkout by Stripe &middot; we start the next weekday after you pay</p>
-
-  <!-- ===== LINKS ===== -->
-  <nav class="links" aria-label="Links">
-    <a class="btn" href="https://www.instagram.com/jobpulseio/" target="_blank" rel="noopener">
-      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#e1306c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#e1306c"/></svg></span>
-      <span>Follow @jobpulseio<small>New remote roles posted daily</small></span>
-      <span class="arrow">&rarr;</span>
-    </a>
-    <a class="btn" href="#pulse">
-      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#4f8cff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-10 2 4h2"/></svg></span>
-      <span>See this week's roles<small>Real postings with pay &mdash; tap any to open it</small></span>
-      <span class="arrow">&darr;</span>
-    </a>
-  </nav>
 
   <section class="sec" aria-labelledby="how">
     <h2 id="how">How it works</h2>
     <div class="steps">
-      <div class="step"><span class="n">1</span><div><b>Send us your resume</b><p>And the kind of remote role you want. That's the whole intake.</p></div></div>
-      <div class="step"><span class="n">2</span><div><b>We hunt &amp; apply, every weekday</b><p>Real applications on real company job boards &mdash; submitted while you sleep.</p></div></div>
-      <div class="step"><span class="n">3</span><div><b>You get a log + the interviews</b><p>Every role, pay range and link we applied to, in one place. You just show up.</p></div></div>
+      <div class="step"><span class="n">1</span><div><b>Pick your plan</b><p>10 or 20 applications a day. Secure checkout by Stripe.</p></div></div>
+      <div class="step"><span class="n">2</span><div><b>Fill out your intake + drop in your resume</b><p>Right after you pay, you land on a short form. About 2 minutes.</p></div></div>
+      <div class="step"><span class="n">3</span><div><b>We apply for you, every weekday</b><p>Real applications on real company job boards, starting the next weekday.</p></div></div>
+      <div class="step"><span class="n">4</span><div><b>We prep you for the interview</b><p>Mentorship, group sessions and interview prep with the Job Pulse team.</p></div></div>
     </div>
   </section>
 
-  <section class="sec" aria-labelledby="pulse">
-    <h2 id="pulse" style="scroll-margin-top:20px">This week's pulse</h2>
-    <div class="ticker">
-      <div class="hd"><span><b>Remote &amp; entry-level roles</b> we spotted on company boards</span><span>Oct 29</span></div>
-      <a class="row" href="https://job-boards.greenhouse.io/instacart/jobs/7558978" target="_blank" rel="noopener"><div><div class="co">Instacart</div><div class="ro">Sales Associate</div></div><div class="r"><div class="pay">$67K&ndash;$73K</div><div class="loc">Remote (US)</div></div></a>
-      <a class="row" href="https://job-boards.greenhouse.io/lob/jobs/8257647" target="_blank" rel="noopener"><div><div class="co">Lob</div><div class="ro">Business Development Rep</div></div><div class="r"><div class="pay">$57.5K&ndash;$60K</div><div class="loc">Remote (US)</div></div></a>
-      <a class="row" href="https://jobs.ashbyhq.com/equip/a1e76e9a-e926-4aed-8591-f9900c3783e5" target="_blank" rel="noopener"><div><div class="co">Equip</div><div class="ro">Business Development Rep</div></div><div class="r"><div class="pay">$65K</div><div class="loc">Remote (US)</div></div></a>
-      <a class="row" href="https://job-boards.greenhouse.io/impact/jobs/7882953002" target="_blank" rel="noopener"><div><div class="co">impact.com</div><div class="ro">Inbound BDR</div></div><div class="r"><div class="pay">$58.5K</div><div class="loc">New York</div></div></a>
-      <a class="row" href="https://job-boards.greenhouse.io/everlane/jobs/8045409003" target="_blank" rel="noopener"><div><div class="co">Everlane</div><div class="ro">Retention Marketing Specialist</div></div><div class="r"><div class="pay">$67K&ndash;$95K</div><div class="loc">Los Angeles</div></div></a>
-      <a class="row" href="https://jobs.ashbyhq.com/sphere/5d6138d6-2012-4319-9c71-a14921117407" target="_blank" rel="noopener"><div><div class="co">Sphere</div><div class="ro">Sales Development Rep</div></div><div class="r"><div class="pay">$75K&ndash;$140K</div><div class="loc">San Francisco</div></div></a>
+  <section class="sec" aria-labelledby="incl">
+    <h2 id="incl">Every membership includes</h2>
+    <div class="incl">
+      <div><b>Daily applications</b><p>Your full plan count, every weekday.</p></div>
+      <div><b>Interview prep</b><p>Group sessions with the Job Pulse team.</p></div>
+      <div><b>Mentorship</b><p>Real advice on landing the offer.</p></div>
+      <div><b>24/7 support</b><p>Access to Bobby or a team member.</p></div>
+      <div><b>Progress reports</b><p>Every role we applied to, with links.</p></div>
+      <div><b>Cancel anytime</b><p>No contracts. Month to month.</p></div>
     </div>
+  </section>
+
+  <section class="sec" aria-labelledby="plans">
+    <h2 id="plans" style="scroll-margin-top:20px">Plans</h2>
+    <div class="plans">
+      <a class="plan" href="https://buy.stripe.com/9B64gz7wkcRU1ZvaJDebu01">
+        <div class="nm">Starter</div>
+        <div class="pr">$50<small>/mo</small></div>
+        <div class="big">10 applications a day</div>
+        <ul><li>~200 applications a month</li><li>Mentorship + interview prep</li><li>24/7 support</li><li>Cancel anytime</li></ul>
+        <div class="cta">Start Starter &rarr;</div>
+      </a>
+      <a class="plan hot" href="https://buy.stripe.com/5kQfZh6sg8BEcE9bNHebu00">
+        <span class="tagline">Most hired</span>
+        <div class="nm">Pro</div>
+        <div class="pr">$100<small>/mo</small></div>
+        <div class="big">20 applications a day</div>
+        <ul><li>~400 applications a month</li><li>Mentorship + interview prep</li><li>24/7 support</li><li>Priority on fresh postings</li></ul>
+        <div class="cta">Go Pro &rarr;</div>
+      </a>
+    </div>
+    <p class="note">Secure checkout by Stripe &middot; after you pay, you'll fill out your intake and upload your resume</p>
+  </section>
+
+  <section class="sec" aria-labelledby="faq">
+    <h2 id="faq">Questions</h2>
+    <details><summary>When do applications start?</summary><p>The next weekday after we get your intake form and resume.</p></details>
+    <details><summary>What kind of jobs do you apply to?</summary><p>The roles you tell us you want, at real companies. Fully remote by default, and hybrid or in-person in your city if you say so on your intake.</p></details>
+    <details><summary>Do you guarantee a job?</summary><p>No one honestly can. What we guarantee is the work: your full plan count of real applications every weekday, plus prep so you're ready when interviews come.</p></details>
+    <details><summary>How do I know what you applied to?</summary><p>You get regular progress reports with every company, role and link, plus a heads-up whenever something needs you.</p></details>
+    <details><summary>How long do mentorship and support last?</summary><p>As long as your monthly plan is active. If you cancel or your plan stops, applications, mentorship and support stop too.</p></details>
+    <details><summary>Can I cancel?</summary><p>Anytime. Just email us and we'll take care of it.</p></details>
   </section>
 
   <div class="quote">
@@ -180,7 +91,8 @@
   </div>
 
   <footer>
-    <a href="https://jobpulse.io">jobpulse.io</a> &middot; <a href="https://instagram.com/jobpulseio">@jobpulseio</a>
+    <a href="https://www.instagram.com/jobpulseio/">@jobpulseio</a> &middot; <a href="mailto:bspearsbiz@gmail.com?subject=Job%20Pulse%20question">Email us</a><br>
+    Owned and operated by Bobby Spears
   </footer>
 </main>
 </body>

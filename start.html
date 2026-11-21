@@ -1,30 +1,118 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>You're in | Job Pulse</title>
-<style>
-:root{--bg:#070a12;--card:#101627;--card2:#141c31;--line:#1e2a46;--text:#f2f5fb;--muted:#8c98b8;--pulse:#22e58a;--pulse2:#16c979}
-*{box-sizing:border-box;margin:0;padding:0}html{background:var(--bg)}
-body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg) radial-gradient(1200px 600px at 50% -10%,#122042 0%,var(--bg) 55%) no-repeat;color:var(--text);line-height:1.45;-webkit-font-smoothing:antialiased}
-.wrap{max-width:460px;margin:0 auto;padding:36px 16px 48px;text-align:center}
-.mark{width:72px;height:72px;margin:0 auto 14px;border-radius:20px;background:linear-gradient(160deg,#121a30,#0b1020);border:1px solid var(--line);display:grid;place-items:center}
-.mark svg{width:46px;height:46px}
-.pill{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--pulse);background:rgba(34,229,138,.08);border:1px solid rgba(34,229,138,.25);padding:6px 12px;border-radius:999px;margin-bottom:14px}
-h1{font-size:28px;font-weight:800;letter-spacing:-.02em}h1 span{color:var(--pulse)}
-p.lede{color:var(--muted);margin:10px auto 24px;max-width:340px;font-size:15px}
-.step{text-align:left;display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:10px}
-.n{width:30px;height:30px;border-radius:10px;flex:none;display:grid;place-items:center;font-weight:800;font-size:13px;background:rgba(34,229,138,.12);color:var(--pulse);border:1px solid rgba(34,229,138,.25)}
-.step b{display:block;font-size:15px}.step p{font-size:13.5px;color:var(--muted);margin-top:2px}
-.btn{display:block;margin-top:12px;padding:16px 18px;border-radius:16px;font-weight:800;font-size:16px;text-decoration:none;color:#04120a;background:linear-gradient(135deg,var(--pulse),var(--pulse2));box-shadow:0 12px 30px rgba(34,229,138,.28)}
-.btn.alt{background:var(--card);color:var(--text);border:1px solid var(--line);box-shadow:none}
-.btn small{display:block;font-weight:500;font-size:13px;opacity:.75;margin-top:2px}
-footer{margin-top:30px;color:var(--muted);font-size:12.5px;line-height:1.8}footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
-</style></head><body><main class="wrap">
-<div class="mark"><svg viewBox="0 0 64 64" fill="none"><path d="M8 34h12l5-14 8 28 7-20 4 6h12" stroke="#22e58a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-<div class="pill">Payment received</div>
-<h1>You're in. <span>Send your resume.</span></h1>
-<p class="lede">One message and we start applying the next weekday. Here's exactly what to send:</p>
-<div class="step"><span class="n">1</span><div><b>Your resume</b><p>PDF or Word. Whatever you've got.</p></div></div>
-<div class="step"><span class="n">2</span><div><b>The role you want</b><p>e.g. "remote SDR / sales", "remote marketing coordinator", "anything remote entry-level".</p></div></div>
-<div class="step"><span class="n">3</span><div><b>Your phone + the email you paid with</b><p>So we match your payment and can reach you when interviews land.</p></div></div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcome to Job Pulse | Your intake</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f1a'/%3E%3Cpath d='M8 34h12l5-14 8 28 7-20 4 6h12' fill='none' stroke='%2322e58a' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap">
 
-<a class="btn" href="https://ig.me/m/jobpulseio" target="_blank" rel="noopener">DM it to @jobpulseio<small>Attach the resume right in the DM &mdash; takes 30 seconds</small></a>
-<footer>Questions? Reply to your Stripe receipt email or DM us.<br><a href="./">Job Pulse</a> &middot; @jobpulseio</footer>
-</main></body></html>
+  <div class="top">
+    <a class="logo" href="./"><i><svg viewBox="0 0 64 64" fill="none"><path d="M8 34h12l5-14 8 28 7-20 4 6h12" stroke="#22e58a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Job&nbsp;<span>Pulse</span></a>
+  </div>
+
+  <div class="progress"><div class="on">Paid</div><div class="on">Intake</div><div>Done</div></div>
+
+  <section class="hero">
+    <div class="live"><span class="dot"></span> Payment received</div>
+    <h1>You're in. <em>Let's get you hired.</em></h1>
+    <p class="lede">Answer a few quick questions and drop in your resume. That's all we need to start applying for you the next weekday.</p>
+  </section>
+
+  <form class="card" id="intake" action="https://formsubmit.co/bspearsbiz@gmail.com" method="POST" enctype="multipart/form-data" style="margin-top:24px">
+    <input type="hidden" name="_subject" value="NEW Job Pulse client intake">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://bspearsbiz-hash.github.io/jobpulse/done.html">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+    <div class="row2">
+      <div class="field"><label for="name">Full name</label><input id="name" name="name" required autocomplete="name"></div>
+      <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required autocomplete="tel"></div>
+    </div>
+    <div class="field"><label for="email">Email <small>(the one you paid with)</small></label><input id="email" name="email" type="email" required autocomplete="email"></div>
+    <div class="field"><label for="plan">Your plan</label>
+      <select id="plan" name="plan" required>
+        <option value="">Choose one</option>
+        <option value="$50/mo - 10 applications a day">$50/mo &middot; 10 applications a day</option>
+        <option value="$100/mo - 20 applications a day">$100/mo &middot; 20 applications a day</option>
+      </select></div>
+
+    <div class="field"><label for="roles">What roles do you want? <small>(titles or field)</small></label><textarea id="roles" name="roles_wanted" required placeholder="e.g. marketing coordinator, content writer, customer success"></textarea></div>
+    <div class="row2">
+      <div class="field"><label for="where">Where can you work?</label>
+        <select id="where" name="remote_or_hybrid" required>
+          <option value="">Choose one</option>
+          <option>Remote only</option>
+          <option>Remote + hybrid in my city</option>
+          <option>Remote, hybrid or in-person in my city</option>
+        </select></div>
+      <div class="field"><label for="city">Your city &amp; state</label><input id="city" name="city_state" required placeholder="e.g. Phoenix, AZ"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="pay">Lowest pay you'd take</label><input id="pay" name="lowest_pay" required placeholder="e.g. $45,000/yr or $20/hr"></div>
+      <div class="field"><label for="start">Earliest start date</label><input id="start" name="earliest_start" required placeholder="e.g. Right away"></div>
+    </div>
+    <div class="field"><label>Job type <small>(pick all that work)</small></label>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;font-size:15px">
+        <label style="font-weight:500"><input type="checkbox" name="job_type" value="Full-time" style="width:auto;margin-right:6px">Full-time</label>
+        <label style="font-weight:500"><input type="checkbox" name="job_type" value="Part-time" style="width:auto;margin-right:6px">Part-time</label>
+        <label style="font-weight:500"><input type="checkbox" name="job_type" value="Contract" style="width:auto;margin-right:6px">Contract</label>
+      </div></div>
+    <div class="field"><label for="hours">Hours per week you want <small>(optional)</small></label><input id="hours" name="hours_per_week" placeholder="e.g. 40"></div>
+    <div class="row2">
+      <div class="field"><label for="auth">Authorized to work in the US?</label>
+        <select id="auth" name="us_work_authorized" required><option value="">Choose</option><option>Yes</option><option>No</option></select></div>
+      <div class="field"><label for="spons">Will you ever need visa sponsorship?</label>
+        <select id="spons" name="needs_sponsorship" required><option value="">Choose</option><option>No</option><option>Yes</option></select></div>
+    </div>
+    <div class="field"><label for="avoid">Anything you do NOT want? <small>(industries, roles, companies)</small></label><textarea id="avoid" name="do_not_want" placeholder="e.g. no sales, no call centers"></textarea></div>
+    <div class="field"><label for="li">LinkedIn or portfolio link <small>(optional)</small></label><input id="li" name="linkedin_or_portfolio" type="url" placeholder="https://"></div>
+
+    <div class="field">
+      <label>Your resume</label>
+      <div class="drop" id="drop">
+        <input type="file" id="resume" name="attachment" accept=".pdf,.doc,.docx" required>
+        <b id="dropTitle">Drop your resume here</b>
+        <span id="dropSub">or tap to choose a file &middot; PDF or Word, up to 10 MB</span>
+      </div>
+      <div class="err" id="fileErr">That file is over 10 MB. Please upload a smaller PDF or Word file.</div>
+    </div>
+
+    <button class="btn" id="go" type="submit">Send my intake &rarr;</button>
+    <p class="hint">Your info goes straight to the Job Pulse team and is only used to apply for jobs on your behalf.</p>
+  </form>
+
+  <footer>
+    Questions? <a href="mailto:bspearsbiz@gmail.com?subject=Job%20Pulse%20question">Email us</a> &middot; <a href="https://www.instagram.com/jobpulseio/">@jobpulseio</a>
+  </footer>
+</main>
+<script>
+  // Prefill plan from ?plan=50 or ?plan=100 (set on each Stripe link's redirect)
+  var p = new URLSearchParams(location.search).get('plan');
+  if (p) { var s = document.getElementById('plan'); for (var i = 0; i < s.options.length; i++) { if (s.options[i].value.indexOf('$' + p + '/') === 0) s.selectedIndex = i; } }
+
+  var input = document.getElementById('resume'), drop = document.getElementById('drop'), err = document.getElementById('fileErr');
+  function showFile() {
+    var f = input.files && input.files[0];
+    err.style.display = 'none';
+    if (!f) { drop.classList.remove('has'); document.getElementById('dropTitle').textContent = 'Drop your resume here'; document.getElementById('dropSub').textContent = 'or tap to choose a file · PDF or Word, up to 10 MB'; return; }
+    if (f.size > 10 * 1024 * 1024) { input.value = ''; err.style.display = 'block'; showFile(); return; }
+    drop.classList.add('has');
+    document.getElementById('dropTitle').textContent = '✓ ' + f.name;
+    document.getElementById('dropSub').textContent = 'Attached. Tap to change it.';
+  }
+  input.addEventListener('change', showFile);
+  ['dragenter', 'dragover'].forEach(function (e) { drop.addEventListener(e, function () { drop.classList.add('over'); }); });
+  ['dragleave', 'drop'].forEach(function (e) { drop.addEventListener(e, function () { drop.classList.remove('over'); }); });
+
+  document.getElementById('intake').addEventListener('submit', function () {
+    var b = document.getElementById('go'); b.disabled = true; b.textContent = 'Sending…';
+  });
+</script>
+</body>
+</html>
