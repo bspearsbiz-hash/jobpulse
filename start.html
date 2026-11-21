@@ -17,6 +17,18 @@
 
   <div class="progress"><div class="on">Paid</div><div class="on">Intake</div><div>Done</div></div>
 
+  <section class="hero" id="locked" style="display:none">
+    <div class="live" style="color:#ffb547;border-color:rgba(255,181,71,.35);background:rgba(255,181,71,.08)">Members only</div>
+    <h1>Pick your plan <em>first.</em></h1>
+    <p class="lede">The intake form opens automatically right after checkout. Choose a plan below and you'll land back here to send your resume.</p>
+    <div class="plans" style="margin-top:22px;text-align:left">
+      <a class="plan" href="https://buy.stripe.com/9B64gz7wkcRU1ZvaJDebu01"><div class="nm">Starter</div><div class="pr">$50<small>/mo</small></div><div class="big">10 applications a day</div><div class="cta">Start Starter &rarr;</div></a>
+      <a class="plan hot" href="https://buy.stripe.com/5kQfZh6sg8BEcE9bNHebu00"><span class="tagline">Most hired</span><div class="nm">Pro</div><div class="pr">$100<small>/mo</small></div><div class="big">20 applications a day</div><div class="cta">Go Pro &rarr;</div></a>
+    </div>
+    <p class="note">Already paid but ended up here? Email us with the address you paid with and we'll send your link.</p>
+  </section>
+
+  <div id="paid" style="display:none">
   <section class="hero">
     <div class="live"><span class="dot"></span> Payment received</div>
     <h1>You're in. <em>Let's get you hired.</em></h1>
@@ -28,6 +40,7 @@
     <input type="hidden" name="_template" value="table">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_next" value="https://bspearsbiz-hash.github.io/jobpulse/done.html">
+    <input type="hidden" name="stripe_checkout_session" id="sess" value="">
     <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
     <div class="row2">
@@ -86,14 +99,26 @@
     <button class="btn" id="go" type="submit">Send my intake &rarr;</button>
     <p class="hint">Your info goes straight to the Job Pulse team and is only used to apply for jobs on your behalf.</p>
   </form>
+  </div>
 
   <footer>
     Questions? <a href="mailto:bspearsbiz@gmail.com?subject=Job%20Pulse%20question">Email us</a> &middot; <a href="https://www.instagram.com/jobpulseio/">@jobpulseio</a>
   </footer>
 </main>
 <script>
+  // Pay-first gate: the form only opens when the visitor arrives from Stripe checkout
+  // (Stripe adds ?session_id=cs_live_... to the redirect). The session id is sent with the
+  // intake so every submission is matched to a real payment before work starts.
+  var qs = new URLSearchParams(location.search), sid = qs.get('session_id') || '';
+  try { if (sid) sessionStorage.setItem('jp_sid', sid); else sid = sessionStorage.getItem('jp_sid') || ''; } catch (e) {}
+  var paid = /^cs_(live|test)_[A-Za-z0-9]{10,}$/.test(sid);
+  document.getElementById(paid ? 'paid' : 'locked').style.display = 'block';
+  document.querySelector('.progress').style.display = paid ? 'flex' : 'none';
+  document.getElementById('sess').value = sid;
+  if (paid) history.replaceState(null, '', location.pathname + (qs.get('plan') ? '?plan=' + qs.get('plan') : ''));
+
   // Prefill plan from ?plan=50 or ?plan=100 (set on each Stripe link's redirect)
-  var p = new URLSearchParams(location.search).get('plan');
+  var p = qs.get('plan');
   if (p) { var s = document.getElementById('plan'); for (var i = 0; i < s.options.length; i++) { if (s.options[i].value.indexOf('$' + p + '/') === 0) s.selectedIndex = i; } }
 
   var input = document.getElementById('resume'), drop = document.getElementById('drop'), err = document.getElementById('fileErr');
