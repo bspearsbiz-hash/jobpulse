@@ -30,6 +30,7 @@
 .app .meta a{color:var(--pulse);text-decoration:none;font-weight:700}
 .pill{font-size:11.5px;font-weight:800;color:var(--pulse);background:rgba(34,229,138,.1);border:1px solid rgba(34,229,138,.3);padding:4px 9px;border-radius:999px;white-space:nowrap}
 .focus{font-size:14px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.q2{display:flex;justify-content:space-between;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:8px}.q2 b{font-size:15px}.q2 span{font-size:13px;color:var(--muted)}.q2 i{font-style:normal;font-size:11.5px;font-weight:800;color:#8fb4ff;background:rgba(143,180,255,.1);border:1px solid rgba(143,180,255,.3);padding:4px 9px;border-radius:999px;white-space:nowrap}
 .empty{color:var(--muted);text-align:center;padding:18px}
 #app{display:none}
 .signout{background:none;border:1px solid var(--line);color:var(--muted);font:inherit;font-size:13px;font-weight:700;border-radius:999px;padding:7px 12px;cursor:pointer}
@@ -77,6 +78,11 @@
       <div id="needs"></div>
       <a class="btn" id="reply" href="#">Reply to Job Pulse &rarr;</a>
       <p class="note">Opens your email to bspearsbiz@gmail.com</p>
+    </section>
+
+    <section class="sec" id="queueSec">
+      <h2>Approved by you, going out next</h2>
+      <div id="queue"></div>
     </section>
 
     <section class="sec">
@@ -152,6 +158,9 @@
       '<div class="need"><span class="n">' + (i + 1) + '</span><div><b>' + esc(x.k) + '</b><p>' + esc(x.w) + '</p>' +
       (safeUrl(x.u) ? '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">Open it &rarr;</a>' : '') + '</div></div>').join('');
     $('reply').href = 'mailto:bspearsbiz@gmail.com?subject=' + encodeURIComponent('Re: Job Pulse - my answers') + '&body=' + encodeURIComponent(data.needs.map((x, i) => (i + 1) + '. ' + x.k + ': ').join('\n'));
+    const qd = data.queue || [];
+    $('queueSec').style.display = qd.length ? '' : 'none';
+    $('queue').innerHTML = qd.map(x => '<div class="q2"><div><b>' + esc(x.c) + '</b><br><span>' + esc(x.r) + '</span></div><i>Queued</i></div>').join('');
     $('focus').textContent = data.focus;
     renderList();
     window.scrollTo(0, 0);
