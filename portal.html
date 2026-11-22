@@ -80,27 +80,13 @@
       <p class="note">Opens your email to bspearsbiz@gmail.com</p>
     </section>
 
-    <section class="sec" id="queueSec">
-      <h2>Approved by you, going out next</h2>
-      <div id="queue"></div>
-    </section>
-
     <section class="sec">
       <h2>Every application</h2>
       <div class="tools"><input id="q" type="search" placeholder="Search company or role" aria-label="Search applications"></div>
       <div id="list"></div>
     </section>
 
-    <section class="sec">
-      <h2>What we're targeting</h2>
-      <p class="focus" id="focus"></p>
-    </section>
 
-    <section class="sec">
-      <h2>Interview prep</h2>
-      <a class="btn alt" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2pFGSP-5of0Du24giiJ_meMKnOlrso40IY1d3zgVSNoNmCiHAbAStRMAKl80Qatq4Y6xgPoTI9">Book a group session with the Job Pulse team &rarr;</a>
-      <p class="note">Got an interview invite, recruiter email or assessment? Forward it to us right away so we can prep you.</p>
-    </section>
   </section>
 
   <footer>
@@ -158,10 +144,6 @@
       '<div class="need"><span class="n">' + (i + 1) + '</span><div><b>' + esc(x.k) + '</b><p>' + esc(x.w) + '</p>' +
       (safeUrl(x.u) ? '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">Open it &rarr;</a>' : '') + '</div></div>').join('');
     $('reply').href = 'mailto:bspearsbiz@gmail.com?subject=' + encodeURIComponent('Re: Job Pulse - my answers') + '&body=' + encodeURIComponent(data.needs.map((x, i) => (i + 1) + '. ' + x.k + ': ').join('\n'));
-    const qd = data.queue || [];
-    $('queueSec').style.display = qd.length ? '' : 'none';
-    $('queue').innerHTML = qd.map(x => '<div class="q2"><div><b>' + esc(x.c) + '</b><br><span>' + esc(x.r) + '</span></div><i>Queued</i></div>').join('');
-    $('focus').textContent = data.focus;
     renderList();
     window.scrollTo(0, 0);
   }
