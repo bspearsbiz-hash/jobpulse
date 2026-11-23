@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Member login | Job Pulse</title>
+<title>Your dashboard | Job Pulse</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f1a'/%3E%3Cpath d='M8 34h12l5-14 8 28 7-20 4 6h12' fill='none' stroke='%2322e58a' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
@@ -164,8 +164,26 @@
     b.disabled = false; b.textContent = 'Log in →';
   });
   $('q').addEventListener('input', renderList);
-  $('out').addEventListener('click', () => { data = null; try { sessionStorage.clear(); } catch (_) {} location.reload(); });
+  $('out').addEventListener('click', () => { data = null; try { sessionStorage.clear(); } catch (_) {} location.replace(location.pathname); });
   try { const e = sessionStorage.getItem('jp_e'); if (e) $('em').value = e; } catch (_) {}
+
+  // One-click private link: portal.html#e=<email>&k=<code>. The part after # never leaves the browser.
+  (async () => {
+    const h = new URLSearchParams(location.hash.slice(1));
+    const e = h.get('e'), k = h.get('k');
+    if (!e || !k) return;
+    $('login').style.visibility = 'hidden';
+    try {
+      data = await unlock(e, k);
+      render();
+    } catch (x) {
+      $('login').style.visibility = '';
+      $('em').value = e;
+      const err = $('err');
+      err.textContent = 'That dashboard link didn’t open. Reply to your Job Pulse email and we’ll send a fresh one.';
+      err.style.display = 'block';
+    }
+  })();
 }
 </script>
 </body>
