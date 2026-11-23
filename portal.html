@@ -102,6 +102,12 @@
       <div class="stat hot"><b id="sNeed">0</b><span>things waiting on you</span></div>
     </div>
 
+    <section class="sec" id="wrapSec" hidden>
+      <h2>Your Week Wrapped</h2>
+      <p style="font-size:14px;color:var(--muted);margin:-4px 0 12px">Your week in one quick story. Tap to skip ahead.</p>
+      <div id="wrapBox"></div>
+    </section>
+
     <section class="sec" id="resSec">
       <h2>Your results</h2>
       <div class="funnel">
@@ -160,6 +166,7 @@
     You have 24/7 access to Bobby or a member of the Job Pulse team. <a href="mailto:bspearsbiz@gmail.com?subject=Job%20Pulse%20support">Email us</a><br><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a>
   </footer>
 </main>
+<script src="wrapped.js"></script>
 <script>
 {
   const $ = id => document.getElementById(id);
@@ -249,6 +256,13 @@
     renderFunnel();
     renderList();
     window.scrollTo(0, 0);
+    try {
+      if (window.JPWrapped && data.apps.length) {
+        $('wrapSec').hidden = false;
+        JPWrapped.mount($('wrapBox'), data, {bookUrl: BOOK});
+        if (new URLSearchParams(location.hash.slice(1)).get('w')) setTimeout(() => $('wrapSec').scrollIntoView({behavior: 'smooth', block: 'start'}), 300);
+      }
+    } catch (_) { $('wrapSec').hidden = true; }
   }
 
   $('f').addEventListener('submit', async e => {
