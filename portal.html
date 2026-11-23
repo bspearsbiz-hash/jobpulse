@@ -31,6 +31,13 @@
 .pill{font-size:11.5px;font-weight:800;color:var(--pulse);background:rgba(34,229,138,.1);border:1px solid rgba(34,229,138,.3);padding:4px 9px;border-radius:999px;white-space:nowrap}
 .focus{font-size:14px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
 .q2{display:flex;justify-content:space-between;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:8px}.q2 b{font-size:15px}.q2 span{font-size:13px;color:var(--muted)}.q2 i{font-style:normal;font-size:11.5px;font-weight:800;color:#8fb4ff;background:rgba(143,180,255,.1);border:1px solid rgba(143,180,255,.3);padding:4px 9px;border-radius:999px;white-space:nowrap}
+.recap{background:linear-gradient(160deg,rgba(34,229,138,.08),rgba(34,229,138,.02));border:1px solid rgba(34,229,138,.3);border-radius:16px;padding:16px 18px}
+.recap .rd{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--pulse)}
+.recap .rh{font-size:17px;font-weight:800;margin:6px 0 4px;line-height:1.35}
+.recap ul{margin:6px 0 0 18px;color:#cfd6e8;font-size:14.5px;line-height:1.55}
+.recap li{margin:3px 0}
+#rOld{margin-top:10px}#rOld summary{cursor:pointer;color:var(--muted);font-size:14px;font-weight:700}
+#rOld .recap{margin-top:8px;background:var(--card);border-color:var(--line)}#rOld .rd{color:var(--muted)}
 .empty{color:var(--muted);text-align:center;padding:18px}
 #app{display:none}
 .signout{background:none;border:1px solid var(--line);color:var(--muted);font:inherit;font-size:13px;font-weight:700;border-radius:999px;padding:7px 12px;cursor:pointer}
@@ -71,6 +78,12 @@
       <div class="stat"><b id="sWeek">0</b><span id="sWeekL">sent latest day</span></div>
       <div class="stat hot"><b id="sNeed">0</b><span>things waiting on you</span></div>
     </div>
+
+    <section class="sec" id="recapSec">
+      <h2>Daily recap</h2>
+      <div id="recapNow"></div>
+      <details id="rOld"><summary>Earlier recaps</summary><div id="rPast"></div></details>
+    </section>
 
     <section class="sec" id="needSec">
       <h2>Needs you</h2>
@@ -138,6 +151,13 @@
     const last = data.apps.length ? data.apps[data.apps.length - 1].d : '';
     $('sWeek').textContent = data.apps.filter(a => a.d === last).length;
     $('sWeekL').textContent = 'sent on ' + last;
+    const rc = (data.recaps || []).slice().reverse();
+    const card = r => '<div class="recap"><div class="rd">' + esc(r.d) + '</div><p class="rh">' + esc(r.h) + '</p>' +
+      ((r.b || []).length ? '<ul>' + r.b.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' : '') + '</div>';
+    $('recapSec').style.display = rc.length ? '' : 'none';
+    $('recapNow').innerHTML = rc.length ? card(rc[0]) : '';
+    $('rOld').style.display = rc.length > 1 ? '' : 'none';
+    $('rPast').innerHTML = rc.slice(1, 14).map(card).join('');
     $('sNeed').textContent = data.needs.length;
     $('needSec').style.display = data.needs.length ? '' : 'none';
     $('needs').innerHTML = data.needs.map((x, i) =>
