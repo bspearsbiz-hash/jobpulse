@@ -8,6 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f1a'/%3E%3Cpath d='M8 34h12l5-14 8 28 7-20 4 6h12' fill='none' stroke='%2322e58a' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 <style>
+[hidden]{display:none!important}
 .wrap.wide{max-width:760px}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;text-align:left}
@@ -39,6 +40,28 @@
 #rOld{margin-top:10px}#rOld summary{cursor:pointer;color:var(--muted);font-size:14px;font-weight:700}
 #rOld .recap{margin-top:8px;background:var(--card);border-color:var(--line)}#rOld .rd{color:var(--muted)}
 .empty{color:var(--muted);text-align:center;padding:18px}
+.funnel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.fs{padding:12px 14px;background:var(--card);border-right:1px solid var(--line)}
+.fs:last-child{border-right:0}
+.fs b{display:block;font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums}
+.fs span{font-size:12.5px;color:var(--muted)}
+.fs.on b{color:var(--pulse)}
+.fs.gold.on b{color:#ffb547}
+.fnote{font-size:13.5px;color:var(--muted);margin:10px 0 12px}
+#heard{margin-top:4px}
+#rForm{margin-top:12px}
+#rForm .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;background:#0b1020;border:1px solid var(--line);border-radius:999px;padding:8px 12px;cursor:pointer}
+.chips input{accent-color:var(--pulse);width:auto}
+.chips label:has(input:checked){border-color:var(--pulse);color:var(--pulse)}
+.ok{display:none;background:rgba(34,229,138,.08);border:1px solid rgba(34,229,138,.3);border-radius:14px;padding:12px 14px;font-size:14.5px;margin-top:12px}
+.app .why{grid-column:1/-1;font-size:13.5px;color:#cfd6e8;background:rgba(34,229,138,.05);border-left:2px solid rgba(34,229,138,.5);padding:6px 10px;border-radius:0 8px 8px 0}
+.pill.s-reply{color:#8fb4ff;background:rgba(143,180,255,.1);border-color:rgba(143,180,255,.3)}
+.pill.s-interview,.pill.s-offer{color:#ffb547;background:rgba(255,181,71,.1);border-color:rgba(255,181,71,.35)}
+.pill.s-no{color:var(--muted);background:transparent;border-color:var(--line)}
+.fresh{color:var(--pulse);font-weight:700}
+@media(max-width:480px){.funnel{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.fs:nth-child(2){border-right:0}.fs:nth-child(-n+2){border-bottom:1px solid var(--line)}#rForm .row{grid-template-columns:1fr}}
 #app{display:none}
 .signout{background:none;border:1px solid var(--line);color:var(--muted);font:inherit;font-size:13px;font-weight:700;border-radius:999px;padding:7px 12px;cursor:pointer}
 @media(max-width:480px){.stats{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.stat:first-child{grid-column:1/-1}}
@@ -78,6 +101,37 @@
       <div class="stat"><b id="sWeek">0</b><span id="sWeekL">sent latest day</span></div>
       <div class="stat hot"><b id="sNeed">0</b><span>things waiting on you</span></div>
     </div>
+
+    <section class="sec" id="resSec">
+      <h2>Your results</h2>
+      <div class="funnel">
+        <div class="fs on"><b id="fApplied">0</b><span>applied</span></div>
+        <div class="fs" id="fsHeard"><b id="fHeard">0</b><span>heard back</span></div>
+        <div class="fs gold" id="fsInt"><b id="fInt">0</b><span>interviews</span></div>
+        <div class="fs gold" id="fsOff"><b id="fOff">0</b><span>offers</span></div>
+      </div>
+      <p class="fnote" id="fNote">Did a company email or call you? Tell us here. We track it, update your plan, and help you get ready.</p>
+      <button class="btn" id="heard" type="button">A company got back to me &rarr;</button>
+      <form id="rForm" class="card" hidden>
+        <div class="field"><label for="rCo">Which company?</label><input id="rCo" list="rCos" required autocomplete="off" placeholder="Start typing the company name"><datalist id="rCos"></datalist></div>
+        <div class="field"><label>What happened?</label>
+          <div class="chips" role="radiogroup">
+            <label><input type="radio" name="rk" value="reply" checked> They replied</label>
+            <label><input type="radio" name="rk" value="interview"> Interview set</label>
+            <label><input type="radio" name="rk" value="offer"> Offer</label>
+            <label><input type="radio" name="rk" value="no"> Not moving forward</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="rWhen">When? <small>(interview date, if there is one)</small></label><input id="rWhen" placeholder="e.g. Thu 10 AM"></div>
+          <div class="field"><label for="rRole">Role <small>(optional)</small></label><input id="rRole" placeholder="Filled in if we know it"></div>
+        </div>
+        <div class="field"><label for="rNote">Anything else? <small>(optional)</small></label><textarea id="rNote" placeholder="Who reached out, what they asked for, how you feel about it"></textarea></div>
+        <div class="err" id="rErr" style="margin:-6px 0 12px"></div>
+        <button class="btn" id="rGo" type="submit">Send to Job Pulse &rarr;</button>
+      </form>
+      <div class="ok" id="rOk"></div>
+    </section>
 
     <section class="sec" id="recapSec">
       <h2>Daily recap</h2>
@@ -128,14 +182,42 @@
     return JSON.parse(new TextDecoder().decode(pt));
   }
 
+  const STAGE = {reply: 1, no: 1, interview: 2, offer: 3};
+  const LABEL = {reply: 'Replied', interview: 'Interview', offer: 'Offer', no: 'Not selected'};
+  const norm = t => String(t || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  function resultFor(a) {
+    let best = null;
+    for (const r of (data.results || []).concat(pending)) {
+      if (norm(r.c) !== norm(a.c)) continue;
+      if (r.r && a.r && norm(r.r) !== norm(a.r)) continue;
+      if (!best || (STAGE[r.k] || 0) > (STAGE[best.k] || 0) || (r.k !== 'no' && best.k === 'no')) best = r;
+    }
+    return best;
+  }
+  let pending = [];
+  const BOOK = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2pFGSP-5of0Du24giiJ_meMKnOlrso40IY1d3zgVSNoNmCiHAbAStRMAKl80Qatq4Y6xgPoTI9';
+
+  function renderFunnel() {
+    const rs = (data.results || []).concat(pending);
+    const cos = k => new Set(rs.filter(k).map(r => norm(r.c))).size;
+    const heard = cos(() => true), ints = cos(r => r.k === 'interview' || r.k === 'offer'), offs = cos(r => r.k === 'offer');
+    $('fApplied').textContent = data.apps.length;
+    $('fHeard').textContent = heard; $('fsHeard').classList.toggle('on', heard > 0);
+    $('fInt').textContent = ints; $('fsInt').classList.toggle('on', ints > 0);
+    $('fOff').textContent = offs; $('fsOff').classList.toggle('on', offs > 0);
+    $('rCos').innerHTML = [...new Set(data.apps.map(a => a.c))].sort().map(c => '<option value="' + esc(c) + '">').join('');
+  }
+
   function renderList() {
     const q = $('q').value.trim().toLowerCase();
     const rows = data.apps.map((a, i) => ({...a, n: i + 1})).reverse()
       .filter(a => !q || (a.c + ' ' + a.r).toLowerCase().includes(q));
     $('list').innerHTML = rows.length ? rows.map(a =>
-      '<div class="app"><div><div class="co">' + esc(a.c) + '</div><div class="ro">' + esc(a.r) + '</div></div><span class="pill">Submitted</span>' +
-      '<div class="meta"><span>#' + a.n + '</span><span>' + esc(a.d) + '</span>' + (a.t ? '<span>' + esc(a.t) + '</span>' : '') + (a.p ? '<span>' + esc(a.p) + '</span>' : '') +
-      (safeUrl(a.u) ? '<a href="' + esc(a.u) + '" target="_blank" rel="noopener">View posting</a>' : '') + '</div></div>'
+      (() => { const r = resultFor(a); return '<div class="app"><div><div class="co">' + esc(a.c) + '</div><div class="ro">' + esc(a.r) + '</div></div>' +
+      (r ? '<span class="pill s-' + esc(r.k) + '">' + LABEL[r.k] + '</span>' : '<span class="pill">Submitted</span>') +
+      (a.y ? '<div class="why">' + esc(a.y) + '</div>' : '') +
+      '<div class="meta"><span>#' + a.n + '</span><span>Applied ' + esc(a.d) + '</span>' + (a.pd ? '<span' + (a.pd === a.d ? ' class="fresh"' : '') + '>Posted ' + esc(a.pd) + '</span>' : '') + (a.t ? '<span>' + esc(a.t) + '</span>' : '') + (a.p ? '<span>' + esc(a.p) + '</span>' : '') +
+      (safeUrl(a.u) ? '<a href="' + esc(a.u) + '" target="_blank" rel="noopener">View posting</a>' : '') + '</div></div>'; })()
     ).join('') : '<p class="empty">No applications match that search.</p>';
   }
 
@@ -164,6 +246,7 @@
       '<div class="need"><span class="n">' + (i + 1) + '</span><div><b>' + esc(x.k) + '</b><p>' + esc(x.w) + '</p>' +
       (safeUrl(x.u) ? '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">Open it &rarr;</a>' : '') + '</div></div>').join('');
     $('reply').href = 'mailto:bspearsbiz@gmail.com?subject=' + encodeURIComponent('Re: Job Pulse - my answers') + '&body=' + encodeURIComponent(data.needs.map((x, i) => (i + 1) + '. ' + x.k + ': ').join('\n'));
+    renderFunnel();
     renderList();
     window.scrollTo(0, 0);
   }
@@ -184,6 +267,46 @@
     b.disabled = false; b.textContent = 'Log in →';
   });
   $('q').addEventListener('input', renderList);
+  $('heard').addEventListener('click', () => { $('rForm').hidden = false; $('heard').hidden = true; $('rOk').style.display = 'none'; $('rCo').focus(); });
+  $('rCo').addEventListener('change', () => {
+    const m = data.apps.filter(a => norm(a.c) === norm($('rCo').value));
+    if (m.length === 1 && !$('rRole').value) $('rRole').value = m[0].r;
+  });
+  $('rForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const k = (document.querySelector('input[name=rk]:checked') || {}).value || 'reply';
+    const r = {c: $('rCo').value.trim(), r: $('rRole').value.trim(), k, w: $('rWhen').value.trim(), n: $('rNote').value.trim()};
+    if (!r.c) return;
+    const b = $('rGo'), err = $('rErr');
+    err.style.display = 'none'; b.disabled = true; b.textContent = 'Sending…';
+    const body = {
+      _subject: 'Job Pulse result: ' + data.first + ' - ' + LABEL[k] + ' from ' + r.c,
+      _template: 'table', _captcha: 'false',
+      member_email: data.email, member_name: data.first, company: r.c, role: r.r || '(not given)',
+      result: LABEL[k], when: r.w || '(not given)', note: r.n || '(none)'
+    };
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/bspearsbiz@gmail.com', {method: 'POST', headers: {'Content-Type': 'application/json', Accept: 'application/json'}, body: JSON.stringify(body)});
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || String(j.success) !== 'true') throw new Error('send');
+      pending.push({c: r.c, r: r.r, k});
+      renderFunnel(); renderList();
+      $('rForm').reset(); $('rForm').hidden = true; $('heard').hidden = false;
+      const msg = {
+        reply: 'Nice! We logged the reply from ' + r.c + '. Bobby will check in if there\u2019s anything to do next.',
+        interview: 'Huge! We logged your interview with ' + r.c + '. Let\u2019s get you ready for it.',
+        offer: 'Congratulations! We logged your offer from ' + r.c + '. Bobby will reach out to help you weigh it.',
+        no: 'Thanks for telling us. We logged it and will use it to sharpen where we apply next.'
+      }[k];
+      $('rOk').innerHTML = esc(msg) + (k === 'interview' ? ' <a href="' + BOOK + '" target="_blank" rel="noopener" style="color:var(--pulse);font-weight:700">Book your 1-on-1 interview prep &rarr;</a>' : '');
+      $('rOk').style.display = 'block';
+    } catch (x) {
+      const mail = 'mailto:bspearsbiz@gmail.com?subject=' + encodeURIComponent(body._subject) + '&body=' + encodeURIComponent('Company: ' + r.c + '\nRole: ' + (r.r || '') + '\nWhat happened: ' + LABEL[k] + '\nWhen: ' + (r.w || '') + '\nNote: ' + (r.n || ''));
+      err.innerHTML = 'That didn\u2019t send. <a href="' + mail + '" style="color:var(--pulse);font-weight:700">Email it to us instead</a> (bspearsbiz@gmail.com).';
+      err.style.display = 'block';
+    }
+    b.disabled = false; b.textContent = 'Send to Job Pulse →';
+  });
   $('out').addEventListener('click', () => { data = null; try { sessionStorage.clear(); } catch (_) {} location.replace(location.pathname); });
   try { const e = sessionStorage.getItem('jp_e'); if (e) $('em').value = e; } catch (_) {}
 
