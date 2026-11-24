@@ -42,7 +42,7 @@
 {"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"Anytime. Just email us and we'll take care of it."}}]}
 ]}
 </script>
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 <style>.plan.vip{grid-column:1/-1;margin-top:8px;background:linear-gradient(160deg,#2a1f0f,#101627 70%);border-color:rgba(255,181,71,.6);box-shadow:0 14px 40px rgba(255,181,71,.18)}.plan.vip .tagline{background:#ffb547}.plan.vip .big{color:#ffb547}.plan.vip li:before{color:#ffb547}.plan.vip .cta{background:linear-gradient(135deg,#ffb547,#f59e0b);color:#1a1205;border-color:transparent}.finder{display:grid;gap:14px}.fq b{display:block;font-size:15px;margin-bottom:8px}.fopts{display:flex;flex-wrap:wrap;gap:8px}.fopts button{font:inherit;font-size:14px;font-weight:700;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 14px;min-height:44px;cursor:pointer}.fopts button.on{background:var(--pulse);color:var(--dark);border-color:var(--pulse)}.fres{margin-top:4px}.fres .why{color:var(--muted);font-size:14px;margin:0 0 10px}.fres .plan{max-width:420px}.linkbtn{background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;font-size:14px;margin:14px 0 6px;cursor:pointer;padding:8px 0;min-height:44px}#allPlans .plans{margin-top:6px}</style>
 </head>
 <body>
@@ -59,12 +59,34 @@
       <p class="lede">Real applications sent for you every weekday. Remote or in person.</p>
 
       <div class="startcard" id="plans">
-        <div class="sc-title">Start my job search</div>
-        <div class="finder" id="finder">
-          <div class="fq" data-q="need"><b>What do you need most?</b><div class="fopts"><button type="button" data-v="volume">More applications</button><button type="button" data-v="hands">Hands-on help</button><button type="button" data-v="start">A simple start</button></div></div>
-          <div class="fq" data-q="budget" hidden><b>Monthly budget?</b><div class="fopts"><button type="button" data-v="low">Around $50</button><button type="button" data-v="mid">Around $100</button><button type="button" data-v="high">Whatever it takes</button></div></div>
-          <div class="fq" data-q="push" hidden><b>Interviews coming up or changing careers?</b><div class="fopts"><button type="button" data-v="yes">Yes</button><button type="button" data-v="no">Not right now</button></div></div>
-          <div class="fres" id="fres" hidden></div>
+        <div id="flow">
+          <div class="st" data-s="0">
+            <div class="sc-title">Ready to get hired?</div>
+            <p class="sc-sub">Answer 4 quick questions and we'll set up your search.</p>
+            <button type="button" class="btn" data-next>Start my job search &rarr;</button>
+          </div>
+          <div class="st" data-s="1" hidden>
+            <div class="stp">Step 1 of 4</div><label class="q" for="fRole">What job do you want?</label>
+            <input id="fRole" class="in" placeholder="e.g. customer service, marketing, admin" autocomplete="off">
+            <button type="button" class="btn" data-next>Next &rarr;</button>
+          </div>
+          <div class="st" data-s="2" hidden>
+            <div class="stp">Step 2 of 4</div><div class="q">Where do you want to work?</div>
+            <div class="opts" data-k="where"><button type="button" data-v="Remote">Remote</button><button type="button" data-v="In person">In person</button><button type="button" data-v="Either">Either works</button></div>
+          </div>
+          <div class="st" data-s="3" hidden>
+            <div class="stp">Step 3 of 4</div><div class="q">What would help you most?</div>
+            <div class="opts" data-k="need"><button type="button" data-v="volume">Lots of applications, fast</button><button type="button" data-v="hands">Hands-on help + interview prep</button><button type="button" data-v="start">A simple, steady start</button></div>
+          </div>
+          <div class="st" data-s="4" hidden>
+            <div class="stp">Step 4 of 4</div><div class="q">Where should we send your plan?</div>
+            <input id="fName" class="in" placeholder="First name" autocomplete="given-name">
+            <input id="fEmail" class="in" type="email" placeholder="Email" autocomplete="email">
+            <input id="fPhone" class="in" type="tel" placeholder="Phone (optional)" autocomplete="tel">
+            <button type="button" class="btn" id="fGo">See my plan &rarr;</button>
+            <p class="fine">No spam. Just your plan and next steps.</p>
+          </div>
+          <div class="st" data-s="5" hidden><div id="fres"></div></div>
         </div>
         <button type="button" class="linkbtn" id="showAll">See all plans</button>
         <div id="allPlans" hidden>
@@ -99,7 +121,7 @@
 
     <div class="h-right">
       <div class="video">
-        <video id="vid" src="what-to-expect.mp4?v=3" poster="what-to-expect.jpg" autoplay muted loop playsinline preload="auto"></video>
+        <video id="vid" src="what-to-expect.mp4?v=4" poster="what-to-expect.jpg" autoplay muted loop playsinline preload="auto"></video>
         <button type="button" class="vsound" id="vsound" aria-label="Turn sound on"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M16 9.5a4 4 0 0 1 0 5M19 7a8 8 0 0 1 0 10"/></svg><span>Tap for sound</span></button>
       </div>
     </div>
@@ -117,28 +139,28 @@
 </main>
 <script>
 (function(){
-  var ans = {}, f = document.getElementById('finder'), res = document.getElementById('fres'), all = document.getElementById('allPlans');
+  var ans = {}, all = document.getElementById('allPlans'), flow = document.getElementById('flow');
   var P = {
-    p50:{href:'https://buy.stripe.com/9B64gz7wkcRU1ZvaJDebu01', nm:'Starter', pr:'$50<small>/mo</small>', big:'10 applications a weekday', cta:'Start my job search'},
-    p100:{href:'https://buy.stripe.com/5kQfZh6sg8BEcE9bNHebu00', nm:'Pro', pr:'$100<small>/mo</small>', big:'20 applications a weekday', cta:'Start my job search'},
-    vip:{href:'vip.html', nm:'VIP', pr:'$1,000<small> to start</small>', big:'30 a weekday + 1-on-1 prep + resume rebuild', cta:'See VIP'}
+    p50:{href:'https://buy.stripe.com/9B64gz7wkcRU1ZvaJDebu01', nm:'Starter', pr:'$50<small>/mo</small>', big:'10 applications every weekday', cta:'Start today'},
+    p100:{href:'https://buy.stripe.com/5kQfZh6sg8BEcE9bNHebu00', nm:'Pro', pr:'$100<small>/mo</small>', big:'20 applications every weekday', cta:'Start today'},
+    vip:{href:'vip.html', nm:'VIP', pr:'$1,000<small> to start</small>', big:'30 a weekday, weekly 1-on-1 prep, resume rebuilt', cta:'Start today'}
   };
-  function pick(){
-    if (ans.budget === 'high' && (ans.need === 'hands' || ans.push === 'yes')) return 'vip';
-    if (ans.budget === 'low' || ans.need === 'start') return 'p50';
-    return 'p100';
-  }
-  f.addEventListener('click', function(e){
-    var b = e.target.closest('.fopts button'); if (!b) return;
-    var q = b.closest('.fq'); q.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on', x === b); });
-    ans[q.getAttribute('data-q')] = b.getAttribute('data-v');
-    var nx = q.nextElementSibling; if (nx && nx.classList.contains('fq')) nx.hidden = false;
-    if (ans.need && ans.budget && ans.push) {
-      var p = P[pick()];
-      res.innerHTML = '<div class="pick"><span class="pk-l">Your plan</span><div class="pk-n">' + p.nm + ' &middot; ' + p.pr + '</div><div class="pk-b">' + p.big + '</div><a class="btn" href="' + p.href + '">' + p.cta + ' &rarr;</a></div>';
-      res.hidden = false;
+  function show(n){ flow.querySelectorAll('.st').forEach(function(x){ x.hidden = x.getAttribute('data-s') != n; }); var f = flow.querySelector('[data-s="'+n+'"] .in'); if (f) f.focus(); }
+  function step(){ return +flow.querySelector('.st:not([hidden])').getAttribute('data-s'); }
+  function pick(){ return ans.need === 'hands' ? 'vip' : ans.need === 'start' ? 'p50' : 'p100'; }
+  flow.addEventListener('click', function(e){
+    if (e.target.closest('[data-next]')) { if (step() === 1) { var r = document.getElementById('fRole'); if (!r.value.trim()) { r.focus(); return; } ans.role = r.value.trim(); } show(step() + 1); return; }
+    var b = e.target.closest('.opts button'); if (b) { ans[b.parentNode.getAttribute('data-k')] = b.getAttribute('data-v'); show(step() + 1); return; }
+    if (e.target.closest('#fGo')) {
+      var n = document.getElementById('fName'), em = document.getElementById('fEmail'), ph = document.getElementById('fPhone');
+      if (!n.value.trim()) { n.focus(); return; } if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value.trim())) { em.focus(); return; }
+      var k = pick(), p = P[k];
+      try { fetch('https://formsubmit.co/ajax/6220c8f505862814ec5341519eed4090', {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({_subject:'NEW Job Pulse lead (site): ' + n.value.trim(), _template:'table', name:n.value.trim(), email:em.value.trim(), phone:ph.value.trim(), job_wanted:ans.role, where:ans.where, needs:ans.need, suggested_plan:p.nm})}); } catch(err) {}
+      document.getElementById('fres').innerHTML = '<div class="pick"><span class="pk-l">' + n.value.trim().split(' ')[0].replace(/[<>&"]/g,'') + ', here\'s your plan</span><div class="pk-n">' + p.nm + ' &middot; ' + p.pr + '</div><div class="pk-b">' + p.big + '. Then a 2-minute intake and your resume, and we start applying.</div><a class="btn" href="' + p.href + '">' + p.cta + ' &rarr;</a></div>';
+      show(5);
     }
   });
+  flow.addEventListener('keydown', function(e){ if (e.key === 'Enter' && e.target.classList.contains('in')) { e.preventDefault(); var st = e.target.closest('.st'); var btn = st.querySelector('[data-next],#fGo'); if (btn && e.target === st.querySelectorAll('.in')[st.querySelectorAll('.in').length-1]) btn.click(); } });
   document.getElementById('showAll').addEventListener('click', function(){ all.hidden = !all.hidden; this.textContent = all.hidden ? 'See all plans' : 'Hide plans'; });
   var v=document.getElementById('vid'),sb=document.getElementById('vsound');
   if (v) { var pp=v.play(); if(pp&&pp.catch)pp.catch(function(){});
