@@ -194,7 +194,7 @@
   </section>
 
   <footer>
-    You have 24/7 access to Bobby or a member of the Job Pulse team. <a href="mailto:bspearsbiz@gmail.com?subject=Job%20Pulse%20support">Email us</a><br><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a>
+    You have 24/7 access to the Job Pulse team. <a href="mailto:bspearsbiz@gmail.com?subject=Job%20Pulse%20support">Email us</a><br><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a>
   </footer>
 </main>
 <script src="wrapped.js"></script>
@@ -365,9 +365,9 @@
       renderFunnel(); renderList();
       $('rForm').reset(); $('rForm').hidden = true; $('heard').hidden = false;
       const msg = {
-        reply: 'Nice! We logged the reply from ' + r.c + '. Bobby will check in if there\u2019s anything to do next.',
+        reply: 'Nice! We logged the reply from ' + r.c + '. The Job Pulse team will check in if there\u2019s anything to do next.',
         interview: 'Huge! We logged your interview with ' + r.c + '. Let\u2019s get you ready for it.',
-        offer: 'Congratulations! We logged your offer from ' + r.c + '. Bobby will reach out to help you weigh it.',
+        offer: 'Congratulations! We logged your offer from ' + r.c + '. The Job Pulse team will reach out to help you weigh it.',
         no: 'Thanks for telling us. We logged it and will use it to sharpen where we apply next.'
       }[k];
       $('rOk').innerHTML = esc(msg) + (k === 'interview' || k === 'offer' ? ' Come to the next interview prep call (Tue &amp; Thu, 5 PM Arizona time) and we\u2019ll get you ready. <a href="#prepCard" style="color:var(--pulse);font-weight:700">See the call &uarr;</a>' : '');
