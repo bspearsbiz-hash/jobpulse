@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://formsubmit.co; form-action https://formsubmit.co; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<script>if (window.top !== window.self) { window.top.location.replace(window.location.href); }</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcome to VIP | Job Pulse</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap">
+
+  <div class="top">
+    <a class="logo" href="./"><i><svg viewBox="0 0 64 64" fill="none"><path d="M8 34h12l5-14 8 28 7-20 4 6h12" stroke="#22e58a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Job&nbsp;<span>Pulse</span></a>
+  </div>
+
+  <div class="progress"><div class="on">Paid</div><div class="on">Intake</div><div>Done</div></div>
+
+  <section class="hero" id="locked" style="display:none">
+    <div class="live" style="color:#ffb547;border-color:rgba(255,181,71,.35);background:rgba(255,181,71,.08)">VIP members only</div>
+    <h1>This page opens <em>after checkout.</em></h1>
+    <p class="lede">Your VIP intake opens automatically right after you pay. Start on the VIP page and you'll land back here to send your resume.</p>
+    <div class="cta-row" style="margin-top:18px"><a class="btn" href="vip.html">See the VIP Package &rarr;</a></div>
+    <p class="note">Already paid but ended up here? <a href="contact.html">Email us</a> with the address you paid with and we'll send your link.</p>
+  </section>
+
+  <div id="paid" style="display:none">
+  <section class="hero">
+    <div class="live"><span class="dot"></span> Payment received</div>
+    <h1>Welcome to VIP. <em>Let's get you hired.</em></h1>
+    <p class="lede">Tell us what you're going after and drop in your resume. We start applying as soon as it lands.</p>
+  </section>
+
+  <form class="card" id="intake" action="https://formsubmit.co/6220c8f505862814ec5341519eed4090" method="POST" enctype="multipart/form-data" style="margin-top:24px">
+    <input type="hidden" name="_subject" value="NEW Job Pulse VIP intake">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="true">
+    <input type="hidden" name="_next" value="https://joinjobpulse.com/vip-done.html">
+    <input type="hidden" name="plan" value="VIP Package - $1,000 today + $500/mo x 6 ($4,000)">
+    <input type="hidden" name="stripe_checkout_session" id="sess" value="">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+    <div class="row2">
+      <div class="field"><label for="name">Full name</label><input id="name" name="name" required autocomplete="name"></div>
+      <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required autocomplete="tel"></div>
+    </div>
+    <div class="field"><label for="email">Email <small>(the one you paid with)</small></label><input id="email" name="email" type="email" required autocomplete="email"></div>
+
+    <div class="field"><label for="roles">Target roles <small>(titles or field)</small></label><textarea id="roles" name="target_roles" required placeholder="e.g. project coordinator, operations manager, customer success lead"></textarea></div>
+    <div class="field"><label for="ind">Industries you want <small>(or "open to any")</small></label><input id="ind" name="industries" required placeholder="e.g. healthcare, tech, logistics"></div>
+    <div class="row2">
+      <div class="field"><label for="where">Remote or on-site?</label>
+        <select id="where" name="remote_or_onsite" required>
+          <option value="">Choose one</option>
+          <option>Remote only</option>
+          <option>Remote or hybrid</option>
+          <option>Remote, hybrid or on-site</option>
+          <option>On-site only</option>
+        </select></div>
+      <div class="field"><label for="loc">Locations <small>(cities you'd work in)</small></label><input id="loc" name="locations" required placeholder="e.g. Phoenix, AZ or anywhere remote"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="sal">Salary range you want</label><input id="sal" name="salary_range" required placeholder="e.g. $60k-$75k/yr or $28-$35/hr"></div>
+      <div class="field"><label for="start">Earliest start date</label><input id="start" name="earliest_start" required placeholder="e.g. Right away"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="auth">Authorized to work in the US?</label>
+        <select id="auth" name="us_work_authorized" required><option value="">Choose</option><option>Yes</option><option>No</option></select></div>
+      <div class="field"><label for="spons">Will you ever need visa sponsorship?</label>
+        <select id="spons" name="needs_sponsorship" required><option value="">Choose</option><option>No</option><option>Yes</option></select></div>
+    </div>
+    <div class="field"><label for="avoid">Anything you do NOT want? <small>(industries, roles, companies)</small></label><textarea id="avoid" name="do_not_want" placeholder="e.g. no commission-only, no call centers"></textarea></div>
+    <div class="field"><label for="li">LinkedIn or portfolio link <small>(optional)</small></label><input id="li" name="linkedin_or_portfolio" type="url" placeholder="https://"></div>
+
+    <div class="field">
+      <label>Your resume</label>
+      <div class="drop" id="drop">
+        <input type="file" id="resume" name="attachment" accept=".pdf,.doc,.docx" required>
+        <b id="dropTitle">Drop your resume here</b>
+        <span id="dropSub">or tap to choose a file &middot; PDF or Word, up to 10 MB</span>
+      </div>
+      <div class="err" id="fileErr">That file is over 10 MB. Please upload a smaller PDF or Word file.</div>
+    </div>
+
+    <label style="display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:14px;margin:4px 0 16px;color:#cfd6e8">
+      <input type="checkbox" name="authorization" value="Yes: authorizes Job Pulse to apply on their behalf, confirms info is accurate, agrees to the VIP Payment Agreement, Terms and Privacy" required style="width:20px;height:20px;margin-top:2px;flex:none;accent-color:#22e58a">
+      <span>I authorize Job Pulse to apply to jobs on my behalf using the resume and answers above, I confirm they're accurate, and I agree to the <a href="vip-agreement.html" target="_blank">VIP Payment Agreement</a>, <a href="terms.html" target="_blank">Terms</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>.</span>
+    </label>
+    <button class="btn" id="go" type="submit">Send my VIP intake &rarr;</button>
+    <p class="hint">Your info goes straight to the Job Pulse team and is only used for your job search.</p>
+  </form>
+  </div>
+
+  <footer>
+    Questions? <a href="contact.html">Email us</a><br><a href="vip-agreement.html">VIP Payment Agreement</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a>
+  </footer>
+</main>
+<script>
+  // Pay-first gate: opens only when the visitor arrives from Stripe checkout (?session_id=cs_...).
+  // It runs in the browser, so every intake is matched to a paid VIP checkout in Stripe before work starts.
+  var qs = new URLSearchParams(location.search), sid = qs.get('session_id') || '';
+  try { if (sid) sessionStorage.setItem('jp_vip_sid', sid); else sid = sessionStorage.getItem('jp_vip_sid') || ''; } catch (e) {}
+  var paid = /^cs_(live|test)_[A-Za-z0-9]{10,}$/.test(sid);
+  document.getElementById(paid ? 'paid' : 'locked').style.display = 'block';
+  document.querySelector('.progress').style.display = paid ? 'flex' : 'none';
+  document.getElementById('sess').value = sid;
+  if (paid) history.replaceState(null, '', location.pathname);
+
+  var input = document.getElementById('resume'), drop = document.getElementById('drop'), err = document.getElementById('fileErr');
+  function resetDrop() { drop.classList.remove('has'); document.getElementById('dropTitle').textContent = 'Drop your resume here'; document.getElementById('dropSub').textContent = 'or tap to choose a file · PDF or Word, up to 10 MB'; }
+  function bad(msg) { input.value = ''; resetDrop(); err.textContent = msg; err.style.display = 'block'; }
+  function showFile() {
+    var f = input.files && input.files[0];
+    err.style.display = 'none';
+    if (!f) { resetDrop(); return; }
+    if (f.size > 10 * 1024 * 1024) { bad('That file is over 10 MB. Please upload a smaller PDF or Word file.'); return; }
+    if (!/\.(pdf|docx?)$/i.test(f.name)) { bad('Please upload a PDF or Word file.'); return; }
+    drop.classList.add('has');
+    document.getElementById('dropTitle').textContent = '✓ ' + f.name;
+    document.getElementById('dropSub').textContent = 'Attached. Tap to change it.';
+  }
+  input.addEventListener('change', showFile);
+  ['dragenter', 'dragover'].forEach(function (e) { drop.addEventListener(e, function () { drop.classList.add('over'); }); });
+  ['dragleave', 'drop'].forEach(function (e) { drop.addEventListener(e, function () { drop.classList.remove('over'); }); });
+  document.getElementById('intake').addEventListener('submit', function () {
+    var b = document.getElementById('go'); b.disabled = true; b.textContent = 'Sending…';
+  });
+</script>
+</body>
+</html>

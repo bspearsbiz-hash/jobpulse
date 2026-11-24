@@ -34,7 +34,8 @@
 {"@type":"WebSite","@id":"https://joinjobpulse.com/#site","url":"https://joinjobpulse.com/","name":"Job Pulse","publisher":{"@id":"https://joinjobpulse.com/#org"}},
 {"@type":"Service","name":"Done-for-you remote job applications","serviceType":"Job application service","provider":{"@id":"https://joinjobpulse.com/#org"},"areaServed":"US","description":"Job Pulse finds remote roles that fit you and sends 10–20 real applications for you every weekday, plus mentorship and interview prep.","offers":[
 {"@type":"Offer","name":"Starter","price":"50","priceCurrency":"USD","description":"10 applications a day, billed monthly","url":"https://joinjobpulse.com/#plans"},
-{"@type":"Offer","name":"Pro","price":"100","priceCurrency":"USD","description":"20 applications a day, billed monthly","url":"https://joinjobpulse.com/#plans"}]},
+{"@type":"Offer","name":"Pro","price":"100","priceCurrency":"USD","description":"20 applications a day, billed monthly","url":"https://joinjobpulse.com/#plans"},
+{"@type":"Offer","name":"VIP Package","price":"4000","priceCurrency":"USD","description":"6 months: 30 applications a day, 1-on-1 interview prep, resume and LinkedIn rewrite. $1,000 today + $500/mo for 6 months","url":"https://joinjobpulse.com/vip.html"}]},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"When do applications start?","acceptedAnswer":{"@type":"Answer","text":"The next weekday after we get your intake form and resume."}},
 {"@type":"Question","name":"What kind of jobs do you apply to?","acceptedAnswer":{"@type":"Answer","text":"The roles you tell us you want, at real companies. Fully remote by default, and hybrid or in-person in your city if you say so on your intake."}},
@@ -45,6 +46,7 @@
 ]}
 </script>
 <link rel="stylesheet" href="style.css">
+<style>.plan.vip{grid-column:1/-1;margin-top:8px;background:linear-gradient(160deg,#2a1f0f,#101627 70%);border-color:rgba(255,181,71,.6);box-shadow:0 14px 40px rgba(255,181,71,.18)}.plan.vip .tagline{background:#ffb547}.plan.vip .big{color:#ffb547}.plan.vip li:before{color:#ffb547}.plan.vip .cta{background:linear-gradient(135deg,#ffb547,#f59e0b);color:#1a1205;border-color:transparent}</style>
 </head>
 <body>
 <main class="wrap">
@@ -94,7 +96,7 @@
       <div><b>Mentorship</b><p>Real advice on landing the offer.</p></div>
       <div><b>24/7 support</b><p>Access to the Job Pulse team.</p></div>
       <div><b>Progress reports</b><p>Every role we applied to, with links.</p></div>
-      <div><b>Cancel anytime</b><p>No contracts. Month to month.</p></div>
+      <div><b>Cancel anytime</b><p>Monthly plans are month to month.</p></div>
     </div>
   </section>
 
@@ -117,7 +119,15 @@
         <div class="cta">Go Pro &rarr;</div>
       </a>
     </div>
-    <p class="note">Billed monthly through Stripe, renews automatically, cancel anytime &middot; no guarantee of interviews or offers &middot; after you pay, you'll fill out your intake and upload your resume</p>
+    <a class="plan vip" href="vip.html">
+      <span class="tagline">Most hands-on</span>
+      <div class="nm">VIP Package &middot; 6 months</div>
+      <div class="pr">$1,000<small> today + $500/mo for 6 months</small></div>
+      <div class="big">30 applications a day + 1-on-1 prep</div>
+      <ul><li>~600 applications a month</li><li>Weekly 1-on-1 interview prep + mock interviews</li><li>Resume + LinkedIn rewrite, tailored cover letters</li><li>Offer + salary help, priority support</li></ul>
+      <div class="cta">See the VIP Package &rarr;</div>
+    </a>
+    <p class="note">Starter and Pro: billed monthly through Stripe, renew automatically, cancel anytime. VIP: $4,000 6-month payment plan, see <a href="vip-agreement.html">VIP terms</a> &middot; no guarantee of interviews or offers &middot; after you pay, you'll fill out your intake and upload your resume</p>
   </section>
 
   <section class="sec" aria-labelledby="faq">
@@ -127,7 +137,7 @@
     <details><summary>Do you guarantee a job?</summary><p>No one honestly can. What we guarantee is the work: your full plan count of real applications every weekday, plus prep so you're ready when interviews come.</p></details>
     <details><summary>How do I know what you applied to?</summary><p>You get regular progress reports with every company, role and link, plus a heads-up whenever something needs you.</p></details>
     <details><summary>How long do mentorship and support last?</summary><p>As long as your monthly plan is active. If you cancel or your plan stops, applications, mentorship and support stop too.</p></details>
-    <details><summary>Can I cancel?</summary><p>Anytime. Just email us and we'll take care of it.</p></details>
+    <details><summary>Can I cancel?</summary><p>Monthly plans: anytime. Just email us and we'll take care of it. The VIP Package is a fixed 6-month payment plan (<a href="vip-agreement.html">VIP terms</a>).</p></details>
   </section>
 
   <div class="quote">
