@@ -45,7 +45,7 @@
 {"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"Anytime. Just email us and we'll take care of it."}}]}
 ]}
 </script>
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 <style>.plan.vip{grid-column:1/-1;margin-top:8px;background:linear-gradient(160deg,#2a1f0f,#101627 70%);border-color:rgba(255,181,71,.6);box-shadow:0 14px 40px rgba(255,181,71,.18)}.plan.vip .tagline{background:#ffb547}.plan.vip .big{color:#ffb547}.plan.vip li:before{color:#ffb547}.plan.vip .cta{background:linear-gradient(135deg,#ffb547,#f59e0b);color:#1a1205;border-color:transparent}.finder{display:grid;gap:14px}.fq b{display:block;font-size:15px;margin-bottom:8px}.fopts{display:flex;flex-wrap:wrap;gap:8px}.fopts button{font:inherit;font-size:14px;font-weight:700;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 14px;min-height:44px;cursor:pointer}.fopts button.on{background:var(--pulse);color:var(--dark);border-color:var(--pulse)}.fres{margin-top:4px}.fres .why{color:var(--muted);font-size:14px;margin:0 0 10px}.fres .plan{max-width:420px}.linkbtn{background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;font-size:14px;margin:14px 0 6px;cursor:pointer;padding:8px 0;min-height:44px}#allPlans .plans{margin-top:6px}</style>
 </head>
 <body>
@@ -61,12 +61,17 @@
     <h1>We find the job. We send the applications. <em>You take the interview.</em></h1>
     <p class="lede">10–20 real applications sent for you every weekday, plus mentorship and interview prep with our team.</p>
 
-    <div class="video">
-      <video id="vid" src="what-to-expect.mp4" poster="what-to-expect.jpg" autoplay muted loop playsinline preload="auto"></video>
-      <button type="button" class="vsound" id="vsound" aria-label="Turn sound on">&#128263; Tap for sound</button>
-      <a class="vbuy" href="#plans">Get started &rarr;</a>
+    <div class="pulsefeed" aria-label="Applications going out for members">
+      <div class="pf-head"><span class="dot"></span> Applications going out right now</div>
+      <ul class="pf-list" id="pfList">
+        <li><b>Marketing Coordinator</b><span>Remote</span><i>Sent</i></li>
+        <li><b>Patient Access Rep</b><span>In person &middot; Phoenix</span><i>Sent</i></li>
+        <li><b>Customer Success Associate</b><span>Remote</span><i>Sent</i></li>
+        <li><b>Operations Assistant</b><span>Hybrid &middot; Dallas</span><i>Sent</i></li>
+      </ul>
+      <p class="pf-quote">Your next job is one application away.<br><em>We send them. You show up and win.</em></p>
+      <a class="btn pf-cta" href="#plans">Start my job search &rarr;</a>
     </div>
-    <p class="vcap">30 seconds: what to expect when you join (sound on)</p>
     <div class="cta-row"><a class="btn" href="#plans">Pick your plan &rarr;</a></div>
     <div style="margin-top:10px"><a class="btn alt" href="next-move.html">Not ready? Get 5 remote jobs free &rarr;</a></div>
   </section>
@@ -190,9 +195,9 @@
 })();
 </script>
 <script>
-(function(){var v=document.getElementById('vid'),b=document.getElementById('vsound');if(!v)return;
-var p=v.play();if(p&&p.catch)p.catch(function(){});
-b.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play();}b.innerHTML=v.muted?'&#128263; Tap for sound':'&#128266; Sound on';});})();
+(function(){var roles=[["Project Coordinator","Remote"],["Front Desk Associate","In person &middot; Atlanta"],["Data Entry Specialist","Remote"],["Account Coordinator","Hybrid &middot; Chicago"],["Recruiting Assistant","Remote"],["Medical Receptionist","In person &middot; Houston"],["Content Writer","Remote"],["Inside Sales Rep","Hybrid &middot; Denver"]],i=0,ul=document.getElementById('pfList');
+if(!ul||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+setInterval(function(){var r=roles[i++%roles.length],li=document.createElement('li');li.className='new';li.innerHTML='<b>'+r[0]+'</b><span>'+r[1]+'</span><i>Sent</i>';ul.insertBefore(li,ul.firstChild);if(ul.children.length>4)ul.removeChild(ul.lastChild);},2200);})();
 </script>
 </body>
 </html>
