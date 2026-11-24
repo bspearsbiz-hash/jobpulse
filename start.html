@@ -38,7 +38,7 @@
   <form class="card" id="intake" action="https://formsubmit.co/bspearsbiz@gmail.com" method="POST" enctype="multipart/form-data" style="margin-top:24px">
     <input type="hidden" name="_subject" value="NEW Job Pulse client intake">
     <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_captcha" value="true">
     <input type="hidden" name="_next" value="https://bspearsbiz-hash.github.io/jobpulse/done.html">
     <input type="hidden" name="stripe_checkout_session" id="sess" value="">
     <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
@@ -126,13 +126,16 @@
   if (p) { var s = document.getElementById('plan'); for (var i = 0; i < s.options.length; i++) { if (s.options[i].value.indexOf('$' + p + '/') === 0) s.selectedIndex = i; } }
 
   var input = document.getElementById('resume'), drop = document.getElementById('drop'), err = document.getElementById('fileErr');
+  function resetDrop() { drop.classList.remove('has'); document.getElementById('dropTitle').textContent = 'Drop your resume here'; document.getElementById('dropSub').textContent = 'or tap to choose a file · PDF or Word, up to 10 MB'; }
+  function bad(msg) { input.value = ''; resetDrop(); err.textContent = msg; err.style.display = 'block'; }
   function showFile() {
     var f = input.files && input.files[0];
     err.style.display = 'none';
-    if (!f) { drop.classList.remove('has'); document.getElementById('dropTitle').textContent = 'Drop your resume here'; document.getElementById('dropSub').textContent = 'or tap to choose a file · PDF or Word, up to 10 MB'; return; }
-    if (f.size > 10 * 1024 * 1024) { input.value = ''; err.style.display = 'block'; showFile(); return; }
+    if (!f) { resetDrop(); return; }
+    if (f.size > 10 * 1024 * 1024) { bad('That file is over 10 MB. Please upload a smaller PDF or Word file.'); return; }
+    if (!/\.(pdf|docx?)$/i.test(f.name)) { bad('Please upload a PDF or Word file.'); return; }
     drop.classList.add('has');
-    document.getElementById('dropTitle').textContent = '✓ ' + f.name;
+    document.getElementById('dropTitle').textContent = '\u2713 ' + f.name;
     document.getElementById('dropSub').textContent = 'Attached. Tap to change it.';
   }
   input.addEventListener('change', showFile);

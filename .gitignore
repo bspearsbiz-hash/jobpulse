@@ -1,0 +1,23 @@
+# Secrets
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.p12
+
+# Plaintext member data (only encrypted c/*.json may be committed)
+*.plain.json
+*client*.json
+tmp/
+*.csv
+*.xlsx
+
+# Resumes and client documents
+*.pdf
+*.doc
+*.docx
+
+# Junk
+.DS_Store
+node_modules/
