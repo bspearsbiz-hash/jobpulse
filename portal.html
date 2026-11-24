@@ -99,7 +99,7 @@
       <div class="field"><label for="cd">Access code <small>(from your welcome email)</small></label><input id="cd" required autocomplete="current-password" placeholder="JP-XXXX-XXXX-XXXX" autocapitalize="characters" spellcheck="false"></div>
       <div class="err" id="err" style="margin:-6px 0 12px"></div>
       <button class="btn" id="go" type="submit">Log in &rarr;</button>
-      <p class="hint">Lost your code? <a href="mailto:bspearsbiz@gmail.com?subject=Job%20Pulse%20access%20code">Email us</a> and we'll resend it.</p>
+      <p class="hint">Lost your code? <a href="contact.html?t=code">Email us</a> and we'll resend it.</p>
     </form>
   </section>
 
@@ -181,7 +181,7 @@
       <p style="font-size:14px;color:var(--muted);margin:-4px 0 12px">Each one unlocks strong-fit applications. Reply to our email with the number and your answer. Rough is fine.</p>
       <div id="needs"></div>
       <a class="btn" id="reply" href="#">Reply to Job Pulse &rarr;</a>
-      <p class="note">Opens your email to bspearsbiz@gmail.com</p>
+      <p class="note">Opens a quick message to the Job Pulse team</p>
     </section>
 
     <section class="sec">
@@ -194,7 +194,7 @@
   </section>
 
   <footer>
-    You have 24/7 access to the Job Pulse team. <a href="mailto:bspearsbiz@gmail.com?subject=Job%20Pulse%20support">Email us</a><br><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a>
+    You have 24/7 access to the Job Pulse team. <a href="contact.html?t=support">Email us</a><br><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a>
   </footer>
 </main>
 <script src="wrapped.js"></script>
@@ -309,7 +309,8 @@
     $('needs').innerHTML = data.needs.map((x, i) =>
       '<div class="need"><span class="n">' + (i + 1) + '</span><div><b>' + esc(x.k) + '</b><p>' + esc(x.w) + '</p>' +
       (safeUrl(x.u) ? '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">Open it &rarr;</a>' : '') + '</div></div>').join('');
-    $('reply').href = 'mailto:bspearsbiz@gmail.com?subject=' + encodeURIComponent('Re: Job Pulse - my answers') + '&body=' + encodeURIComponent(data.needs.map((x, i) => (i + 1) + '. ' + x.k + ': ').join('\n'));
+    $('reply').href = 'contact.html?t=answers';
+    $('reply').onclick = () => { try { sessionStorage.setItem('jp_contact', data.needs.map((x, i) => (i + 1) + '. ' + x.k + ': ').join('\n')); } catch (_) {} };
     renderFunnel();
     renderList();
     try { renderPrep(); } catch (_) {}
@@ -358,7 +359,7 @@
       result: LABEL[k], when: r.w || '(not given)', note: r.n || '(none)'
     };
     try {
-      const res = await fetch('https://formsubmit.co/ajax/bspearsbiz@gmail.com', {method: 'POST', headers: {'Content-Type': 'application/json', Accept: 'application/json'}, body: JSON.stringify(body)});
+      const res = await fetch('https://formsubmit.co/ajax/6220c8f505862814ec5341519eed4090', {method: 'POST', headers: {'Content-Type': 'application/json', Accept: 'application/json'}, body: JSON.stringify(body)});
       const j = await res.json().catch(() => ({}));
       if (!res.ok || String(j.success) !== 'true') throw new Error('send');
       pending.push({c: r.c, r: r.r, k});
@@ -373,8 +374,8 @@
       $('rOk').innerHTML = esc(msg) + (k === 'interview' || k === 'offer' ? ' Come to the next interview prep call (Tue &amp; Thu, 5 PM Arizona time) and we\u2019ll get you ready. <a href="#prepCard" style="color:var(--pulse);font-weight:700">See the call &uarr;</a>' : '');
       $('rOk').style.display = 'block';
     } catch (x) {
-      const mail = 'mailto:bspearsbiz@gmail.com?subject=' + encodeURIComponent(body._subject) + '&body=' + encodeURIComponent('Company: ' + r.c + '\nRole: ' + (r.r || '') + '\nWhat happened: ' + LABEL[k] + '\nWhen: ' + (r.w || '') + '\nNote: ' + (r.n || ''));
-      err.innerHTML = 'That didn\u2019t send. <a href="' + mail + '" style="color:var(--pulse);font-weight:700">Email it to us instead</a> (bspearsbiz@gmail.com).';
+      try { sessionStorage.setItem('jp_contact', 'Company: ' + r.c + '\nRole: ' + (r.r || '') + '\nWhat happened: ' + LABEL[k] + '\nWhen: ' + (r.w || '') + '\nNote: ' + (r.n || '')); } catch (_) {}
+      err.innerHTML = 'That didn\u2019t send. <a href="contact.html?t=result" style="color:var(--pulse);font-weight:700">Send it from our contact page instead</a>.';
       err.style.display = 'block';
     }
     b.disabled = false; b.textContent = 'Send to Job Pulse →';
