@@ -6,7 +6,7 @@ rules on every change.
 
 ## Before the first commit in any new clone
     git config core.hooksPath .githooks
-    printf 'jordan\njasmine\n' > .git/jp-member-names   # one member first name per line, kept local, never committed
+    printf '<first name>\n<first name>\n' > .git/jp-member-names   # one member first name per line, kept local, never committed
 Add every new member's first name to `.git/jp-member-names`. The hooks run
 `tools/guard.sh`, which blocks secrets, plaintext member data, contact info,
 access codes and commit messages that name members. Never bypass it with
