@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /portal.html
+Disallow: /start.html
+Disallow: /done.html
+Disallow: /shortlist.html
+Disallow: /c/
+
+Sitemap: https://joinjobpulse.com/sitemap.xml
