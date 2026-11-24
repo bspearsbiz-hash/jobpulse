@@ -61,17 +61,12 @@
     <h1>We find the job. We send the applications. <em>You take the interview.</em></h1>
     <p class="lede">10–20 real applications sent for you every weekday, plus mentorship and interview prep with our team.</p>
 
-    <div class="pulsefeed" aria-label="Applications going out for members">
-      <div class="pf-head"><span class="dot"></span> Applications going out right now</div>
-      <ul class="pf-list" id="pfList">
-        <li><b>Marketing Coordinator</b><span>Remote</span><i>Sent</i></li>
-        <li><b>Patient Access Rep</b><span>In person &middot; Phoenix</span><i>Sent</i></li>
-        <li><b>Customer Success Associate</b><span>Remote</span><i>Sent</i></li>
-        <li><b>Operations Assistant</b><span>Hybrid &middot; Dallas</span><i>Sent</i></li>
-      </ul>
-      <p class="pf-quote">Your next job is one application away.<br><em>We send them. You show up and win.</em></p>
-      <a class="btn pf-cta" href="#plans">Start my job search &rarr;</a>
+    <div class="video">
+      <video id="vid" src="what-to-expect.mp4?v=2" poster="what-to-expect.jpg" autoplay muted loop playsinline preload="auto"></video>
+      <button type="button" class="vsound" id="vsound" aria-label="Turn sound on"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M16 9.5a4 4 0 0 1 0 5M19 7a8 8 0 0 1 0 10"/></svg><span>Tap for sound</span></button>
+      <a class="vbuy" href="#plans">Get started &rarr;</a>
     </div>
+    <p class="vcap">What happens when you join (tap for sound)</p>
     <div class="cta-row"><a class="btn" href="#plans">Pick your plan &rarr;</a></div>
     <div style="margin-top:10px"><a class="btn alt" href="next-move.html">Not ready? Get 5 remote jobs free &rarr;</a></div>
   </section>
@@ -195,9 +190,9 @@
 })();
 </script>
 <script>
-(function(){var roles=[["Project Coordinator","Remote"],["Front Desk Associate","In person &middot; Atlanta"],["Data Entry Specialist","Remote"],["Account Coordinator","Hybrid &middot; Chicago"],["Recruiting Assistant","Remote"],["Medical Receptionist","In person &middot; Houston"],["Content Writer","Remote"],["Inside Sales Rep","Hybrid &middot; Denver"]],i=0,ul=document.getElementById('pfList');
-if(!ul||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-setInterval(function(){var r=roles[i++%roles.length],li=document.createElement('li');li.className='new';li.innerHTML='<b>'+r[0]+'</b><span>'+r[1]+'</span><i>Sent</i>';ul.insertBefore(li,ul.firstChild);if(ul.children.length>4)ul.removeChild(ul.lastChild);},2200);})();
+(function(){var v=document.getElementById('vid'),b=document.getElementById('vsound');if(!v)return;
+var p=v.play();if(p&&p.catch)p.catch(function(){});
+b.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play();}b.querySelector('span').textContent=v.muted?'Tap for sound':'Sound on';});})();
 </script>
 </body>
 </html>

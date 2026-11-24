@@ -126,7 +126,7 @@ footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--l
 /* desktop: use the space */
 @media(min-width:960px){.wrap{max-width:1100px}.video{max-width:400px}#allPlans .plans{grid-template-columns:repeat(2,1fr);max-width:820px;margin-left:auto;margin-right:auto}.finder,.fres{max-width:820px}.hero h1{font-size:clamp(40px,4.2vw,52px)}.incl{grid-template-columns:repeat(3,1fr)}.lede{max-width:60ch;margin-left:auto;margin-right:auto}}
 
-.video{position:relative}.vsound{position:absolute;top:12px;right:12px;font:700 13px inherit;font-family:inherit;color:#fff;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:8px 12px;min-height:40px;cursor:pointer;backdrop-filter:blur(6px)}
+.video{position:relative}.vsound{display:inline-flex;align-items:center;gap:6px;position:absolute;top:12px;right:12px;font:700 13px inherit;font-family:inherit;color:#fff;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:8px 12px;min-height:40px;cursor:pointer;backdrop-filter:blur(6px)}
 .vbuy{position:absolute;left:12px;right:12px;bottom:12px;display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:14px;font-weight:800;font-size:16px;text-decoration:none;color:var(--dark);background:linear-gradient(135deg,var(--pulse),var(--pulse2));box-shadow:0 8px 24px rgba(34,229,138,.35)}
 
 /* inspirational hero feed (replaces video) */
