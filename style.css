@@ -141,3 +141,18 @@ footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--l
 .pf-quote{margin:18px 0 14px;font-size:20px;font-weight:800;line-height:1.3;text-align:center}
 .pf-quote em{font-style:normal;color:var(--pulse)}
 .pf-cta{width:100%}
+
+/* minimal homepage */
+.mlogin{font-size:13px;font-weight:700;text-decoration:none;color:var(--muted)}
+.hero2{display:grid;gap:22px;margin-top:18px}
+.hero2 h1{text-align:left}.hero2 .lede{text-align:left;margin:10px 0 18px;max-width:none}
+.startcard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow)}
+.sc-title{font-weight:800;font-size:18px;margin-bottom:12px}
+.fq[hidden]{display:none}
+.pick{margin-top:6px;padding:14px;border-radius:16px;border:1px solid rgba(34,229,138,.5);background:linear-gradient(160deg,#0f2a1f,#101627 70%)}
+.pk-l{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--pulse)}
+.pk-n{font-size:22px;font-weight:800;margin:4px 0 2px}.pk-n small{font-size:13px;color:var(--muted);font-weight:600}
+.pk-b{color:var(--muted);font-size:14px;margin-bottom:12px}
+.startcard .linkbtn{margin:10px 0 0}
+.faq2{max-width:640px;margin-left:auto;margin-right:auto}
+@media(min-width:960px){.hero2{grid-template-columns:1.1fr .9fr;align-items:start;gap:48px}.hero2 .video{margin-top:0;max-width:380px}}

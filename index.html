@@ -38,14 +38,11 @@
 {"@type":"Offer","name":"VIP Package","price":"4000","priceCurrency":"USD","description":"6 months: 30 applications a day, 1-on-1 interview prep, resume and LinkedIn rewrite. $1,000 today + $500/mo for 6 months","url":"https://joinjobpulse.com/vip.html"}]},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"When do applications start?","acceptedAnswer":{"@type":"Answer","text":"The next weekday after we get your intake form and resume."}},
-{"@type":"Question","name":"What kind of jobs do you apply to?","acceptedAnswer":{"@type":"Answer","text":"The roles you tell us you want, at real companies. Fully remote by default, and hybrid or in-person in your city if you say so on your intake."}},
 {"@type":"Question","name":"Do you guarantee a job?","acceptedAnswer":{"@type":"Answer","text":"No one honestly can. What we guarantee is the work: your full plan count of real applications every weekday, plus prep so you're ready when interviews come."}},
-{"@type":"Question","name":"How do I know what you applied to?","acceptedAnswer":{"@type":"Answer","text":"You get regular progress reports with every company, role and link, plus a heads-up whenever something needs you."}},
-{"@type":"Question","name":"How long do mentorship and support last?","acceptedAnswer":{"@type":"Answer","text":"As long as your monthly plan is active. If you cancel or your plan stops, applications, mentorship and support stop too."}},
 {"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"Anytime. Just email us and we'll take care of it."}}]}
 ]}
 </script>
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 <style>.plan.vip{grid-column:1/-1;margin-top:8px;background:linear-gradient(160deg,#2a1f0f,#101627 70%);border-color:rgba(255,181,71,.6);box-shadow:0 14px 40px rgba(255,181,71,.18)}.plan.vip .tagline{background:#ffb547}.plan.vip .big{color:#ffb547}.plan.vip li:before{color:#ffb547}.plan.vip .cta{background:linear-gradient(135deg,#ffb547,#f59e0b);color:#1a1205;border-color:transparent}.finder{display:grid;gap:14px}.fq b{display:block;font-size:15px;margin-bottom:8px}.fopts{display:flex;flex-wrap:wrap;gap:8px}.fopts button{font:inherit;font-size:14px;font-weight:700;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 14px;min-height:44px;cursor:pointer}.fopts button.on{background:var(--pulse);color:var(--dark);border-color:var(--pulse)}.fres{margin-top:4px}.fres .why{color:var(--muted);font-size:14px;margin:0 0 10px}.fres .plan{max-width:420px}.linkbtn{background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;font-size:14px;margin:14px 0 6px;cursor:pointer;padding:8px 0;min-height:44px}#allPlans .plans{margin-top:6px}</style>
 </head>
 <body>
@@ -53,66 +50,24 @@
 
   <div class="top">
     <a class="logo" href="./"><i><svg viewBox="0 0 64 64" fill="none"><path d="M8 34h12l5-14 8 28 7-20 4 6h12" stroke="#22e58a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Job&nbsp;<span>Pulse</span></a>
-    <span style="display:flex;gap:8px;align-items:center"><a href="portal.html" style="font-size:13px;font-weight:700;text-decoration:none;color:var(--muted)">Member login</a><a class="mini" href="#plans">See plans</a></span>
+    <a href="portal.html" class="mlogin">Member login</a>
   </div>
 
-  <section class="hero">
-    <div class="live"><span class="dot"></span> Remote roles, daily</div>
-    <h1>We find the job. We send the applications. <em>You take the interview.</em></h1>
-    <p class="lede">10–20 real applications sent for you every weekday, plus mentorship and interview prep with our team.</p>
+  <section class="hero2">
+    <div class="h-left">
+      <h1>We find the job. We send the applications. <em>You take the interview.</em></h1>
+      <p class="lede">Real applications sent for you every weekday. Remote or in person.</p>
 
-    <div class="video">
-      <video id="vid" src="what-to-expect.mp4?v=2" poster="what-to-expect.jpg" autoplay muted loop playsinline preload="auto"></video>
-      <button type="button" class="vsound" id="vsound" aria-label="Turn sound on"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M16 9.5a4 4 0 0 1 0 5M19 7a8 8 0 0 1 0 10"/></svg><span>Tap for sound</span></button>
-      <a class="vbuy" href="#plans">Get started &rarr;</a>
-    </div>
-    <p class="vcap">What happens when you join (tap for sound)</p>
-    <div class="cta-row"><a class="btn" href="#plans">Pick your plan &rarr;</a></div>
-    <div style="margin-top:10px"><a class="btn alt" href="next-move.html">Not ready? Get 5 remote jobs free &rarr;</a></div>
-  </section>
-
-  <section class="sec" aria-labelledby="what">
-    <h2 id="what">What we do</h2>
-    <div class="steps">
-      <div class="step"><span class="n">1</span><div><b>Match</b><p>We scan company career pages daily for remote roles that fit your resume, pay and goals.</p></div></div>
-      <div class="step"><span class="n">2</span><div><b>Apply</b><p>Your full plan count of real applications, sent for you every weekday.</p></div></div>
-      <div class="step"><span class="n">3</span><div><b>Prep</b><p>Mentorship and group interview prep, so you're ready when they call.</p></div></div>
-    </div>
-  </section>
-
-  <section class="sec" aria-labelledby="how">
-    <h2 id="how">How to start</h2>
-    <div class="steps">
-      <div class="step"><span class="n">1</span><div><b>Pick your plan</b><p>10 or 20 applications a day. Secure checkout by Stripe.</p></div></div>
-      <div class="step"><span class="n">2</span><div><b>Fill out your intake + drop in your resume</b><p>Right after you pay, you land on a short form. About 2 minutes.</p></div></div>
-      <div class="step"><span class="n">3</span><div><b>We apply for you, every weekday</b><p>Real applications on real company job boards, starting the next weekday.</p></div></div>
-      <div class="step"><span class="n">4</span><div><b>We prep you for the interview</b><p>Mentorship, group sessions and interview prep with the Job Pulse team.</p></div></div>
-    </div>
-  </section>
-
-  <section class="sec" aria-labelledby="incl">
-    <h2 id="incl">Every membership includes</h2>
-    <div class="incl">
-      <div><b>Daily applications</b><p>Your full plan count, every weekday.</p></div>
-      <div><b>Interview prep</b><p>Group sessions with the Job Pulse team.</p></div>
-      <div><b>Mentorship</b><p>Real advice on landing the offer.</p></div>
-      <div><b>24/7 support</b><p>Access to the Job Pulse team.</p></div>
-      <div><b>Progress reports</b><p>Every role we applied to, with links.</p></div>
-      <div><b>Cancel anytime</b><p>Monthly plans are month to month.</p></div>
-    </div>
-  </section>
-
-  <section class="sec" aria-labelledby="plans">
-    <h2 id="plans" style="scroll-margin-top:20px">Plans</h2>
-    <p class="lede" style="margin:0 0 14px;text-align:left">3 quick taps and we'll suggest the plan that fits you.</p>
-    <div class="finder" id="finder">
-      <div class="fq" data-q="need"><b>What do you need most?</b><div class="fopts"><button type="button" data-v="volume">More applications, fast</button><button type="button" data-v="hands">Hands-on help + interview prep</button><button type="button" data-v="start">A steady, simple start</button></div></div>
-      <div class="fq" data-q="budget"><b>Monthly budget?</b><div class="fopts"><button type="button" data-v="low">Around $50</button><button type="button" data-v="mid">Around $100</button><button type="button" data-v="high">Whatever gets me hired</button></div></div>
-      <div class="fq" data-q="push"><b>Interviews coming up, or changing careers?</b><div class="fopts"><button type="button" data-v="yes">Yes</button><button type="button" data-v="no">Not right now</button></div></div>
-      <div class="fres" id="fres" hidden></div>
-    </div>
-    <button type="button" class="linkbtn" id="showAll">Compare all plans</button>
-    <div id="allPlans" hidden>
+      <div class="startcard" id="plans">
+        <div class="sc-title">Start my job search</div>
+        <div class="finder" id="finder">
+          <div class="fq" data-q="need"><b>What do you need most?</b><div class="fopts"><button type="button" data-v="volume">More applications</button><button type="button" data-v="hands">Hands-on help</button><button type="button" data-v="start">A simple start</button></div></div>
+          <div class="fq" data-q="budget" hidden><b>Monthly budget?</b><div class="fopts"><button type="button" data-v="low">Around $50</button><button type="button" data-v="mid">Around $100</button><button type="button" data-v="high">Whatever it takes</button></div></div>
+          <div class="fq" data-q="push" hidden><b>Interviews coming up or changing careers?</b><div class="fopts"><button type="button" data-v="yes">Yes</button><button type="button" data-v="no">Not right now</button></div></div>
+          <div class="fres" id="fres" hidden></div>
+        </div>
+        <button type="button" class="linkbtn" id="showAll">See all plans</button>
+        <div id="allPlans" hidden>
     <div class="plans">
       <a class="plan" href="https://buy.stripe.com/9B64gz7wkcRU1ZvaJDebu01">
         <div class="nm">Starter</div>
@@ -138,38 +93,35 @@
       <ul><li>~600 applications a month</li><li>Weekly 1-on-1 interview prep + mock interviews</li><li>Resume + LinkedIn rewrite, tailored cover letters</li><li>Offer + salary help, priority support</li></ul>
       <div class="cta">See the VIP Package &rarr;</div>
     </a>
+        </div>
+      </div>
     </div>
-    <p class="note">Starter and Pro: billed monthly through Stripe, renew automatically, cancel anytime. VIP: $4,000 6-month payment plan, see <a href="vip-agreement.html">VIP terms</a> &middot; no guarantee of interviews or offers &middot; after you pay, you'll fill out your intake and upload your resume</p>
+
+    <div class="h-right">
+      <div class="video">
+        <video id="vid" src="what-to-expect.mp4?v=3" poster="what-to-expect.jpg" autoplay muted loop playsinline preload="auto"></video>
+        <button type="button" class="vsound" id="vsound" aria-label="Turn sound on"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M16 9.5a4 4 0 0 1 0 5M19 7a8 8 0 0 1 0 10"/></svg><span>Tap for sound</span></button>
+      </div>
+    </div>
   </section>
 
-  <section class="sec" aria-labelledby="faq">
-    <h2 id="faq">Questions</h2>
-    <details><summary>When do applications start?</summary><p>The next weekday after we get your intake form and resume.</p></details>
-    <details><summary>What kind of jobs do you apply to?</summary><p>The roles you tell us you want, at real companies. Fully remote by default, and hybrid or in-person in your city if you say so on your intake.</p></details>
-    <details><summary>Do you guarantee a job?</summary><p>No one honestly can. What we guarantee is the work: your full plan count of real applications every weekday, plus prep so you're ready when interviews come.</p></details>
-    <details><summary>How do I know what you applied to?</summary><p>You get regular progress reports with every company, role and link, plus a heads-up whenever something needs you.</p></details>
-    <details><summary>How long do mentorship and support last?</summary><p>As long as your monthly plan is active. If you cancel or your plan stops, applications, mentorship and support stop too.</p></details>
-    <details><summary>Can I cancel?</summary><p>Monthly plans: anytime. Just email us and we'll take care of it. The VIP Package is a fixed 6-month payment plan (<a href="vip-agreement.html">VIP terms</a>).</p></details>
+  <section class="sec faq2" aria-label="Questions">
+    <details><summary>When do applications start?</summary><p>The same day we get your intake and resume.</p></details>
+    <details><summary>Do you guarantee a job?</summary><p>No one honestly can. We guarantee the work: real applications every weekday, plus interview prep.</p></details>
+    <details><summary>Can I cancel?</summary><p>Monthly plans, anytime. VIP is a 6-month plan (<a href="vip-agreement.html">terms</a>).</p></details>
   </section>
-
-  <div class="quote">
-    <p>It's like insurance for your job.</p>
-    <span>Need a new one? Boss acting up? Job Pulse has your back.</span>
-  </div>
-
-  <div class="cta-row"><a class="btn alt" href="next-move.html">What's your next move? Take the 30-second quiz &rarr;</a></div>
 
   <footer>
-    <a href="https://www.instagram.com/jobpulseio/">@jobpulseio</a> &middot; <a href="contact.html">Email us</a><br><a href="portal.html">Member login</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a>
+    <a href="https://www.instagram.com/jobpulseio/">@jobpulseio</a> &middot; <a href="contact.html">Email us</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a>
   </footer>
 </main>
 <script>
 (function(){
   var ans = {}, f = document.getElementById('finder'), res = document.getElementById('fres'), all = document.getElementById('allPlans');
   var P = {
-    p50:{href:'https://buy.stripe.com/9B64gz7wkcRU1ZvaJDebu01', cls:'plan', nm:'Starter', pr:'$50<small>/mo</small>', big:'10 applications a day', cta:'Start Starter &rarr;', why:'A steady start that fits your budget: 10 real applications every weekday, plus the live prep calls.'},
-    p100:{href:'https://buy.stripe.com/5kQfZh6sg8BEcE9bNHebu00', cls:'plan hot', nm:'Pro', pr:'$100<small>/mo</small>', big:'20 applications a day', cta:'Go Pro &rarr;', why:'You want volume and speed: 20 applications every weekday, priority on fresh postings.'},
-    vip:{href:'vip.html', cls:'plan vip', nm:'VIP Package &middot; 6 months', pr:'$1,000<small> today + $500/mo</small>', big:'30 a day + weekly 1-on-1 prep', cta:'See the VIP Package &rarr;', why:'You want us all-in: 30 a day, weekly 1-on-1 prep, mock interviews, and we rebuild your resume and LinkedIn.'}
+    p50:{href:'https://buy.stripe.com/9B64gz7wkcRU1ZvaJDebu01', nm:'Starter', pr:'$50<small>/mo</small>', big:'10 applications a weekday', cta:'Start my job search'},
+    p100:{href:'https://buy.stripe.com/5kQfZh6sg8BEcE9bNHebu00', nm:'Pro', pr:'$100<small>/mo</small>', big:'20 applications a weekday', cta:'Start my job search'},
+    vip:{href:'vip.html', nm:'VIP', pr:'$1,000<small> to start</small>', big:'30 a weekday + 1-on-1 prep + resume rebuild', cta:'See VIP'}
   };
   function pick(){
     if (ans.budget === 'high' && (ans.need === 'hands' || ans.push === 'yes')) return 'vip';
@@ -180,19 +132,18 @@
     var b = e.target.closest('.fopts button'); if (!b) return;
     var q = b.closest('.fq'); q.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on', x === b); });
     ans[q.getAttribute('data-q')] = b.getAttribute('data-v');
+    var nx = q.nextElementSibling; if (nx && nx.classList.contains('fq')) nx.hidden = false;
     if (ans.need && ans.budget && ans.push) {
-      var k = pick(), p = P[k];
-      res.innerHTML = '<p class="why"><b>Our pick for you:</b> ' + p.why + '</p><a class="' + p.cls + '" href="' + p.href + '"><div class="nm">' + p.nm + '</div><div class="pr">' + p.pr + '</div><div class="big">' + p.big + '</div><div class="cta">' + p.cta + '</div></a>';
-      res.hidden = false; res.scrollIntoView({behavior:'smooth', block:'nearest'});
+      var p = P[pick()];
+      res.innerHTML = '<div class="pick"><span class="pk-l">Your plan</span><div class="pk-n">' + p.nm + ' &middot; ' + p.pr + '</div><div class="pk-b">' + p.big + '</div><a class="btn" href="' + p.href + '">' + p.cta + ' &rarr;</a></div>';
+      res.hidden = false;
     }
   });
-  document.getElementById('showAll').addEventListener('click', function(){ all.hidden = !all.hidden; this.textContent = all.hidden ? 'Compare all plans' : 'Hide plans'; });
+  document.getElementById('showAll').addEventListener('click', function(){ all.hidden = !all.hidden; this.textContent = all.hidden ? 'See all plans' : 'Hide plans'; });
+  var v=document.getElementById('vid'),sb=document.getElementById('vsound');
+  if (v) { var pp=v.play(); if(pp&&pp.catch)pp.catch(function(){});
+    sb.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play();}sb.querySelector('span').textContent=v.muted?'Tap for sound':'Sound on';}); }
 })();
-</script>
-<script>
-(function(){var v=document.getElementById('vid'),b=document.getElementById('vsound');if(!v)return;
-var p=v.play();if(p&&p.catch)p.catch(function(){});
-b.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play();}b.querySelector('span').textContent=v.muted?'Tap for sound':'Sound on';});})();
 </script>
 </body>
 </html>
