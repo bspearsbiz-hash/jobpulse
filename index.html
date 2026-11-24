@@ -46,7 +46,7 @@
 ]}
 </script>
 <link rel="stylesheet" href="style.css">
-<style>.plan.vip{grid-column:1/-1;margin-top:8px;background:linear-gradient(160deg,#2a1f0f,#101627 70%);border-color:rgba(255,181,71,.6);box-shadow:0 14px 40px rgba(255,181,71,.18)}.plan.vip .tagline{background:#ffb547}.plan.vip .big{color:#ffb547}.plan.vip li:before{color:#ffb547}.plan.vip .cta{background:linear-gradient(135deg,#ffb547,#f59e0b);color:#1a1205;border-color:transparent}</style>
+<style>.plan.vip{grid-column:1/-1;margin-top:8px;background:linear-gradient(160deg,#2a1f0f,#101627 70%);border-color:rgba(255,181,71,.6);box-shadow:0 14px 40px rgba(255,181,71,.18)}.plan.vip .tagline{background:#ffb547}.plan.vip .big{color:#ffb547}.plan.vip li:before{color:#ffb547}.plan.vip .cta{background:linear-gradient(135deg,#ffb547,#f59e0b);color:#1a1205;border-color:transparent}.finder{display:grid;gap:14px}.fq b{display:block;font-size:15px;margin-bottom:8px}.fopts{display:flex;flex-wrap:wrap;gap:8px}.fopts button{font:inherit;font-size:14px;font-weight:700;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 14px;min-height:44px;cursor:pointer}.fopts button.on{background:var(--pulse);color:var(--dark);border-color:var(--pulse)}.fres{margin-top:4px}.fres .why{color:var(--muted);font-size:14px;margin:0 0 10px}.fres .plan{max-width:420px}.linkbtn{background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;font-size:14px;margin:14px 0 6px;cursor:pointer;padding:8px 0;min-height:44px}#allPlans .plans{margin-top:6px}</style>
 </head>
 <body>
 <main class="wrap">
@@ -102,6 +102,15 @@
 
   <section class="sec" aria-labelledby="plans">
     <h2 id="plans" style="scroll-margin-top:20px">Plans</h2>
+    <p class="lede" style="margin:0 0 14px;text-align:left">3 quick taps and we'll suggest the plan that fits you.</p>
+    <div class="finder" id="finder">
+      <div class="fq" data-q="need"><b>What do you need most?</b><div class="fopts"><button type="button" data-v="volume">More applications, fast</button><button type="button" data-v="hands">Hands-on help + interview prep</button><button type="button" data-v="start">A steady, simple start</button></div></div>
+      <div class="fq" data-q="budget"><b>Monthly budget?</b><div class="fopts"><button type="button" data-v="low">Around $50</button><button type="button" data-v="mid">Around $100</button><button type="button" data-v="high">Whatever gets me hired</button></div></div>
+      <div class="fq" data-q="push"><b>Interviews coming up, or changing careers?</b><div class="fopts"><button type="button" data-v="yes">Yes</button><button type="button" data-v="no">Not right now</button></div></div>
+      <div class="fres" id="fres" hidden></div>
+    </div>
+    <button type="button" class="linkbtn" id="showAll">Compare all plans</button>
+    <div id="allPlans" hidden>
     <div class="plans">
       <a class="plan" href="https://buy.stripe.com/9B64gz7wkcRU1ZvaJDebu01">
         <div class="nm">Starter</div>
@@ -127,6 +136,7 @@
       <ul><li>~600 applications a month</li><li>Weekly 1-on-1 interview prep + mock interviews</li><li>Resume + LinkedIn rewrite, tailored cover letters</li><li>Offer + salary help, priority support</li></ul>
       <div class="cta">See the VIP Package &rarr;</div>
     </a>
+    </div>
     <p class="note">Starter and Pro: billed monthly through Stripe, renew automatically, cancel anytime. VIP: $4,000 6-month payment plan, see <a href="vip-agreement.html">VIP terms</a> &middot; no guarantee of interviews or offers &middot; after you pay, you'll fill out your intake and upload your resume</p>
   </section>
 
@@ -151,5 +161,31 @@
     <a href="https://www.instagram.com/jobpulseio/">@jobpulseio</a> &middot; <a href="contact.html">Email us</a><br><a href="portal.html">Member login</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a>
   </footer>
 </main>
+<script>
+(function(){
+  var ans = {}, f = document.getElementById('finder'), res = document.getElementById('fres'), all = document.getElementById('allPlans');
+  var P = {
+    p50:{href:'https://buy.stripe.com/9B64gz7wkcRU1ZvaJDebu01', cls:'plan', nm:'Starter', pr:'$50<small>/mo</small>', big:'10 applications a day', cta:'Start Starter &rarr;', why:'A steady start that fits your budget: 10 real applications every weekday, plus the live prep calls.'},
+    p100:{href:'https://buy.stripe.com/5kQfZh6sg8BEcE9bNHebu00', cls:'plan hot', nm:'Pro', pr:'$100<small>/mo</small>', big:'20 applications a day', cta:'Go Pro &rarr;', why:'You want volume and speed: 20 applications every weekday, priority on fresh postings.'},
+    vip:{href:'vip.html', cls:'plan vip', nm:'VIP Package &middot; 6 months', pr:'$1,000<small> today + $500/mo</small>', big:'30 a day + weekly 1-on-1 prep', cta:'See the VIP Package &rarr;', why:'You want us all-in: 30 a day, weekly 1-on-1 prep, mock interviews, and we rebuild your resume and LinkedIn.'}
+  };
+  function pick(){
+    if (ans.budget === 'high' && (ans.need === 'hands' || ans.push === 'yes')) return 'vip';
+    if (ans.budget === 'low' || ans.need === 'start') return 'p50';
+    return 'p100';
+  }
+  f.addEventListener('click', function(e){
+    var b = e.target.closest('.fopts button'); if (!b) return;
+    var q = b.closest('.fq'); q.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on', x === b); });
+    ans[q.getAttribute('data-q')] = b.getAttribute('data-v');
+    if (ans.need && ans.budget && ans.push) {
+      var k = pick(), p = P[k];
+      res.innerHTML = '<p class="why"><b>Our pick for you:</b> ' + p.why + '</p><a class="' + p.cls + '" href="' + p.href + '"><div class="nm">' + p.nm + '</div><div class="pr">' + p.pr + '</div><div class="big">' + p.big + '</div><div class="cta">' + p.cta + '</div></a>';
+      res.hidden = false; res.scrollIntoView({behavior:'smooth', block:'nearest'});
+    }
+  });
+  document.getElementById('showAll').addEventListener('click', function(){ all.hidden = !all.hidden; this.textContent = all.hidden ? 'Compare all plans' : 'Hide plans'; });
+})();
+</script>
 </body>
 </html>
