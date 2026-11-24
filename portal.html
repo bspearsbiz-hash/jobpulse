@@ -68,6 +68,16 @@
 #app{display:none}
 .signout{background:none;border:1px solid var(--line);color:var(--muted);font:inherit;font-size:13px;font-weight:700;border-radius:999px;padding:7px 12px;cursor:pointer}
 @media(max-width:480px){.stats{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.stat:first-child{grid-column:1/-1}}
+.prep{position:relative;overflow:hidden;background:linear-gradient(150deg,#0f2a1f,#101627 60%);border:1px solid rgba(34,229,138,.45);border-radius:20px;padding:20px 20px 18px;margin:18px 0 6px;box-shadow:0 0 0 4px rgba(34,229,138,.06)}
+.prep .tag{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--pulse)}
+.prep .tag.live{color:#ff6b6b}.prep .tag.live .dot{background:#ff6b6b}
+.prep h3{font-size:22px;line-height:1.2;margin:8px 0 6px;color:var(--text)}
+.prep .when{font-size:16px;font-weight:800;color:var(--text);margin:0 0 8px}
+.prep p{font-size:14.5px;color:#c4cde3;margin:0 0 8px;line-height:1.5}
+.prep ul{margin:4px 0 14px;padding-left:18px;font-size:14px;color:#c4cde3;line-height:1.6}
+.prep .next{font-size:13.5px;font-weight:700;color:var(--pulse);margin:0 0 12px}
+.prep .row{display:flex;gap:10px;flex-wrap:wrap}.prep .row .btn{flex:1;min-width:180px;text-decoration:none}
+.prep .fine{font-size:12.5px;color:var(--muted);margin:10px 0 0}
 </style>
 </head>
 <body>
@@ -103,6 +113,24 @@
       <div class="stat"><b id="sTotal">0</b><span>applications sent for you</span></div>
       <div class="stat"><b id="sWeek">0</b><span id="sWeekL">sent latest day</span></div>
       <div class="stat hot"><b id="sNeed">0</b><span>things waiting on you</span></div>
+    </div>
+
+    <div class="prep" id="prepCard">
+      <div class="tag" id="prepTag"><span class="dot"></span> <span id="prepTagT">Live group interview prep</span></div>
+      <h3>Interview prep calls with Bobby, every Tuesday &amp; Thursday</h3>
+      <p class="when">5:00&ndash;6:00 PM Mountain Standard Time (Arizona time)</p>
+      <p>This is <b>the</b> time to get ready for your interviews. Bring your questions, your upcoming interviews, your resume, anything. We stay on for the full hour, and we don&rsquo;t leave until everyone&rsquo;s questions are answered.</p>
+      <ul>
+        <li>Interviews coming up: how to prepare and what they&rsquo;ll ask</li>
+        <li>Practice answers to the common questions</li>
+        <li>Telling your story, salary talk, and what to send after</li>
+      </ul>
+      <p class="next" id="prepNext"></p>
+      <div class="row">
+        <a class="btn" id="prepJoin" target="_blank" rel="noopener" hidden>Join the interview prep call &rarr;</a>
+        <a class="btn alt" id="prepCal" target="_blank" rel="noopener" hidden>Add it to my calendar</a>
+      </div>
+      <p class="fine" id="prepFine">Included with your plan. Keep the call link to yourself.</p>
     </div>
 
     <section class="sec" id="wrapSec" hidden>
@@ -231,6 +259,32 @@
     ).join('') : '<p class="empty">No applications match that search.</p>';
   }
 
+  function renderPrep() {
+    // Calls: Tue & Thu 17:00-18:00 America/Phoenix (UTC-7 all year, no DST)
+    const az = new Date(Date.now() - 7 * 3600e3);
+    const day = az.getUTCDay(), mins = az.getUTCHours() * 60 + az.getUTCMinutes();
+    const callDay = day === 2 || day === 4;
+    const live = callDay && mins >= 1020 && mins < 1080;
+    let next;
+    if (callDay && mins < 1020) next = 'Next call: today at 5:00 PM Arizona time';
+    else { let d = 1; while (![2, 4].includes((day + d) % 7)) d++;
+      const n = new Date(az.getTime() + d * 864e5);
+      next = 'Next call: ' + (d === 1 ? 'tomorrow' : n.toLocaleDateString('en-US', {weekday: 'long', month: 'short', day: 'numeric', timeZone: 'UTC'})) + ' at 5:00 PM Arizona time'; }
+    $('prepNext').textContent = live ? 'We\u2019re live right now. Jump in!' : next;
+    $('prepTag').classList.toggle('live', live);
+    $('prepTagT').textContent = live ? 'Live now' : 'Live group interview prep';
+    const u = (data.call && /^https:\/\/meet\.google\.com\/[a-z0-9-]+$/.test(data.call.u || '')) ? data.call.u : '';
+    if (u) {
+      $('prepJoin').href = u; $('prepJoin').hidden = false;
+      $('prepCal').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent('Job Pulse Interview Prep (live, 1 hour)') +
+        '&dates=20261125T000000Z/20261125T010000Z&ctz=America/Phoenix&recur=' + encodeURIComponent('RRULE:FREQ=WEEKLY;BYDAY=TU,TH') +
+        '&location=' + encodeURIComponent(u) + '&details=' + encodeURIComponent('Every Tuesday and Thursday, 5-6 PM Arizona time. Bring your questions. We stay the full hour until every question is answered.\nJoin: ' + u);
+      $('prepCal').hidden = false;
+    } else {
+      $('prepFine').textContent = 'Your call link is in your Job Pulse emails. Reply to any of them if you can\u2019t find it.';
+    }
+  }
+
   function render() {
     $('login').style.display = 'none';
     $('app').style.display = 'block';
@@ -258,6 +312,7 @@
     $('reply').href = 'mailto:bspearsbiz@gmail.com?subject=' + encodeURIComponent('Re: Job Pulse - my answers') + '&body=' + encodeURIComponent(data.needs.map((x, i) => (i + 1) + '. ' + x.k + ': ').join('\n'));
     renderFunnel();
     renderList();
+    try { renderPrep(); } catch (_) {}
     window.scrollTo(0, 0);
     try {
       if (window.JPWrapped && data.apps.length) {
@@ -315,7 +370,7 @@
         offer: 'Congratulations! We logged your offer from ' + r.c + '. Bobby will reach out to help you weigh it.',
         no: 'Thanks for telling us. We logged it and will use it to sharpen where we apply next.'
       }[k];
-      $('rOk').innerHTML = esc(msg) + (k === 'interview' ? ' <a href="' + BOOK + '" target="_blank" rel="noopener" style="color:var(--pulse);font-weight:700">Book your 1-on-1 interview prep &rarr;</a>' : '');
+      $('rOk').innerHTML = esc(msg) + (k === 'interview' || k === 'offer' ? ' Come to the next interview prep call (Tue &amp; Thu, 5 PM Arizona time) and we\u2019ll get you ready. <a href="#prepCard" style="color:var(--pulse);font-weight:700">See the call &uarr;</a>' : '');
       $('rOk').style.display = 'block';
     } catch (x) {
       const mail = 'mailto:bspearsbiz@gmail.com?subject=' + encodeURIComponent(body._subject) + '&body=' + encodeURIComponent('Company: ' + r.c + '\nRole: ' + (r.r || '') + '\nWhat happened: ' + LABEL[k] + '\nWhen: ' + (r.w || '') + '\nNote: ' + (r.n || ''));
