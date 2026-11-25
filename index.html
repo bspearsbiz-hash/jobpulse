@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://joinjobpulse.com/og-image.png">
 <meta property="og:image:width" content="1600">
 <meta property="og:image:height" content="900">
-<meta property="og:image:alt" content="Job Pulse homepage and plans: $50/mo for 10 applications a day, $100/mo for 20">
+<meta property="og:image:alt" content="Job Pulse homepage and plans: $99/mo for 10 applications a day, $199/mo for 20">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Job Pulse | We apply to remote jobs for you">
 <meta name="twitter:description" content="10–20 real remote job applications sent for you every weekday, plus interview prep.">
@@ -33,8 +33,8 @@
 {"@type":"Organization","@id":"https://joinjobpulse.com/#org","name":"Job Pulse","url":"https://joinjobpulse.com/","logo":"https://joinjobpulse.com/favicon-512.png","sameAs":["https://www.instagram.com/jobpulseio/"]},
 {"@type":"WebSite","@id":"https://joinjobpulse.com/#site","url":"https://joinjobpulse.com/","name":"Job Pulse","publisher":{"@id":"https://joinjobpulse.com/#org"}},
 {"@type":"Service","name":"Done-for-you remote job applications","serviceType":"Job application service","provider":{"@id":"https://joinjobpulse.com/#org"},"areaServed":"US","description":"Job Pulse finds remote roles that fit you and sends 10–20 real applications for you every weekday, plus mentorship and interview prep.","offers":[
-{"@type":"Offer","name":"Starter","price":"50","priceCurrency":"USD","description":"10 applications a day, billed monthly","url":"https://joinjobpulse.com/#plans"},
-{"@type":"Offer","name":"Pro","price":"100","priceCurrency":"USD","description":"20 applications a day, billed monthly","url":"https://joinjobpulse.com/#plans"},
+{"@type":"Offer","name":"Starter","price":"99","priceCurrency":"USD","description":"10 applications a day, billed monthly","url":"https://joinjobpulse.com/#plans"},
+{"@type":"Offer","name":"Pro","price":"199","priceCurrency":"USD","description":"20 applications a day, billed monthly","url":"https://joinjobpulse.com/#plans"},
 {"@type":"Offer","name":"VIP Package","price":"4000","priceCurrency":"USD","description":"6 months: 30 applications a day, 1-on-1 interview prep, resume and LinkedIn rewrite. $1,000 today + $500/mo for 6 months","url":"https://joinjobpulse.com/vip.html"}]},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"When do applications start?","acceptedAnswer":{"@type":"Answer","text":"The next weekday after we get your intake form and resume."}},
@@ -118,8 +118,8 @@
 (function(){
   var ans = {}, flow = document.getElementById('flow');
   var P = {
-    p50:{href:'https://buy.stripe.com/9B64gz7wkcRU1ZvaJDebu01', nm:'Starter', pr:'$50<small>/mo</small>', big:'10 applications every weekday', cta:'Start today'},
-    p100:{href:'https://buy.stripe.com/5kQfZh6sg8BEcE9bNHebu00', nm:'Pro', pr:'$100<small>/mo</small>', big:'20 applications every weekday', cta:'Start today'},
+    p50:{href:'https://buy.stripe.com/cNi3cv03SbNQ33z04Zebu05', nm:'Starter', pr:'$99<small>/mo</small>', big:'10 applications every weekday', cta:'Start today'},
+    p100:{href:'https://buy.stripe.com/14A6oHdUI5ps7jP2d7ebu06', nm:'Pro', pr:'$199<small>/mo</small>', big:'20 applications every weekday', cta:'Start today'},
     vip:{href:'vip.html', nm:'VIP', pr:'$1,000<small> to start</small>', big:'30 a weekday, weekly 1-on-1 prep, resume rebuilt', cta:'Start today'}
   };
   function show(n){ flow.querySelectorAll('.st').forEach(function(x){ x.hidden = x.getAttribute('data-s') != n; }); var f = flow.querySelector('[data-s="'+n+'"] .in'); if (f) f.focus(); }

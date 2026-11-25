@@ -25,8 +25,8 @@
     <h1>Pick your plan <em>first.</em></h1>
     <p class="lede">The intake form opens automatically right after checkout. Choose a plan below and you'll land back here to send your resume.</p>
     <div class="plans" style="margin-top:22px;text-align:left">
-      <a class="plan" href="https://buy.stripe.com/9B64gz7wkcRU1ZvaJDebu01"><div class="nm">Starter</div><div class="pr">$50<small>/mo</small></div><div class="big">10 applications a day</div><div class="cta">Start Starter &rarr;</div></a>
-      <a class="plan hot" href="https://buy.stripe.com/5kQfZh6sg8BEcE9bNHebu00"><span class="tagline">Most applications</span><div class="nm">Pro</div><div class="pr">$100<small>/mo</small></div><div class="big">20 applications a day</div><div class="cta">Go Pro &rarr;</div></a>
+      <a class="plan" href="https://buy.stripe.com/cNi3cv03SbNQ33z04Zebu05"><div class="nm">Starter</div><div class="pr">$99<small>/mo</small></div><div class="big">10 applications a day</div><div class="cta">Start Starter &rarr;</div></a>
+      <a class="plan hot" href="https://buy.stripe.com/14A6oHdUI5ps7jP2d7ebu06"><span class="tagline">Most applications</span><div class="nm">Pro</div><div class="pr">$199<small>/mo</small></div><div class="big">20 applications a day</div><div class="cta">Go Pro &rarr;</div></a>
     </div>
     <p class="note">Already paid but ended up here? Email us with the address you paid with and we'll send your link.</p>
   </section>
@@ -54,8 +54,8 @@
     <div class="field"><label for="plan">Your plan</label>
       <select id="plan" name="plan" required>
         <option value="">Choose one</option>
-        <option value="$50/mo - 10 applications a day">$50/mo &middot; 10 applications a day</option>
-        <option value="$100/mo - 20 applications a day">$100/mo &middot; 20 applications a day</option>
+        <option value="$99/mo - 10 applications a day">$99/mo &middot; 10 applications a day</option>
+        <option value="$199/mo - 20 applications a day">$199/mo &middot; 20 applications a day</option>
       </select></div>
 
     <div class="field"><label for="roles">What roles do you want? <small>(titles or field)</small></label><textarea id="roles" name="roles_wanted" required placeholder="e.g. marketing coordinator, content writer, customer success"></textarea></div>
@@ -124,7 +124,7 @@
   document.getElementById('sess').value = sid;
   if (paid) history.replaceState(null, '', location.pathname + (qs.get('plan') ? '?plan=' + qs.get('plan') : ''));
 
-  // Prefill plan from ?plan=50 or ?plan=100 (set on each Stripe link's redirect)
+  // Prefill plan from ?plan=99 or ?plan=199 (set on each Stripe link's redirect)
   var p = qs.get('plan');
   if (p) { var s = document.getElementById('plan'); for (var i = 0; i < s.options.length; i++) { if (s.options[i].value.indexOf('$' + p + '/') === 0) s.selectedIndex = i; } }
 
