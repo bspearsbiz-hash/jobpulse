@@ -88,34 +88,6 @@
           </div>
           <div class="st" data-s="5" hidden><div id="fres"></div></div>
         </div>
-        <button type="button" class="linkbtn" id="showAll">See all plans</button>
-        <div id="allPlans" hidden>
-    <div class="plans">
-      <a class="plan" href="https://buy.stripe.com/9B64gz7wkcRU1ZvaJDebu01">
-        <div class="nm">Starter</div>
-        <div class="pr">$50<small>/mo</small></div>
-        <div class="big">10 applications a day</div>
-        <ul><li>~200 applications a month</li><li>Mentorship + interview prep</li><li>24/7 support</li><li>Cancel anytime</li></ul>
-        <div class="cta">Start Starter &rarr;</div>
-      </a>
-      <a class="plan hot" href="https://buy.stripe.com/5kQfZh6sg8BEcE9bNHebu00">
-        <span class="tagline">Most applications</span>
-        <div class="nm">Pro</div>
-        <div class="pr">$100<small>/mo</small></div>
-        <div class="big">20 applications a day</div>
-        <ul><li>~400 applications a month</li><li>Mentorship + interview prep</li><li>24/7 support</li><li>Priority on fresh postings</li></ul>
-        <div class="cta">Go Pro &rarr;</div>
-      </a>
-    </div>
-    <a class="plan vip" href="vip.html">
-      <span class="tagline">Most hands-on</span>
-      <div class="nm">VIP Package &middot; 6 months</div>
-      <div class="pr">$1,000<small> today + $500/mo for 6 months</small></div>
-      <div class="big">30 applications a day + 1-on-1 prep</div>
-      <ul><li>~600 applications a month</li><li>Weekly 1-on-1 interview prep + mock interviews</li><li>Resume + LinkedIn rewrite, tailored cover letters</li><li>Offer + salary help, priority support</li></ul>
-      <div class="cta">See the VIP Package &rarr;</div>
-    </a>
-        </div>
       </div>
     </div>
 
@@ -139,7 +111,7 @@
 </main>
 <script>
 (function(){
-  var ans = {}, all = document.getElementById('allPlans'), flow = document.getElementById('flow');
+  var ans = {}, flow = document.getElementById('flow');
   var P = {
     p50:{href:'https://buy.stripe.com/9B64gz7wkcRU1ZvaJDebu01', nm:'Starter', pr:'$50<small>/mo</small>', big:'10 applications every weekday', cta:'Start today'},
     p100:{href:'https://buy.stripe.com/5kQfZh6sg8BEcE9bNHebu00', nm:'Pro', pr:'$100<small>/mo</small>', big:'20 applications every weekday', cta:'Start today'},
@@ -161,7 +133,6 @@
     }
   });
   flow.addEventListener('keydown', function(e){ if (e.key === 'Enter' && e.target.classList.contains('in')) { e.preventDefault(); var st = e.target.closest('.st'); var btn = st.querySelector('[data-next],#fGo'); if (btn && e.target === st.querySelectorAll('.in')[st.querySelectorAll('.in').length-1]) btn.click(); } });
-  document.getElementById('showAll').addEventListener('click', function(){ all.hidden = !all.hidden; this.textContent = all.hidden ? 'See all plans' : 'Hide plans'; });
   var v=document.getElementById('vid'),sb=document.getElementById('vsound');
   if (v) { var pp=v.play(); if(pp&&pp.catch)pp.catch(function(){});
     sb.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play();}sb.querySelector('span').textContent=v.muted?'Tap for sound':'Sound on';}); }
