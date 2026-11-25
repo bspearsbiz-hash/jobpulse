@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://formsubmit.co; form-action https://formsubmit.co; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<script>if (window.top !== window.self) { window.top.location.replace(window.location.href); }</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cancel your plan | Job Pulse</title>
+<link rel="canonical" href="https://joinjobpulse.com/cancel.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="Cancel your Job Pulse plan online.">
+<link rel="stylesheet" href="style.css?v=10">
+</head>
+<body>
+<main class="wrap">
+  <div class="top">
+    <a class="logo" href="./"><i><svg viewBox="0 0 64 64" fill="none"><path d="M8 34h12l5-14 8 28 7-20 4 6h12" stroke="#22e58a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Job&nbsp;<span>Pulse<small class="io">.io</small></span></a>
+  </div>
+  <section class="hero">
+    <h1>Cancel your <em>plan</em></h1>
+    <p class="lede">Fill this out and we'll cancel your plan and email you a confirmation, usually within a day. No call needed.</p>
+  </section>
+  <form class="card" id="cancel" action="https://formsubmit.co/6220c8f505862814ec5341519eed4090" method="POST" style="margin-top:20px">
+    <input type="hidden" name="_subject" value="CANCEL REQUEST Job Pulse">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="true">
+    <input type="hidden" name="_next" value="https://joinjobpulse.com/cancel.html?sent=1">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+    <div class="field"><label for="name">Name</label><input id="name" name="name" required autocomplete="name"></div>
+    <div class="field"><label for="email">Email <small>(the one you signed up with)</small></label><input id="email" name="email" type="email" required autocomplete="email"></div>
+    <div class="field"><label for="plan">Your plan</label>
+      <select id="plan" name="plan" required><option value="">Choose one</option><option>Starter</option><option>Pro</option><option>VIP</option><option>Not sure</option></select></div>
+    <div class="field"><label for="why">Anything we could have done better? <small>(optional)</small></label><textarea id="why" name="feedback" style="min-height:90px"></textarea></div>
+    <p class="hint">If your plan is still inside its minimum term (Starter 3 months, Pro 6 months, VIP 12 months), it stops at the end of that term and we'll email you the date. Refund or billing question? <a href="contact.html">Message us</a> and we'll set up a quick call.</p>
+    <button class="btn" id="go" type="submit">Cancel my plan &rarr;</button>
+  </form>
+  <div class="card" id="ok" hidden style="margin-top:20px;text-align:center"><h2 style="margin:0 0 6px">Request received.</h2><p class="lede" style="margin:0">We'll email your cancellation confirmation soon.</p></div>
+  <footer>
+    <a href="./">Job Pulse home</a> &middot; <a href="https://www.instagram.com/jobpulseio/">@jobpulseio</a><br><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a>
+  </footer>
+</main>
+<script>
+  if (new URLSearchParams(location.search).get('sent')) { document.getElementById('cancel').hidden = true; document.getElementById('ok').hidden = false; }
+  document.getElementById('cancel').addEventListener('submit', function () { var b = document.getElementById('go'); b.disabled = true; b.textContent = 'Sending…'; });
+</script>
+</body>
+</html>
