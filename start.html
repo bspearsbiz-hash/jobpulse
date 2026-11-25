@@ -25,8 +25,8 @@
     <h1>Pick your plan <em>first.</em></h1>
     <p class="lede">The intake form opens automatically right after checkout. Choose a plan below and you'll land back here to send your resume.</p>
     <div class="plans" style="margin-top:22px;text-align:left">
-      <a class="plan" href="https://buy.stripe.com/cNi3cv03SbNQ33z04Zebu05"><div class="nm">Starter</div><div class="pr">$99<small>/mo</small></div><div class="big">10 applications a day</div><div class="cta">Start Starter &rarr;</div></a>
-      <a class="plan hot" href="https://buy.stripe.com/14A6oHdUI5ps7jP2d7ebu06"><span class="tagline">Most applications</span><div class="nm">Pro</div><div class="pr">$199<small>/mo</small></div><div class="big">20 applications a day</div><div class="cta">Go Pro &rarr;</div></a>
+      <a class="plan" href="https://buy.stripe.com/cNi3cv03SbNQ33z04Zebu05"><div class="nm">Starter</div><div class="pr">$99<small>/mo</small></div><div class="big">10 applications a day</div><div class="big" style="font-size:13px;opacity:.75">3-month plan, billed monthly</div><div class="cta">Start Starter &rarr;</div></a>
+      <a class="plan hot" href="https://buy.stripe.com/14A6oHdUI5ps7jP2d7ebu06"><span class="tagline">Most applications</span><div class="nm">Pro</div><div class="pr">$199<small>/mo</small></div><div class="big">20 applications a day</div><div class="big" style="font-size:13px;opacity:.75">6-month plan, billed monthly</div><div class="cta">Go Pro &rarr;</div></a>
     </div>
     <p class="note">Already paid but ended up here? Email us with the address you paid with and we'll send your link.</p>
   </section>
@@ -54,8 +54,8 @@
     <div class="field"><label for="plan">Your plan</label>
       <select id="plan" name="plan" required>
         <option value="">Choose one</option>
-        <option value="$99/mo - 10 applications a day">$99/mo &middot; 10 applications a day</option>
-        <option value="$199/mo - 20 applications a day">$199/mo &middot; 20 applications a day</option>
+        <option value="$99/mo - 10 applications a day - 3-month plan">$99/mo &middot; 10 applications a day &middot; 3-month plan</option>
+        <option value="$199/mo - 20 applications a day - 6-month plan">$199/mo &middot; 20 applications a day &middot; 6-month plan</option>
       </select></div>
 
     <div class="field"><label for="roles">What roles do you want? <small>(titles or field)</small></label><textarea id="roles" name="roles_wanted" required placeholder="e.g. marketing coordinator, content writer, customer success"></textarea></div>
@@ -172,8 +172,8 @@
     </div>
 
     <label style="display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:14px;margin:4px 0 16px;color:#cfd6e8">
-      <input type="checkbox" name="authorization" value="Yes: authorizes Job Pulse to apply on their behalf, confirms info is accurate, agrees to Terms and Privacy" required style="width:20px;height:20px;margin-top:2px;flex:none;accent-color:#22e58a">
-      <span>I authorize Job Pulse to apply to jobs on my behalf using the resume and answers above, I confirm they're accurate, and I agree to the <a href="terms.html" target="_blank">Terms</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>. I understand interviews and offers aren't guaranteed.</span>
+      <input type="checkbox" name="authorization" value="Yes: authorizes Job Pulse to apply on their behalf, confirms info is accurate, agrees to Terms (including the plan minimum term) and Privacy" required style="width:20px;height:20px;margin-top:2px;flex:none;accent-color:#22e58a">
+      <span>I authorize Job Pulse to apply to jobs on my behalf using the resume and answers above, I confirm they're accurate, and I agree to the <a href="terms.html" target="_blank">Terms</a>, including my plan's minimum term, and <a href="privacy.html" target="_blank">Privacy Policy</a>. I understand interviews and offers aren't guaranteed.</span>
     </label>
     <button class="btn" id="go" type="submit">Send my intake &rarr;</button>
     <p class="hint">Your info goes straight to the Job Pulse team and is only used to apply for jobs on your behalf.</p>

@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://joinjobpulse.com/og-image.png">
 <meta property="og:image:width" content="1600">
 <meta property="og:image:height" content="900">
-<meta property="og:image:alt" content="Job Pulse homepage and plans: $50/mo for 10 applications a day, $100/mo for 20">
+<meta property="og:image:alt" content="Job Pulse homepage and plans: $99/mo for 10 applications a day (3-month plan), $199/mo for 20 (6-month plan)">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Job Pulse | We apply to remote jobs for you">
 <meta name="twitter:description" content="10–20 real remote job applications sent for you every weekday, plus interview prep.">
@@ -33,8 +33,8 @@
 {"@type":"Organization","@id":"https://joinjobpulse.com/#org","name":"Job Pulse","url":"https://joinjobpulse.com/","logo":"https://joinjobpulse.com/favicon-512.png","sameAs":["https://www.instagram.com/jobpulseio/"]},
 {"@type":"WebSite","@id":"https://joinjobpulse.com/#site","url":"https://joinjobpulse.com/","name":"Job Pulse","publisher":{"@id":"https://joinjobpulse.com/#org"}},
 {"@type":"Service","name":"Done-for-you remote job applications","serviceType":"Job application service","provider":{"@id":"https://joinjobpulse.com/#org"},"areaServed":"US","description":"Job Pulse finds remote roles that fit you and sends 10–20 real applications for you every weekday, plus mentorship and interview prep.","offers":[
-{"@type":"Offer","name":"Starter","price":"50","priceCurrency":"USD","description":"10 applications a day, billed monthly","url":"https://joinjobpulse.com/#plans"},
-{"@type":"Offer","name":"Pro","price":"100","priceCurrency":"USD","description":"20 applications a day, billed monthly","url":"https://joinjobpulse.com/#plans"},
+{"@type":"Offer","name":"Starter","price":"99","priceCurrency":"USD","description":"10 applications a day, billed monthly, 3-month minimum","url":"https://joinjobpulse.com/#plans"},
+{"@type":"Offer","name":"Pro","price":"199","priceCurrency":"USD","description":"20 applications a day, billed monthly, 6-month minimum","url":"https://joinjobpulse.com/#plans"},
 {"@type":"Offer","name":"VIP Package","price":"4000","priceCurrency":"USD","description":"6 months: 30 applications a day, 1-on-1 interview prep, resume and LinkedIn rewrite. $1,000 today + $500/mo for 6 months","url":"https://joinjobpulse.com/vip.html"}]},
 {"@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "How does Job Pulse work?", "acceptedAnswer": {"@type": "Answer", "text": "You tell us the jobs you want. Our team finds fresh openings that match and submits real applications for you every weekday, right on the employer's own job board. You get a private dashboard with every application and its link."}},
 {"@type": "Question", "name": "Is this mass-applying?", "acceptedAnswer": {"@type": "Answer", "text": "No. We only apply to roles that match the titles, pay and location you set, on the employer\u2019s own hiring page, so your applications reach the recruiter instead of getting filtered out as spam."}},
@@ -45,7 +45,7 @@
 {"@type": "Question", "name": "Do you help with interviews?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Live group interview prep with the Job Pulse team every Tuesday and Thursday, and 1-on-1 prep on our top plan."}},
 {"@type": "Question", "name": "Do you guarantee a job?", "acceptedAnswer": {"@type": "Answer", "text": "No one honestly can. We guarantee the work: real applications every weekday and real prep when interviews come."}},
 {"@type": "Question", "name": "Is my information safe?", "acceptedAnswer": {"@type": "Answer", "text": "Your resume and answers are only used to apply for you, and your dashboard is private to you. We never sell your information."}},
-{"@type": "Question", "name": "Can I cancel?", "acceptedAnswer": {"@type": "Answer", "text": "Monthly plans, anytime. VIP is a 6-month plan (see the VIP terms)."}}]}
+{"@type": "Question", "name": "Can I cancel?", "acceptedAnswer": {"@type": "Answer", "text": "Plans are commitments, not month to month: Starter is a 3-month plan, Pro and VIP are 6-month plans. After Starter or Pro's term ends, it continues month to month and you can stop it anytime by emailing us. See the Terms."}}]}
 ]}
 </script>
 <link rel="stylesheet" href="style.css?v=15">
@@ -126,7 +126,7 @@
     <details><summary>Do you help with interviews?</summary><p>Yes. Live group interview prep with the Job Pulse team every Tuesday and Thursday, and 1-on-1 prep on our top plan.</p></details>
     <details><summary>Do you guarantee a job?</summary><p>No one honestly can. We guarantee the work: real applications every weekday and real prep when interviews come.</p></details>
     <details><summary>Is my information safe?</summary><p>Your resume and answers are only used to apply for you, and your dashboard is private to you. We never sell your information.</p></details>
-    <details><summary>Can I cancel?</summary><p>Monthly plans, anytime. VIP is a 6-month plan (see the <a href="vip-agreement.html">VIP terms</a>).</p></details>
+    <details><summary>Can I cancel?</summary><p>Plans are commitments, not month to month: Starter is a 3-month plan, Pro and VIP are 6-month plans. After Starter or Pro's term ends, it continues month to month and you can stop it anytime by emailing us. See the <a href="terms.html">Terms</a>.</p></details>
   </section>
 
   <footer>
@@ -137,8 +137,8 @@
 (function(){
   var ans = {}, flow = document.getElementById('flow');
   var P = {
-    p50:{href:'https://buy.stripe.com/9B64gz7wkcRU1ZvaJDebu01', nm:'Starter', pr:'$50<small>/mo</small>', big:'10 applications every weekday', cta:'Start today'},
-    p100:{href:'https://buy.stripe.com/5kQfZh6sg8BEcE9bNHebu00', nm:'Pro', pr:'$100<small>/mo</small>', big:'20 applications every weekday', cta:'Start today'},
+    p50:{href:'https://buy.stripe.com/cNi3cv03SbNQ33z04Zebu05', nm:'Starter', pr:'$99<small>/mo</small>', big:'10 applications every weekday, 3-month plan', cta:'Start today'},
+    p100:{href:'https://buy.stripe.com/14A6oHdUI5ps7jP2d7ebu06', nm:'Pro', pr:'$199<small>/mo</small>', big:'20 applications every weekday, 6-month plan', cta:'Start today'},
     vip:{href:'vip.html', nm:'VIP', pr:'$1,000<small> to start</small>', big:'30 a weekday, weekly 1-on-1 prep, resume rebuilt', cta:'Start today'}
   };
   function show(n){ flow.querySelectorAll('.st').forEach(function(x){ x.hidden = x.getAttribute('data-s') != n; }); var f = flow.querySelector('[data-s="'+n+'"] .in'); if (f) f.focus(); }
