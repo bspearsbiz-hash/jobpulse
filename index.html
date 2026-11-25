@@ -62,31 +62,35 @@
         <div id="flow">
           <div class="st st0" data-s="0" role="button" tabindex="0" aria-label="Start my job search">
             <div class="sc-title">Ready to get hired?</div>
-            <p class="sc-sub">Answer 4 quick questions and we'll set up your search.</p>
+            <p class="sc-sub">Answer 5 quick questions and we'll set up your search.</p>
             <button type="button" class="btn" data-next>Start my job search &rarr;</button>
           </div>
           <div class="st" data-s="1" hidden>
-            <div class="stp">Step 1 of 4</div><div class="q">What kind of job do you want?</div>
+            <div class="stp">Step 1 of 5</div><div class="q">What kind of job do you want?</div>
             <div class="opts two" data-k="role"><button type="button" data-v="Customer service">Customer service</button><button type="button" data-v="Admin / office">Admin / office</button><button type="button" data-v="Sales">Sales</button><button type="button" data-v="Marketing">Marketing</button><button type="button" data-v="Healthcare">Healthcare</button><button type="button" data-v="Nursing / medical">Nursing / medical</button><button type="button" data-v="Tech / IT">Tech / IT</button><button type="button" data-v="Engineering">Engineering</button><button type="button" data-v="Finance / accounting">Finance / accounting</button><button type="button" data-v="HR / recruiting">HR / recruiting</button><button type="button" data-v="Education">Education</button><button type="button" data-v="Hospitality / food">Hospitality / food</button><button type="button" data-v="Retail">Retail</button><button type="button" data-v="Warehouse / logistics">Warehouse / logistics</button><button type="button" data-v="Skilled trades">Skilled trades</button><button type="button" data-v="Driving / delivery">Driving / delivery</button><button type="button" data-v="Construction">Construction</button><button type="button" data-v="Creative / design">Creative / design</button><button type="button" data-v="Legal">Legal</button><button type="button" data-v="Real estate">Real estate</button><button type="button" data-v="Government">Government</button><button type="button" data-v="Management">Management</button><button type="button" data-v="Remote entry-level">Remote entry-level</button><button type="button" data-v="Open to anything">Open to anything</button><button type="button" class="other" id="roleOther">Something else</button></div>
             <div class="otherbox" id="otherBox" hidden><input id="fRole" class="in" placeholder="Type the job you want" autocomplete="off"><button type="button" class="btn" id="roleGo">Next &rarr;</button></div>
           </div>
           <div class="st" data-s="2" hidden>
-            <div class="stp">Step 2 of 4</div><div class="q">Where do you want to work?</div>
+            <div class="stp">Step 2 of 5</div><div class="q">Where do you want to work?</div>
             <div class="opts" data-k="where"><button type="button" data-v="Remote">Remote</button><button type="button" data-v="In person">In person</button><button type="button" data-v="Either">Either works</button></div>
           </div>
           <div class="st" data-s="3" hidden>
-            <div class="stp">Step 3 of 4</div><div class="q">What would help you most?</div>
+            <div class="stp">Step 3 of 5</div><div class="q">What would help you most?</div>
             <div class="opts" data-k="need"><button type="button" data-v="volume">Lots of applications, fast</button><button type="button" data-v="hands">Hands-on help + interview prep</button><button type="button" data-v="start">A simple, steady start</button></div>
           </div>
           <div class="st" data-s="4" hidden>
-            <div class="stp">Step 4 of 4</div><div class="q">Where should we send your plan?</div>
+            <div class="stp">Step 4 of 5</div><div class="q">How soon do you need a new job?</div>
+            <div class="opts" data-k="when"><button type="button" data-v="asap">As soon as possible</button><button type="button" data-v="month">In the next month or two</button><button type="button" data-v="exploring">Just exploring</button></div>
+          </div>
+          <div class="st" data-s="5" hidden>
+            <div class="stp">Step 5 of 5</div><div class="q">Where should we send your plan?</div>
             <input id="fName" class="in" placeholder="First name" autocomplete="given-name">
             <input id="fEmail" class="in" type="email" placeholder="Email" autocomplete="email">
             <input id="fPhone" class="in" type="tel" placeholder="Phone (optional)" autocomplete="tel">
             <button type="button" class="btn" id="fGo">See my plan &rarr;</button>
             <p class="fine">No spam. Just your plan and next steps.</p>
           </div>
-          <div class="st" data-s="5" hidden><div id="fres"></div></div>
+          <div class="st" data-s="6" hidden><div id="fres"></div></div>
         </div>
       </div>
     </div>
@@ -119,7 +123,7 @@
   };
   function show(n){ flow.querySelectorAll('.st').forEach(function(x){ x.hidden = x.getAttribute('data-s') != n; }); var f = flow.querySelector('[data-s="'+n+'"] .in'); if (f) f.focus(); }
   function step(){ return +flow.querySelector('.st:not([hidden])').getAttribute('data-s'); }
-  function pick(){ return ans.need === 'hands' ? 'vip' : ans.need === 'start' ? 'p50' : 'p100'; }
+  function pick(){ if (ans.need === 'hands' && ans.when === 'asap') return 'vip'; if (ans.need === 'start' || ans.when === 'exploring') return 'p50'; return 'p100'; }
   flow.addEventListener('click', function(e){
     if (e.target.closest('[data-s="0"]')) { show(1); return; }
     if (e.target.closest('[data-next]')) { show(step() + 1); return; }
@@ -130,9 +134,9 @@
       var n = document.getElementById('fName'), em = document.getElementById('fEmail'), ph = document.getElementById('fPhone');
       if (!n.value.trim()) { n.focus(); return; } if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value.trim())) { em.focus(); return; }
       var k = pick(), p = P[k];
-      try { fetch('https://formsubmit.co/ajax/6220c8f505862814ec5341519eed4090', {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({_subject:'NEW Job Pulse lead (site): ' + n.value.trim(), _template:'table', name:n.value.trim(), email:em.value.trim(), phone:ph.value.trim(), job_wanted:ans.role, where:ans.where, needs:ans.need, suggested_plan:p.nm})}); } catch(err) {}
+      try { fetch('https://formsubmit.co/ajax/6220c8f505862814ec5341519eed4090', {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({_subject:'NEW Job Pulse lead (site): ' + n.value.trim(), _template:'table', name:n.value.trim(), email:em.value.trim(), phone:ph.value.trim(), job_wanted:ans.role, where:ans.where, needs:ans.need, timeline:ans.when, suggested_plan:p.nm})}); } catch(err) {}
       document.getElementById('fres').innerHTML = '<div class="pick"><span class="pk-l">' + n.value.trim().split(' ')[0].replace(/[<>&"]/g,'') + ', here\'s your plan</span><div class="pk-n">' + p.nm + ' &middot; ' + p.pr + '</div><div class="pk-b">' + p.big + '. Then a 2-minute intake and your resume, and we start applying.</div><a class="btn" href="' + p.href + '">' + p.cta + ' &rarr;</a></div>';
-      show(5);
+      show(6);
     }
   });
   document.getElementById('plans').addEventListener('click', function(e){ if (!flow.querySelector('.st0').hidden && !e.target.closest('#flow')) show(1); });
