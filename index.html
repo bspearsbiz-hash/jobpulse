@@ -42,7 +42,7 @@
 {"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"Anytime. Just email us and we'll take care of it."}}]}
 ]}
 </script>
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="style.css?v=7">
 <style>.plan.vip{grid-column:1/-1;margin-top:8px;background:linear-gradient(160deg,#2a1f0f,#101627 70%);border-color:rgba(255,181,71,.6);box-shadow:0 14px 40px rgba(255,181,71,.18)}.plan.vip .tagline{background:#ffb547}.plan.vip .big{color:#ffb547}.plan.vip li:before{color:#ffb547}.plan.vip .cta{background:linear-gradient(135deg,#ffb547,#f59e0b);color:#1a1205;border-color:transparent}.finder{display:grid;gap:14px}.fq b{display:block;font-size:15px;margin-bottom:8px}.fopts{display:flex;flex-wrap:wrap;gap:8px}.fopts button{font:inherit;font-size:14px;font-weight:700;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 14px;min-height:44px;cursor:pointer}.fopts button.on{background:var(--pulse);color:var(--dark);border-color:var(--pulse)}.fres{margin-top:4px}.fres .why{color:var(--muted);font-size:14px;margin:0 0 10px}.fres .plan{max-width:420px}.linkbtn{background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;font-size:14px;margin:14px 0 6px;cursor:pointer;padding:8px 0;min-height:44px}#allPlans .plans{margin-top:6px}</style>
 </head>
 <body>
@@ -94,7 +94,7 @@
     <div class="h-right">
       <div class="video">
         <video id="vid" src="what-to-expect.mp4?v=4" poster="what-to-expect.jpg" autoplay muted loop playsinline preload="auto"></video>
-        <button type="button" class="vsound" id="vsound" aria-label="Turn sound on"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M16 9.5a4 4 0 0 1 0 5M19 7a8 8 0 0 1 0 10"/></svg><span>Tap for sound</span></button>
+        <button type="button" class="vsound" id="vsound" aria-label="Turn sound on"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M16 9.5a4 4 0 0 1 0 5M19 7a8 8 0 0 1 0 10"/></svg></button>
       </div>
     </div>
   </section>
@@ -135,7 +135,7 @@
   flow.addEventListener('keydown', function(e){ if (e.key === 'Enter' && e.target.classList.contains('in')) { e.preventDefault(); var st = e.target.closest('.st'); var btn = st.querySelector('[data-next],#fGo'); if (btn && e.target === st.querySelectorAll('.in')[st.querySelectorAll('.in').length-1]) btn.click(); } });
   var v=document.getElementById('vid'),sb=document.getElementById('vsound');
   if (v) { var pp=v.play(); if(pp&&pp.catch)pp.catch(function(){});
-    sb.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play();}sb.querySelector('span').textContent=v.muted?'Tap for sound':'Sound on';}); }
+    sb.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play();}sb.classList.toggle('on',!v.muted);sb.setAttribute('aria-label',v.muted?'Turn sound on':'Turn sound off');}); }
 })();
 </script>
 </body>
