@@ -3,10 +3,11 @@
 > Job Pulse is a done-for-you remote job application service. We find remote roles that fit your resume, pay and goals, send 10–20 real applications for you every weekday, and prep you for the interviews with mentorship and group sessions.
 
 ## What you get
+- A resume revamp on every plan: rebuilt for your target roles in your first 2 business days, sent to you to approve
 - Real applications on real company job boards, every weekday, starting the next weekday after intake
 - Remote roles of all kinds (not just sales); hybrid or in-person in your city if you ask
 - Progress reports listing every company, role and link
-- Mentorship, group interview prep and 24/7 support from the Job Pulse team while your plan is active
+- Mentorship and interview prep: a prep pack with likely questions, sample answers and a practice round with feedback for every interview, plus group prep calls and 24/7 support
 - Billed monthly with a minimum term: Starter 3 months, Pro 6 months
 
 ## Plans
