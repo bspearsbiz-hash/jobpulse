@@ -263,6 +263,12 @@
     // Calls: Tue & Thu 17:00-18:00 America/Phoenix (UTC-7 all year, no DST)
     const az = new Date(Date.now() - 7 * 3600e3);
     const day = az.getUTCDay(), mins = az.getUTCHours() * 60 + az.getUTCMinutes();
+    if (az < new Date(Date.UTC(2026, 11, 1))) { // holiday break: no calls until December
+      $('prepTagT').textContent = 'On holiday break';
+      $('prepNext').textContent = 'Calls are off for the holidays and pick back up in December. Your applications keep going out as usual.';
+      $('prepFine').textContent = 'We\u2019ll email you before the first December call.';
+      return;
+    }
     const callDay = day === 2 || day === 4;
     const live = callDay && mins >= 1020 && mins < 1080;
     let next;
