@@ -37,12 +37,17 @@
 {"@type":"Offer","name":"Pro","price":"100","priceCurrency":"USD","description":"20 applications a day, billed monthly","url":"https://joinjobpulse.com/#plans"},
 {"@type":"Offer","name":"VIP Package","price":"4000","priceCurrency":"USD","description":"6 months: 30 applications a day, 1-on-1 interview prep, resume and LinkedIn rewrite. $1,000 today + $500/mo for 6 months","url":"https://joinjobpulse.com/vip.html"}]},
 {"@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"When do applications start?","acceptedAnswer":{"@type":"Answer","text":"The next weekday after we get your intake form and resume."}},
-{"@type":"Question","name":"Do you guarantee a job?","acceptedAnswer":{"@type":"Answer","text":"No one honestly can. What we guarantee is the work: your full plan count of real applications every weekday, plus prep so you're ready when interviews come."}},
-{"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"Anytime. Just email us and we'll take care of it."}}]}
+{"@type": "Question", "name": "How does Job Pulse work?", "acceptedAnswer": {"@type": "Answer", "text": "You tell us the jobs you want. Our team finds fresh openings that match and submits real applications for you every weekday, right on the employer's own job board. You get a private dashboard with every application and its link."}},
+{"@type": "Question", "name": "When do applications start?", "acceptedAnswer": {"@type": "Answer", "text": "The same day we get your intake and resume."}},
+{"@type": "Question", "name": "What kinds of jobs do you apply to?", "acceptedAnswer": {"@type": "Answer", "text": "Any field: healthcare, trades, office, tech, sales and more. Remote, hybrid or in person in your city, in the US and Canada."}},
+{"@type": "Question", "name": "Are these real applications?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every one is submitted on the company's own hiring page, and you can open each link on your dashboard to see it."}},
+{"@type": "Question", "name": "Do you help with interviews?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Live group interview prep with the Job Pulse team every Tuesday and Thursday, and 1-on-1 prep on our top plan."}},
+{"@type": "Question", "name": "Do you guarantee a job?", "acceptedAnswer": {"@type": "Answer", "text": "No one honestly can. We guarantee the work: real applications every weekday and real prep when interviews come."}},
+{"@type": "Question", "name": "Is my information safe?", "acceptedAnswer": {"@type": "Answer", "text": "Your resume and answers are only used to apply for you, and your dashboard is private to you. We never sell your information."}},
+{"@type": "Question", "name": "Can I cancel?", "acceptedAnswer": {"@type": "Answer", "text": "Monthly plans, anytime. VIP is a 6-month plan (see the VIP terms)."}}]}
 ]}
 </script>
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="style.css?v=15">
 <style>.plan.vip{grid-column:1/-1;margin-top:8px;background:linear-gradient(160deg,#2a1f0f,#101627 70%);border-color:rgba(255,181,71,.6);box-shadow:0 14px 40px rgba(255,181,71,.18)}.plan.vip .tagline{background:#ffb547}.plan.vip .big{color:#ffb547}.plan.vip li:before{color:#ffb547}.plan.vip .cta{background:linear-gradient(135deg,#ffb547,#f59e0b);color:#1a1205;border-color:transparent}.finder{display:grid;gap:14px}.fq b{display:block;font-size:15px;margin-bottom:8px}.fopts{display:flex;flex-wrap:wrap;gap:8px}.fopts button{font:inherit;font-size:14px;font-weight:700;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 14px;min-height:44px;cursor:pointer}.fopts button.on{background:var(--pulse);color:var(--dark);border-color:var(--pulse)}.fres{margin-top:4px}.fres .why{color:var(--muted);font-size:14px;margin:0 0 10px}.fres .plan{max-width:420px}.linkbtn{background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;font-size:14px;margin:14px 0 6px;cursor:pointer;padding:8px 0;min-height:44px}#allPlans .plans{margin-top:6px}</style>
 </head>
 <body>
@@ -58,6 +63,11 @@
       <h1>We find the job. We send the applications. <em>You take the interview.</em></h1>
       <p class="lede"><b>You&rsquo;re qualified. Your applications just aren&rsquo;t getting seen.</b> We send real ones for you every weekday, remote or in person.</p>
 
+      <ul class="trust">
+        <li><b>Real applications</b><span>on employers' own job boards</span></li>
+        <li><b>Every one logged</b><span>with a link you can check</span></li>
+        <li><b>Live interview prep</b><span>every Tuesday &amp; Thursday</span></li>
+      </ul>
       <div class="startcard" id="plans">
         <div id="flow">
           <div class="st st0" data-s="0" role="button" tabindex="0" aria-label="Apply to Job Pulse">
@@ -104,10 +114,16 @@
     </div>
   </section>
 
-  <section class="sec faq2" aria-label="Questions">
+  <section class="sec faq2" aria-labelledby="faqh">
+    <h2 id="faqh" class="faqh">Questions, answered</h2>
+    <details><summary>How does Job Pulse work?</summary><p>You tell us the jobs you want. Our team finds fresh openings that match and submits real applications for you every weekday, right on the employer&#x27;s own job board. You get a private dashboard with every application and its link.</p></details>
     <details><summary>When do applications start?</summary><p>The same day we get your intake and resume.</p></details>
-    <details><summary>Do you guarantee a job?</summary><p>No one honestly can. We guarantee the work: real applications every weekday, plus interview prep.</p></details>
-    <details><summary>Can I cancel?</summary><p>Monthly plans, anytime. VIP is a 6-month plan (<a href="vip-agreement.html">terms</a>).</p></details>
+    <details><summary>What kinds of jobs do you apply to?</summary><p>Any field: healthcare, trades, office, tech, sales and more. Remote, hybrid or in person in your city, in the US and Canada.</p></details>
+    <details><summary>Are these real applications?</summary><p>Yes. Every one is submitted on the company&#x27;s own hiring page, and you can open each link on your dashboard to see it.</p></details>
+    <details><summary>Do you help with interviews?</summary><p>Yes. Live group interview prep with the Job Pulse team every Tuesday and Thursday, and 1-on-1 prep on our top plan.</p></details>
+    <details><summary>Do you guarantee a job?</summary><p>No one honestly can. We guarantee the work: real applications every weekday and real prep when interviews come.</p></details>
+    <details><summary>Is my information safe?</summary><p>Your resume and answers are only used to apply for you, and your dashboard is private to you. We never sell your information.</p></details>
+    <details><summary>Can I cancel?</summary><p>Monthly plans, anytime. VIP is a 6-month plan (see the <a href="vip-agreement.html">VIP terms</a>).</p></details>
   </section>
 
   <footer>
