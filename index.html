@@ -42,7 +42,7 @@
 {"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"Anytime. Just email us and we'll take care of it."}}]}
 ]}
 </script>
-<link rel="stylesheet" href="style.css?v=12">
+<link rel="stylesheet" href="style.css?v=13">
 <style>.plan.vip{grid-column:1/-1;margin-top:8px;background:linear-gradient(160deg,#2a1f0f,#101627 70%);border-color:rgba(255,181,71,.6);box-shadow:0 14px 40px rgba(255,181,71,.18)}.plan.vip .tagline{background:#ffb547}.plan.vip .big{color:#ffb547}.plan.vip li:before{color:#ffb547}.plan.vip .cta{background:linear-gradient(135deg,#ffb547,#f59e0b);color:#1a1205;border-color:transparent}.finder{display:grid;gap:14px}.fq b{display:block;font-size:15px;margin-bottom:8px}.fopts{display:flex;flex-wrap:wrap;gap:8px}.fopts button{font:inherit;font-size:14px;font-weight:700;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 14px;min-height:44px;cursor:pointer}.fopts button.on{background:var(--pulse);color:var(--dark);border-color:var(--pulse)}.fres{margin-top:4px}.fres .why{color:var(--muted);font-size:14px;margin:0 0 10px}.fres .plan{max-width:420px}.linkbtn{background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;font-size:14px;margin:14px 0 6px;cursor:pointer;padding:8px 0;min-height:44px}#allPlans .plans{margin-top:6px}</style>
 </head>
 <body>
@@ -67,7 +67,8 @@
           </div>
           <div class="st" data-s="1" hidden>
             <div class="stp">Step 1 of 4</div><div class="q">What kind of job do you want?</div>
-            <div class="opts two" data-k="role"><button type="button" data-v="Customer service">Customer service</button><button type="button" data-v="Admin / office">Admin / office</button><button type="button" data-v="Sales">Sales</button><button type="button" data-v="Marketing">Marketing</button><button type="button" data-v="Healthcare">Healthcare</button><button type="button" data-v="Tech / IT">Tech / IT</button><button type="button" data-v="Warehouse / trades">Warehouse / trades</button><button type="button" data-v="Open to anything">Open to anything</button></div>
+            <div class="opts two" data-k="role"><button type="button" data-v="Customer service">Customer service</button><button type="button" data-v="Admin / office">Admin / office</button><button type="button" data-v="Sales">Sales</button><button type="button" data-v="Marketing">Marketing</button><button type="button" data-v="Healthcare">Healthcare</button><button type="button" data-v="Nursing / medical">Nursing / medical</button><button type="button" data-v="Tech / IT">Tech / IT</button><button type="button" data-v="Engineering">Engineering</button><button type="button" data-v="Finance / accounting">Finance / accounting</button><button type="button" data-v="HR / recruiting">HR / recruiting</button><button type="button" data-v="Education">Education</button><button type="button" data-v="Hospitality / food">Hospitality / food</button><button type="button" data-v="Retail">Retail</button><button type="button" data-v="Warehouse / logistics">Warehouse / logistics</button><button type="button" data-v="Skilled trades">Skilled trades</button><button type="button" data-v="Driving / delivery">Driving / delivery</button><button type="button" data-v="Construction">Construction</button><button type="button" data-v="Creative / design">Creative / design</button><button type="button" data-v="Legal">Legal</button><button type="button" data-v="Real estate">Real estate</button><button type="button" data-v="Government">Government</button><button type="button" data-v="Management">Management</button><button type="button" data-v="Remote entry-level">Remote entry-level</button><button type="button" data-v="Open to anything">Open to anything</button><button type="button" class="other" id="roleOther">Something else</button></div>
+            <div class="otherbox" id="otherBox" hidden><input id="fRole" class="in" placeholder="Type the job you want" autocomplete="off"><button type="button" class="btn" id="roleGo">Next &rarr;</button></div>
           </div>
           <div class="st" data-s="2" hidden>
             <div class="stp">Step 2 of 4</div><div class="q">Where do you want to work?</div>
@@ -122,6 +123,8 @@
   flow.addEventListener('click', function(e){
     if (e.target.closest('[data-s="0"]')) { show(1); return; }
     if (e.target.closest('[data-next]')) { show(step() + 1); return; }
+    if (e.target.closest('#roleOther')) { document.getElementById('otherBox').hidden = false; document.getElementById('fRole').focus(); return; }
+    if (e.target.closest('#roleGo')) { var r = document.getElementById('fRole'); if (!r.value.trim()) { r.focus(); return; } ans.role = r.value.trim(); show(2); return; }
     var b = e.target.closest('.opts button'); if (b) { ans[b.parentNode.getAttribute('data-k')] = b.getAttribute('data-v'); show(step() + 1); return; }
     if (e.target.closest('#fGo')) {
       var n = document.getElementById('fName'), em = document.getElementById('fEmail'), ph = document.getElementById('fPhone');
