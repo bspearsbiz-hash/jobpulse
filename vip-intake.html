@@ -9,7 +9,7 @@
 <title>Welcome to VIP | Job Pulse</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="favicon.ico" sizes="any">
-<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
 <main class="wrap">
@@ -74,6 +74,79 @@
         <select id="spons" name="needs_sponsorship" required><option value="">Choose</option><option>No</option><option>Yes</option></select></div>
     </div>
     <div class="field"><label for="avoid">Anything you do NOT want? <small>(industries, roles, companies)</small></label><textarea id="avoid" name="do_not_want" placeholder="e.g. no commission-only, no call centers"></textarea></div>
+    <h3 class="fsep">Your address <small>(every application form asks for it)</small></h3>
+    <div class="field"><label for="addr1">Street address</label><input id="addr1" name="street_address" required autocomplete="address-line1" placeholder="e.g. 123 Main St"></div>
+    <div class="row2">
+      <div class="field"><label for="addr2">Apt / unit <small>(optional)</small></label><input id="addr2" name="apt_unit" autocomplete="address-line2"></div>
+      <div class="field"><label for="acity">City</label><input id="acity" name="city" required autocomplete="address-level2"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="astate">State</label><input id="astate" name="state" required autocomplete="address-level1" placeholder="e.g. AZ"></div>
+      <div class="field"><label for="azip">ZIP code</label><input id="azip" name="zip" required autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" placeholder="e.g. 85004"></div>
+    </div>
+
+    <h3 class="fsep">Application basics</h3>
+    <div class="row2">
+      <div class="field"><label for="pname">Preferred first name <small>(optional)</small></label><input id="pname" name="preferred_name" autocomplete="nickname"></div>
+      <div class="field"><label for="age18">Are you 18 or older?</label>
+        <select id="age18" name="age_18_plus" required><option value="">Choose</option><option>Yes</option><option>No</option></select></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="tpay">Pay you're aiming for</label><input id="tpay" name="target_pay" required placeholder="e.g. $55,000/yr or $25/hr"></div>
+      <div class="field"><label for="reloc">Willing to relocate?</label>
+        <select id="reloc" name="willing_to_relocate" required><option value="">Choose</option><option>No</option><option>Yes</option><option>Maybe, for the right role</option></select></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="bg">OK with a background check?</label>
+        <select id="bg" name="ok_background_check" required><option value="">Choose</option><option>Yes</option><option>No</option></select></div>
+      <div class="field"><label for="drug">OK with a drug screen?</label>
+        <select id="drug" name="ok_drug_screen" required><option value="">Choose</option><option>Yes</option><option>No</option></select></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="dl">Driver's license?</label>
+        <select id="dl" name="drivers_license" required><option value="">Choose</option><option>Yes</option><option>No</option></select></div>
+      <div class="field"><label for="clr">Security clearance <small>(optional)</small></label><input id="clr" name="security_clearance" placeholder="e.g. None, Secret"></div>
+    </div>
+
+    <h3 class="fsep">Work history &amp; school</h3>
+    <div class="row2">
+      <div class="field"><label for="cstat">Working right now?</label>
+        <select id="cstat" name="employment_status" required><option value="">Choose</option><option>Employed full-time</option><option>Employed part-time</option><option>Not working</option><option>Student</option></select></div>
+      <div class="field"><label for="yexp">Years of work experience</label><input id="yexp" name="years_experience" required inputmode="numeric" placeholder="e.g. 3"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="cemp">Current or last employer</label><input id="cemp" name="current_employer" required placeholder="e.g. Target"></div>
+      <div class="field"><label for="ctitle">Your title there</label><input id="ctitle" name="current_title" required placeholder="e.g. Team Lead"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="ccomp">Current or last pay <small>(optional)</small></label><input id="ccomp" name="current_pay" placeholder="e.g. $18/hr"></div>
+      <div class="field"><label for="notice">Notice you need to give</label>
+        <select id="notice" name="notice_period" required><option value="">Choose</option><option>None, I can start now</option><option>1 week</option><option>2 weeks</option><option>3+ weeks</option></select></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="edu">Highest education</label>
+        <select id="edu" name="highest_education" required><option value="">Choose</option><option>High school / GED</option><option>Some college</option><option>Associate's</option><option>Bachelor's</option><option>Master's</option><option>Doctorate</option><option>Trade / certificate</option></select></div>
+      <div class="field"><label for="gyear">Graduation year <small>(optional)</small></label><input id="gyear" name="graduation_year" inputmode="numeric" placeholder="e.g. 2021"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="school">School <small>(optional)</small></label><input id="school" name="school"></div>
+      <div class="field"><label for="major">Field of study <small>(optional)</small></label><input id="major" name="field_of_study"></div>
+    </div>
+    <div class="field"><label for="certs">Certifications or licenses <small>(optional)</small></label><input id="certs" name="certifications" placeholder="e.g. HubSpot, CompTIA A+, notary"></div>
+    <div class="field"><label for="langs">Languages you speak <small>(optional)</small></label><input id="langs" name="languages" placeholder="e.g. English, Spanish (fluent)"></div>
+    <div class="field"><label for="pitch">Your best wins in 2-3 sentences <small>(we use this for "why you?" questions)</small></label><textarea id="pitch" name="pitch" required placeholder="e.g. Ran a team of 6, cut wait times 30%, top seller 4 months in a row"></textarea></div>
+
+    <h3 class="fsep">Voluntary questions <small>(optional, never affects hiring)</small></h3>
+    <p class="hint" style="text-align:left;margin:-6px 0 14px">Most US applications ask these. Leave them as is and we'll answer "decline to self-identify".</p>
+    <div class="row2">
+      <div class="field"><label for="eg">Gender</label><select id="eg" name="eeo_gender"><option>Decline to self-identify</option><option>Female</option><option>Male</option><option>Non-binary</option></select></div>
+      <div class="field"><label for="eh">Hispanic or Latino?</label><select id="eh" name="eeo_hispanic_latino"><option>Decline to self-identify</option><option>Yes</option><option>No</option></select></div>
+    </div>
+    <div class="field"><label for="er">Race</label><select id="er" name="eeo_race"><option>Decline to self-identify</option><option>American Indian or Alaska Native</option><option>Asian</option><option>Black or African American</option><option>Native Hawaiian or Other Pacific Islander</option><option>White</option><option>Two or more races</option></select></div>
+    <div class="row2">
+      <div class="field"><label for="ev">Veteran status</label><select id="ev" name="eeo_veteran"><option>Decline to self-identify</option><option>Not a protected veteran</option><option>Protected veteran</option></select></div>
+      <div class="field"><label for="ed">Disability status</label><select id="ed" name="eeo_disability"><option>Decline to self-identify</option><option>No, I don't have a disability</option><option>Yes, I have a disability</option></select></div>
+    </div>
     <div class="field"><label for="li">LinkedIn or portfolio link <small>(optional)</small></label><input id="li" name="linkedin_or_portfolio" type="url" placeholder="https://"></div>
 
     <div class="field">

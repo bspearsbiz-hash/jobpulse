@@ -2,7 +2,7 @@
 // Read a client's current data:   node tools/portal.mjs get <email> <ACCESS-CODE> > /tmp/client.json
 // Save updated data (re-encrypt): node tools/portal.mjs put /tmp/client.json <ACCESS-CODE>
 // New client (makes a code):      node tools/portal.mjs put /tmp/client.json
-// Data shape: {email, first, plan, since, updated, focus,
+// Data shape: {email, first, plan, since, updated, focus, profile?:true (set once their application profile form arrives; until then the dashboard shows a 'fill out your profile' need),
 //   apps:[{d:"Nov 20", c:"Company", r:"Role", t?:"Contract|Part-time", p?:"$70K", u?:"https://posting"}],  (oldest first)
 //   needs:[{k:"short ask", w:"why / what it unlocks", u?:"https://link"}]}
 // Never commit the plaintext JSON or the access code.

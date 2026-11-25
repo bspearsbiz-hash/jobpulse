@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://formsubmit.co; form-action https://formsubmit.co; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<script>if (window.top !== window.self) { window.top.location.replace(window.location.href); }</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job Pulse | Your application profile</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f1a'/%3E%3Cpath d='M8 34h12l5-14 8 28 7-20 4 6h12' fill='none' stroke='%2322e58a' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css?v=11">
+</head>
+<body>
+<main class="wrap">
+
+  <div class="top">
+    <a class="logo" href="./"><i><svg viewBox="0 0 64 64" fill="none"><path d="M8 34h12l5-14 8 28 7-20 4 6h12" stroke="#22e58a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Job&nbsp;<span>Pulse<small class="io">.io</small></span></a>
+  </div>
+
+    <section class="hero" id="sent" style="display:none">
+    <div class="live"><span class="dot"></span> Profile received</div>
+    <h1>Got it. <em>You're all set.</em></h1>
+    <p class="lede">Your profile is saved with the Job Pulse team. We'll use it on every application from here on, so you won't get asked for these again.</p>
+    <a class="btn" href="portal.html">Back to my dashboard &rarr;</a>
+  </section>
+
+  <div id="ask">
+  <section class="hero">
+    <div class="live"><span class="dot"></span> Members</div>
+    <h1>Your application <em>profile.</em></h1>
+    <p class="lede">One form, about 3 minutes. It covers everything job applications ask for, like your address and work history, so we can submit more applications without waiting on you.</p>
+  </section>
+
+  <form class="card" id="prof" action="https://formsubmit.co/6220c8f505862814ec5341519eed4090" method="POST" style="margin-top:24px">
+    <input type="hidden" name="_subject" value="Job Pulse member profile update">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="true">
+    <input type="hidden" name="_next" value="https://joinjobpulse.com/profile.html?sent=1">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+    <div class="row2">
+      <div class="field"><label for="name">Full name</label><input id="name" name="name" required autocomplete="name"></div>
+      <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required autocomplete="tel"></div>
+    </div>
+    <div class="field"><label for="email">Email <small>(the one you signed up with)</small></label><input id="email" name="email" type="email" required autocomplete="email"></div>
+    <div class="row2">
+      <div class="field"><label for="auth">Authorized to work in the US?</label>
+        <select id="auth" name="us_work_authorized" required><option value="">Choose</option><option>Yes</option><option>No</option></select></div>
+      <div class="field"><label for="spons">Will you ever need visa sponsorship?</label>
+        <select id="spons" name="needs_sponsorship" required><option value="">Choose</option><option>No</option><option>Yes</option></select></div>
+    </div>
+    <h3 class="fsep">Your address <small>(every application form asks for it)</small></h3>
+    <div class="field"><label for="addr1">Street address</label><input id="addr1" name="street_address" required autocomplete="address-line1" placeholder="e.g. 123 Main St"></div>
+    <div class="row2">
+      <div class="field"><label for="addr2">Apt / unit <small>(optional)</small></label><input id="addr2" name="apt_unit" autocomplete="address-line2"></div>
+      <div class="field"><label for="acity">City</label><input id="acity" name="city" required autocomplete="address-level2"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="astate">State</label><input id="astate" name="state" required autocomplete="address-level1" placeholder="e.g. AZ"></div>
+      <div class="field"><label for="azip">ZIP code</label><input id="azip" name="zip" required autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" placeholder="e.g. 85004"></div>
+    </div>
+
+    <h3 class="fsep">Application basics</h3>
+    <div class="row2">
+      <div class="field"><label for="pname">Preferred first name <small>(optional)</small></label><input id="pname" name="preferred_name" autocomplete="nickname"></div>
+      <div class="field"><label for="age18">Are you 18 or older?</label>
+        <select id="age18" name="age_18_plus" required><option value="">Choose</option><option>Yes</option><option>No</option></select></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="tpay">Pay you're aiming for</label><input id="tpay" name="target_pay" required placeholder="e.g. $55,000/yr or $25/hr"></div>
+      <div class="field"><label for="reloc">Willing to relocate?</label>
+        <select id="reloc" name="willing_to_relocate" required><option value="">Choose</option><option>No</option><option>Yes</option><option>Maybe, for the right role</option></select></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="bg">OK with a background check?</label>
+        <select id="bg" name="ok_background_check" required><option value="">Choose</option><option>Yes</option><option>No</option></select></div>
+      <div class="field"><label for="drug">OK with a drug screen?</label>
+        <select id="drug" name="ok_drug_screen" required><option value="">Choose</option><option>Yes</option><option>No</option></select></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="dl">Driver's license?</label>
+        <select id="dl" name="drivers_license" required><option value="">Choose</option><option>Yes</option><option>No</option></select></div>
+      <div class="field"><label for="clr">Security clearance <small>(optional)</small></label><input id="clr" name="security_clearance" placeholder="e.g. None, Secret"></div>
+    </div>
+
+    <h3 class="fsep">Work history &amp; school</h3>
+    <div class="row2">
+      <div class="field"><label for="cstat">Working right now?</label>
+        <select id="cstat" name="employment_status" required><option value="">Choose</option><option>Employed full-time</option><option>Employed part-time</option><option>Not working</option><option>Student</option></select></div>
+      <div class="field"><label for="yexp">Years of work experience</label><input id="yexp" name="years_experience" required inputmode="numeric" placeholder="e.g. 3"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="cemp">Current or last employer</label><input id="cemp" name="current_employer" required placeholder="e.g. Target"></div>
+      <div class="field"><label for="ctitle">Your title there</label><input id="ctitle" name="current_title" required placeholder="e.g. Team Lead"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="ccomp">Current or last pay <small>(optional)</small></label><input id="ccomp" name="current_pay" placeholder="e.g. $18/hr"></div>
+      <div class="field"><label for="notice">Notice you need to give</label>
+        <select id="notice" name="notice_period" required><option value="">Choose</option><option>None, I can start now</option><option>1 week</option><option>2 weeks</option><option>3+ weeks</option></select></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="edu">Highest education</label>
+        <select id="edu" name="highest_education" required><option value="">Choose</option><option>High school / GED</option><option>Some college</option><option>Associate's</option><option>Bachelor's</option><option>Master's</option><option>Doctorate</option><option>Trade / certificate</option></select></div>
+      <div class="field"><label for="gyear">Graduation year <small>(optional)</small></label><input id="gyear" name="graduation_year" inputmode="numeric" placeholder="e.g. 2021"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="school">School <small>(optional)</small></label><input id="school" name="school"></div>
+      <div class="field"><label for="major">Field of study <small>(optional)</small></label><input id="major" name="field_of_study"></div>
+    </div>
+    <div class="field"><label for="certs">Certifications or licenses <small>(optional)</small></label><input id="certs" name="certifications" placeholder="e.g. HubSpot, CompTIA A+, notary"></div>
+    <div class="field"><label for="langs">Languages you speak <small>(optional)</small></label><input id="langs" name="languages" placeholder="e.g. English, Spanish (fluent)"></div>
+    <div class="field"><label for="pitch">Your best wins in 2-3 sentences <small>(we use this for "why you?" questions)</small></label><textarea id="pitch" name="pitch" required placeholder="e.g. Ran a team of 6, cut wait times 30%, top seller 4 months in a row"></textarea></div>
+
+    <h3 class="fsep">Voluntary questions <small>(optional, never affects hiring)</small></h3>
+    <p class="hint" style="text-align:left;margin:-6px 0 14px">Most US applications ask these. Leave them as is and we'll answer "decline to self-identify".</p>
+    <div class="row2">
+      <div class="field"><label for="eg">Gender</label><select id="eg" name="eeo_gender"><option>Decline to self-identify</option><option>Female</option><option>Male</option><option>Non-binary</option></select></div>
+      <div class="field"><label for="eh">Hispanic or Latino?</label><select id="eh" name="eeo_hispanic_latino"><option>Decline to self-identify</option><option>Yes</option><option>No</option></select></div>
+    </div>
+    <div class="field"><label for="er">Race</label><select id="er" name="eeo_race"><option>Decline to self-identify</option><option>American Indian or Alaska Native</option><option>Asian</option><option>Black or African American</option><option>Native Hawaiian or Other Pacific Islander</option><option>White</option><option>Two or more races</option></select></div>
+    <div class="row2">
+      <div class="field"><label for="ev">Veteran status</label><select id="ev" name="eeo_veteran"><option>Decline to self-identify</option><option>Not a protected veteran</option><option>Protected veteran</option></select></div>
+      <div class="field"><label for="ed">Disability status</label><select id="ed" name="eeo_disability"><option>Decline to self-identify</option><option>No, I don't have a disability</option><option>Yes, I have a disability</option></select></div>
+    </div>
+    <div class="field"><label for="li">LinkedIn or portfolio link <small>(optional)</small></label><input id="li" name="linkedin_or_portfolio" type="url" placeholder="https://"></div>
+    <button class="btn" id="go" type="submit">Save my profile &rarr;</button>
+    <p class="hint">Only used to fill out job applications for you. Never shared or sold.</p>
+  </form>
+  </div>
+
+  <footer>
+    Questions? <a href="contact.html">Email us</a> &middot; <a href="https://www.instagram.com/jobpulseio/">@jobpulseio</a><br><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a>
+  </footer>
+</main>
+<script>
+  var done = new URLSearchParams(location.search).get('sent') === '1';
+  document.getElementById(done ? 'sent' : 'ask').style.display = 'block';
+  if (done) document.getElementById('ask').style.display = 'none';
+  document.getElementById('prof').addEventListener('submit', function () {
+    var b = document.getElementById('go'); b.disabled = true; b.textContent = 'Saving…';
+  });
+</script>
+</body>
+</html>

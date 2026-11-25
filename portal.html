@@ -304,13 +304,14 @@
     $('recapNow').innerHTML = rc.length ? card(rc[0]) : '';
     $('rOld').style.display = rc.length > 1 ? '' : 'none';
     $('rPast').innerHTML = rc.slice(1, 14).map(card).join('');
-    $('sNeed').textContent = data.needs.length;
-    $('needSec').style.display = data.needs.length ? '' : 'none';
-    $('needs').innerHTML = data.needs.map((x, i) =>
+    const needs = (data.profile ? [] : [{k: 'Fill out your application profile (3 min)', w: 'Your address, work history, school and the standard questions every job form asks. Do it once and we can submit more applications without waiting on you.', u: 'https://joinjobpulse.com/profile.html'}]).concat(data.needs);
+    $('sNeed').textContent = needs.length;
+    $('needSec').style.display = needs.length ? '' : 'none';
+    $('needs').innerHTML = needs.map((x, i) =>
       '<div class="need"><span class="n">' + (i + 1) + '</span><div><b>' + esc(x.k) + '</b><p>' + esc(x.w) + '</p>' +
       (safeUrl(x.u) ? '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">Open it &rarr;</a>' : '') + '</div></div>').join('');
     $('reply').href = 'contact.html?t=answers';
-    $('reply').onclick = () => { try { sessionStorage.setItem('jp_contact', data.needs.map((x, i) => (i + 1) + '. ' + x.k + ': ').join('\n')); } catch (_) {} };
+    $('reply').onclick = () => { try { sessionStorage.setItem('jp_contact', needs.map((x, i) => (i + 1) + '. ' + x.k + ': ').join('\n')); } catch (_) {} };
     renderFunnel();
     renderList();
     try { renderPrep(); } catch (_) {}
