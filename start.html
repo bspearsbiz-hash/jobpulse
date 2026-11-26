@@ -28,6 +28,7 @@
       <a class="plan" href="https://buy.stripe.com/cNi3cv03SbNQ33z04Zebu05"><div class="nm">Starter</div><div class="pr">$99<small>/mo</small></div><div class="big">Resume revamp + 10 applications every weekday + interview mentorship</div><div class="big" style="font-size:13px;opacity:.75">3-month minimum, billed monthly</div><div class="cta">Start Starter &rarr;</div></a>
       <a class="plan hot" href="https://buy.stripe.com/14A6oHdUI5ps7jP2d7ebu06"><span class="tagline">Most applications</span><div class="nm">Pro</div><div class="pr">$199<small>/mo</small></div><div class="big">Resume revamp + 20 applications every weekday + interview mentorship</div><div class="big" style="font-size:13px;opacity:.75">6-month minimum, billed monthly</div><div class="cta">Go Pro &rarr;</div></a>
     </div>
+    <div id="dsLink"></div>
     <p class="note">Already paid but ended up here? Email us with the address you paid with and we'll send your link.</p>
   </section>
 
@@ -185,6 +186,7 @@
     Questions? <a href="contact.html">Email us</a> &middot; <a href="https://www.instagram.com/jobpulseio/">@jobpulseio</a><br><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a>
   </footer>
 </main>
+<script src="downsell.js?v=1"></script>
 <script>
   // Pay-first gate: the form only opens when the visitor arrives from Stripe checkout
   // (Stripe adds ?session_id=cs_live_... to the redirect). The session id is sent with the
@@ -195,6 +197,7 @@
   document.getElementById(paid ? 'paid' : 'locked').style.display = 'block';
   document.querySelector('.progress').style.display = paid ? 'flex' : 'none';
   document.getElementById('sess').value = sid;
+  if (!paid && window.JPDownsell) { JPDownsell.link(document.getElementById('dsLink')); JPDownsell.arm(); }
   if (paid) history.replaceState(null, '', location.pathname + (qs.get('plan') ? '?plan=' + qs.get('plan') : ''));
 
   // Prefill plan from ?plan=99 or ?plan=199 (set on each Stripe link's redirect)
