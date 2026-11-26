@@ -366,7 +366,7 @@
       result: LABEL[k], when: r.w || '(not given)', note: r.n || '(none)'
     };
     try {
-      const res = await fetch('https://formsubmit.co/ajax/6220c8f505862814ec5341519eed4090', {method: 'POST', headers: {'Content-Type': 'application/json', Accept: 'application/json'}, body: JSON.stringify(body)});
+      const res = await fetch('https://formsubmit.co/ajax/6220c8f505862814ec5341519eed4090', {method: 'POST', referrerPolicy: 'origin', headers: {'Content-Type': 'application/json', Accept: 'application/json'}, body: JSON.stringify(body)});
       const j = await res.json().catch(() => ({}));
       if (!res.ok || String(j.success) !== 'true') throw new Error('send');
       pending.push({c: r.c, r: r.r, k});
