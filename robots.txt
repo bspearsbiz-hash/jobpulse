@@ -4,6 +4,7 @@ Disallow: /portal.html
 Disallow: /start.html
 Disallow: /done.html
 Disallow: /shortlist.html
+Disallow: /starter-50.html
 Disallow: /c/
 
 Sitemap: https://joinjobpulse.com/sitemap.xml
