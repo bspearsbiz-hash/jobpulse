@@ -1,6 +1,6 @@
 # Job Pulse
 
-> Job Pulse is a done-for-you remote job application service. We find remote roles that fit your resume, pay and goals, send 10–20 real applications for you every weekday, and prep you for the interviews with mentorship and group sessions.
+> Job Pulse is a done-for-you remote job application service. We find remote roles that fit your resume, pay and goals, send 5–10 real applications for you every weekday, and prep you for the interviews with mentorship and group sessions.
 
 ## What you get
 - A resume revamp on every plan: rebuilt for your target roles in your first 2 business days, sent to you to approve
@@ -11,9 +11,8 @@
 - Billed monthly with a minimum term: Starter 3 months, Pro 6 months
 
 ## Plans
-- Starter: $99/month, 3-month minimum, 10 applications every weekday (~200 a month)
-- Pro: $199/month, 6-month minimum, 20 applications every weekday (~400 a month), priority on fresh postings
-- VIP Package: 12 months, 30 applications every weekday, 1-on-1 interview prep, resume and LinkedIn rewrite ($1,000 today + $250/month for 12 months; includes up to 2 months of pause and a 90-day interview guarantee) - https://joinjobpulse.com/vip.html
+- Starter: $99/month, 3-month minimum, 5 applications every weekday (~100 a month)
+- Pro: $199/month, 6-month minimum, 10 applications every weekday (~200 a month), priority on fresh postings
 
 No one can guarantee a job; Job Pulse guarantees the work: your full plan count of applications every weekday.
 
