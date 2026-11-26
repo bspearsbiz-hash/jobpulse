@@ -133,7 +133,7 @@
   const bar = document.getElementById('bar'), back = document.getElementById('back');
   let i = 0;
   const tips = {
-    'No time to apply': 'That is exactly what Job Pulse does. We send 5 to 10 hand-picked applications for you every weekday while you live your life.',
+    'No time to apply': 'That is exactly what Job Pulse does. We send up to 10 hand-picked applications for you every weekday while you live your life.',
     'Applying but no callbacks': 'Usually that means not enough volume, or applying to the wrong roles. Your shortlist will show you roles that actually fit your resume.',
     "Don't know where to look": 'Most good remote jobs never make it to the big job boards. We scan company career pages daily, so your shortlist comes from there.',
     'Nervous about interviews': 'Every Job Pulse member gets mentorship and group interview prep with our team, so you walk in ready.'
@@ -150,7 +150,7 @@
       document.getElementById('result').innerHTML =
         '<b>Your next move: ' + (f === 'Not sure yet' ? 'find the roles you already qualify for' : esc(f.toLowerCase()) + ' roles') + '</b>' +
         '<p>' + esc(tips[b] || '') + '</p>' +
-        '<ul><li>5 remote jobs picked for you, free</li><li>Real company postings, not recycled listings</li><li>' + (heavy ? 'Want them sent for you every weekday? The Pro plan sends 10.' : 'Want more? Plans start at 5 applications every weekday.') + '</li></ul>';
+        '<ul><li>5 remote jobs picked for you, free</li><li>Real company postings, not recycled listings</li><li>' + (heavy ? 'Want them sent for you every weekday? The Pro plan sends 10.' : 'Want more? Plans start at up to 5 applications every weekday.') + '</li></ul>';
       setTimeout(() => document.getElementById('nm').focus({preventScroll:true}), 50);
     }
     window.scrollTo({top: 0, behavior: 'smooth'});
