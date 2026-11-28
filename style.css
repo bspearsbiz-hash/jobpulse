@@ -180,3 +180,9 @@ footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--l
 .faqh{font-size:22px;margin:0 0 14px;text-align:center}.faq2 details{border-bottom:1px solid var(--line)}
 .fsep{font-size:15px;font-weight:800;margin:22px 0 12px;padding-top:16px;border-top:1px solid var(--line)}
 .fsep small{font-weight:500;color:var(--muted);font-size:13px}
+/* Work type picker (intake + profile) */
+.wt{display:flex;flex-wrap:wrap;gap:8px}
+.wt label{display:inline-flex;align-items:center;gap:7px;font-size:15px;font-weight:700;background:#0b1020;border:1px solid var(--line);border-radius:999px;padding:9px 14px;cursor:pointer;margin:0}
+.wt input{accent-color:var(--pulse);width:auto;margin:0}
+.wt label:has(input:checked){border-color:var(--pulse);color:var(--pulse)}
+.row2[hidden]{display:none}

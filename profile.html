@@ -9,7 +9,7 @@
 <title>Job Pulse | Your application profile</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f1a'/%3E%3Cpath d='M8 34h12l5-14 8 28 7-20 4 6h12' fill='none' stroke='%2322e58a' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="style.css?v=11">
+<link rel="stylesheet" href="style.css?v=16">
 </head>
 <body>
 <main class="wrap">
@@ -49,6 +49,25 @@
         <select id="auth" name="us_work_authorized" required><option value="">Choose</option><option>Yes</option><option>No</option></select></div>
       <div class="field"><label for="spons">Will you ever need visa sponsorship?</label>
         <select id="spons" name="needs_sponsorship" required><option value="">Choose</option><option>No</option><option>Yes</option></select></div>
+    </div>
+    <h3 class="fsep">Where you want to work <small>(we only apply to jobs that match)</small></h3>
+    <div class="field"><label>Work type <small>(pick all that work for you)</small></label>
+      <div class="wt" id="wt">
+        <label><input type="checkbox" name="work_type" value="Remote"> Remote</label>
+        <label><input type="checkbox" name="work_type" value="Hybrid"> Hybrid</label>
+        <label><input type="checkbox" name="work_type" value="In person"> In person</label>
+      </div>
+      <div class="err" id="wtErr">Pick at least one work type.</div></div>
+    <div class="row2" id="near" hidden>
+      <div class="field"><label for="area">Your city or area</label><input id="area" name="job_search_area" placeholder="e.g. Phoenix, AZ"></div>
+      <div class="field"><label for="miles">How far will you travel?</label>
+        <select id="miles" name="max_commute">
+          <option value="">Choose one</option>
+          <option value="10 miles">Up to 10 miles</option>
+          <option value="25 miles">Up to 25 miles</option>
+          <option value="50 miles">Up to 50 miles</option>
+          <option value="Anywhere in my metro area">Anywhere in my metro area</option>
+        </select></div>
     </div>
     <h3 class="fsep">Your address <small>(every application form asks for it)</small></h3>
     <div class="field"><label for="addr1">Street address</label><input id="addr1" name="street_address" required autocomplete="address-line1" placeholder="e.g. 123 Main St"></div>
@@ -137,7 +156,20 @@
   var done = new URLSearchParams(location.search).get('sent') === '1';
   document.getElementById(done ? 'sent' : 'ask').style.display = 'block';
   if (done) document.getElementById('ask').style.display = 'none';
-  document.getElementById('prof').addEventListener('submit', function () {
+  var wts = document.querySelectorAll('#wt input'), near = document.getElementById('near');
+  function syncNear() {
+    var local = Array.prototype.some.call(wts, function (x) { return x.checked && x.value !== 'Remote'; });
+    near.hidden = !local;
+    document.getElementById('area').required = local;
+    document.getElementById('miles').required = local;
+    if (Array.prototype.some.call(wts, function (x) { return x.checked; })) document.getElementById('wtErr').style.display = 'none';
+  }
+  Array.prototype.forEach.call(wts, function (x) { x.addEventListener('change', syncNear); });
+  syncNear();
+  document.getElementById('prof').addEventListener('submit', function (e) {
+    if (!Array.prototype.some.call(wts, function (x) { return x.checked; })) {
+      e.preventDefault(); var we = document.getElementById('wtErr'); we.style.display = 'block'; we.scrollIntoView({block: 'center'}); return;
+    }
     var b = document.getElementById('go'); b.disabled = true; b.textContent = 'Saving…';
   });
 </script>

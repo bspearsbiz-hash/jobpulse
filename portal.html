@@ -9,7 +9,7 @@
 <title>Your dashboard | Job Pulse</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f1a'/%3E%3Cpath d='M8 34h12l5-14 8 28 7-20 4 6h12' fill='none' stroke='%2322e58a' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="style.css?v=16">
 <style>
 [hidden]{display:none!important}
 .wrap.wide{max-width:760px}
@@ -43,13 +43,16 @@
 #rOld{margin-top:10px}#rOld summary{cursor:pointer;color:var(--muted);font-size:14px;font-weight:700}
 #rOld .recap{margin-top:8px;background:var(--card);border-color:var(--line)}#rOld .rd{color:var(--muted)}
 .empty{color:var(--muted);text-align:center;padding:18px}
-.funnel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.funnel{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--line);border-radius:16px;overflow:hidden}
 .fs{padding:12px 14px;background:var(--card);border-right:1px solid var(--line)}
 .fs:last-child{border-right:0}
 .fs b{display:block;font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums}
 .fs span{font-size:12.5px;color:var(--muted)}
 .fs.on b{color:var(--pulse)}
 .fs.gold.on b{color:#ffb547}
+.stat.win{border-color:rgba(34,229,138,.45);background:linear-gradient(160deg,rgba(34,229,138,.12),rgba(34,229,138,.03))}
+.stat.win b{color:var(--pulse);font-size:40px}
+.fine2{font-size:12.5px;color:var(--muted);line-height:1.55;margin:12px 2px 0}
 .fnote{font-size:13.5px;color:var(--muted);margin:10px 0 12px}
 #heard{margin-top:4px}
 #rForm{margin-top:12px}
@@ -61,10 +64,11 @@
 .ok{display:none;background:rgba(34,229,138,.08);border:1px solid rgba(34,229,138,.3);border-radius:14px;padding:12px 14px;font-size:14.5px;margin-top:12px}
 .app .why{grid-column:1/-1;font-size:13.5px;color:#cfd6e8;background:rgba(34,229,138,.05);border-left:2px solid rgba(34,229,138,.5);padding:6px 10px;border-radius:0 8px 8px 0}
 .pill.s-reply{color:#8fb4ff;background:rgba(143,180,255,.1);border-color:rgba(143,180,255,.3)}
+.pill.s-hired{color:#0b0f1a;background:var(--pulse);border-color:var(--pulse)}
 .pill.s-interview,.pill.s-offer{color:#ffb547;background:rgba(255,181,71,.1);border-color:rgba(255,181,71,.35)}
 .pill.s-no{color:var(--muted);background:transparent;border-color:var(--line)}
 .fresh{color:var(--pulse);font-weight:700}
-@media(max-width:480px){.funnel{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.fs:nth-child(2){border-right:0}.fs:nth-child(-n+2){border-bottom:1px solid var(--line)}#rForm .row{grid-template-columns:1fr}}
+@media(max-width:480px){.funnel{grid-template-columns:repeat(6,minmax(0,1fr))}.fs{grid-column:span 2;border-bottom:1px solid var(--line)}.fs:nth-child(3){border-right:0}.fs:nth-child(4){grid-column:span 3;border-bottom:0}.fs:nth-child(5){grid-column:span 3;border-bottom:0}#rForm .row{grid-template-columns:1fr}}
 #app{display:none}
 .signout{background:none;border:1px solid var(--line);color:var(--muted);font:inherit;font-size:13px;font-weight:700;border-radius:999px;padding:7px 12px;cursor:pointer}
 @media(max-width:480px){.stats{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.stat:first-child{grid-column:1/-1}}
@@ -110,8 +114,8 @@
       <p class="lede" style="margin:0" id="upd"></p>
     </div>
     <div class="stats">
-      <div class="stat"><b id="sTotal">0</b><span>applications sent for you</span></div>
-      <div class="stat"><b id="sWeek">0</b><span id="sWeekL">sent latest day</span></div>
+      <div class="stat win" id="sIntBox"><b id="sInt">0</b><span id="sIntL">interviews this week</span></div>
+      <div class="stat"><b id="sTotal">0</b><span id="sTotalL">applications sent</span></div>
       <div class="stat hot"><b id="sNeed">0</b><span>things waiting on you</span></div>
     </div>
 
@@ -146,6 +150,7 @@
         <div class="fs" id="fsHeard"><b id="fHeard">0</b><span>heard back</span></div>
         <div class="fs gold" id="fsInt"><b id="fInt">0</b><span>interviews</span></div>
         <div class="fs gold" id="fsOff"><b id="fOff">0</b><span>offers</span></div>
+        <div class="fs gold" id="fsHire"><b id="fHire">0</b><span>hired</span></div>
       </div>
       <p class="fnote" id="fNote">Did a company email or call you? Tell us here. We track it, update your plan, and help you get ready.</p>
       <button class="btn" id="heard" type="button">A company got back to me &rarr;</button>
@@ -156,6 +161,7 @@
             <label><input type="radio" name="rk" value="reply" checked> They replied</label>
             <label><input type="radio" name="rk" value="interview"> Interview set</label>
             <label><input type="radio" name="rk" value="offer"> Offer</label>
+            <label><input type="radio" name="rk" value="hired"> I got hired!</label>
             <label><input type="radio" name="rk" value="no"> Not moving forward</label>
           </div>
         </div>
@@ -188,6 +194,7 @@
       <h2>Every application</h2>
       <div class="tools"><input id="q" type="search" placeholder="Search company or role" aria-label="Search applications"></div>
       <div id="list"></div>
+      <p class="fine2">We only count an application when the job is real, still open, in the US, and matches the roles, work type and area you picked. On days when few good jobs are posted, we send fewer instead of applying to junk listings.</p>
     </section>
 
 
@@ -220,8 +227,15 @@
     return JSON.parse(new TextDecoder().decode(pt));
   }
 
-  const STAGE = {reply: 1, no: 1, interview: 2, offer: 3};
-  const LABEL = {reply: 'Replied', interview: 'Interview', offer: 'Offer', no: 'Not selected'};
+  const STAGE = {reply: 1, no: 1, interview: 2, offer: 3, hired: 4};
+  const LABEL = {reply: 'Replied', interview: 'Interview', offer: 'Offer', hired: 'Hired', no: 'Not selected'};
+  // Dates on the dashboard are "Nov 30" style. This week = Monday to Sunday, Arizona time.
+  const MON = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+  const azNow = () => new Date(Date.now() - 7 * 3600e3);
+  const parseD = t => { const m = String(t || '').match(/([A-Z][a-z]{2})\s+(\d{1,2})/); if (!m || !(m[1] in MON)) return null;
+    const now = azNow(); let d = Date.UTC(now.getUTCFullYear(), MON[m[1]], +m[2]); if (d - now > 60 * 864e5) d = Date.UTC(now.getUTCFullYear() - 1, MON[m[1]], +m[2]); return d; };
+  function thisWeek(t) { const d = parseD(t); if (d == null) return false; const n = azNow();
+    const mon = Date.UTC(n.getUTCFullYear(), n.getUTCMonth(), n.getUTCDate()) - ((n.getUTCDay() + 6) % 7) * 864e5; return d >= mon && d < mon + 7 * 864e5; }
   const norm = t => String(t || '').toLowerCase().replace(/[^a-z0-9]/g, '');
   function resultFor(a) {
     let best = null;
@@ -238,11 +252,15 @@
   function renderFunnel() {
     const rs = (data.results || []).concat(pending);
     const cos = k => new Set(rs.filter(k).map(r => norm(r.c))).size;
-    const heard = cos(() => true), ints = cos(r => r.k === 'interview' || r.k === 'offer'), offs = cos(r => r.k === 'offer');
+    const heard = cos(() => true), ints = cos(r => STAGE[r.k] >= 2), offs = cos(r => STAGE[r.k] >= 3), hires = cos(r => r.k === 'hired');
     $('fApplied').textContent = data.apps.length;
     $('fHeard').textContent = heard; $('fsHeard').classList.toggle('on', heard > 0);
     $('fInt').textContent = ints; $('fsInt').classList.toggle('on', ints > 0);
     $('fOff').textContent = offs; $('fsOff').classList.toggle('on', offs > 0);
+    $('fHire').textContent = hires; $('fsHire').classList.toggle('on', hires > 0);
+    const wk = new Set(rs.filter(r => r.k === 'interview' && (r.pend || thisWeek(r.d))).map(r => norm(r.c))).size;
+    $('sInt').textContent = wk;
+    $('sIntL').textContent = wk === 1 ? 'interview this week' : 'interviews this week';
     $('rCos').innerHTML = [...new Set(data.apps.map(a => a.c))].sort().map(c => '<option value="' + esc(c) + '">').join('');
   }
 
@@ -300,9 +318,8 @@
     $('hi').textContent = 'Hey ' + data.first + ', here’s your job search.';
     $('upd').textContent = 'Member since ' + data.since + ' · Updated ' + data.updated;
     $('sTotal').textContent = data.apps.length;
-    const last = data.apps.length ? data.apps[data.apps.length - 1].d : '';
-    $('sWeek').textContent = data.apps.filter(a => a.d === last).length;
-    $('sWeekL').textContent = 'sent on ' + last;
+    const wkApps = data.apps.filter(a => thisWeek(a.d)).length;
+    $('sTotalL').textContent = 'applications sent' + (wkApps ? ' (' + wkApps + ' this week)' : '');
     const rc = (data.recaps || []).slice().reverse();
     const card = r => '<div class="recap"><div class="rd">' + esc(r.d) + '</div><p class="rh">' + esc(r.h) + '</p>' +
       ((r.b || []).length ? '<ul>' + r.b.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' : '') + '</div>';
@@ -369,13 +386,14 @@
       const res = await fetch('https://formsubmit.co/ajax/6220c8f505862814ec5341519eed4090', {method: 'POST', referrerPolicy: 'origin', headers: {'Content-Type': 'application/json', Accept: 'application/json'}, body: JSON.stringify(body)});
       const j = await res.json().catch(() => ({}));
       if (!res.ok || String(j.success) !== 'true') throw new Error('send');
-      pending.push({c: r.c, r: r.r, k});
+      pending.push({c: r.c, r: r.r, k, pend: true});
       renderFunnel(); renderList();
       $('rForm').reset(); $('rForm').hidden = true; $('heard').hidden = false;
       const msg = {
         reply: 'Nice! We logged the reply from ' + r.c + '. The Job Pulse team will check in if there\u2019s anything to do next.',
         interview: 'Huge! We logged your interview with ' + r.c + '. Let\u2019s get you ready for it.',
         offer: 'Congratulations! We logged your offer from ' + r.c + '. The Job Pulse team will reach out to help you weigh it.',
+        hired: 'You did it! Congratulations on the new job at ' + r.c + '. The Job Pulse team will reach out about next steps.',
         no: 'Thanks for telling us. We logged it and will use it to sharpen where we apply next.'
       }[k];
       $('rOk').innerHTML = esc(msg) + (k === 'interview' || k === 'offer' ? ' Come to the next interview prep call (Tue &amp; Thu, 5 PM Arizona time) and we\u2019ll get you ready. <a href="#prepCard" style="color:var(--pulse);font-weight:700">See the call &uarr;</a>' : '');
